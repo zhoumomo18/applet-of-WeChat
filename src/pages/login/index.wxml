@@ -1,0 +1,5 @@
+<view class="container">
+    <view class="logo"><image src="../../assets/images/logo.png" /></view>
+    <text class="text">请先完成微信授权以继续使用</text>
+    <button class="button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权微信用户信息</button>
+</view>

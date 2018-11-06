@@ -1,0 +1,53 @@
+/**app.wxss**/
+page{
+  color: #333;
+  font-family: PingFangSC-Regular,'微软雅黑', '宋体', sans-serif;
+  font-size: 32rpx;
+  height: 100%;
+}
+.clear:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.clear{
+  zoom:1;
+}
+
+.margin{
+  margin: 0 auto;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+.clamp{
+  display: flex;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+
+}

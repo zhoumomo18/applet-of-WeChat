@@ -1,0 +1,85 @@
+/**index.wxss**/
+.container{
+  width: 100%;
+  height: 100%;
+  padding: 0 30rpx;
+}
+page swiper{
+  width: 100%;
+}
+.container image{
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+.ui-grids{
+  width: 100%;
+  display: flex;
+  margin: 23rpx 0 27rpx;
+}
+.ui-grids .grid{
+  flex: 1;
+}
+.ui-grids .ui_grid-icon{
+  width: 88rpx;
+  height: 88rpx;
+  margin: 0 auto 12rpx;
+}
+.ui-grids .ui_grid-label{
+  font-size: 24rpx;
+  color: #666666;
+  text-align: center;
+}
+.ui-hot-section .h-title{
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.ui-hot-section .h-top-fisrt{
+  width: 100%;
+  height: 250rpx;
+  margin-top: 18rpx;
+  position: relative;
+}
+.ui-hot-section .h-top-fisrt .h-top-img{
+  border-radius: 8rpx;
+}
+.ui-hot-section .h-top-fisrt .level-img{
+  width: 110rpx;
+  height: 46rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ui-hot-section .sm-title{
+  font-size: 28rpx;
+  color: #666666;
+  margin: 11rpx 0 21rpx;
+  font-weight: 500;
+}
+.ui-hot-section .ui-list .ui-item{
+  float: left;
+  position: relative;
+  width: 330rpx;
+  height: 230rpx;
+}
+.ui-hot-section .ui-list .ui-item:nth-child(2n-1){
+  margin-right: 30rpx;
+}
+.ui-hot-section .ui-list .ui-item image{
+  width: 330rpx;
+  height: 230rpx;
+  display: block;
+}
+.ui-hot-section .ui-list .ui-item .level-img{
+  width: 110rpx;
+  height: 46rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.ui-hot-section .h-name{
+  font-size: 28rpx;
+  color: #666666;
+  margin-top: 15rpx;
+}

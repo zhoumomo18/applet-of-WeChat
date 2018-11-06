@@ -1,0 +1,57 @@
+<!--index.wxml-->
+<view class="container">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}" wx:key="img">
+            <swiper-item>
+            <image src="{{item}}" class="slide-image" width="100%" height="100%"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="ui-grids">
+        <navigator class="grid" hover-class="none">
+            <view class="ui_grid-icon"><image src="../../assets/images/icon_1.png" /></view>
+            <view class="ui_grid-label">景区门票</view>
+        </navigator>
+        <navigator class="grid" hover-class="none">
+            <view class="ui_grid-icon"><image src="../../assets/images/icon_2.png" /></view>
+            <view class="ui_grid-label">景点攻略</view>
+        </navigator>
+        <navigator class="grid" hover-class="none">
+            <view class="ui_grid-icon"><image src="../../assets/images/icon_1.png" /></view>
+            <view class="ui_grid-label">景区门票</view>
+        </navigator>
+        <navigator class="grid" hover-class="none">
+            <view class="ui_grid-icon"><image src="../../assets/images/icon_2.png" /></view>
+            <view class="ui_grid-label">景点攻略</view>
+        </navigator>
+    </view>
+    <view class="ui-hot-section">
+      <text class="h-title">热门景点</text>
+      <view class="h-top-fisrt">
+        <image class="h-top-img" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" />
+        <image class="level-img" src="../../assets/images/top1.png" />
+      </view>
+      <view class="sm-title">凤凰神凤文化景区</view>
+      <view class="ui-list">
+        <view class="ui-item">
+          <navigator url="" hover-class="none">
+            <view>
+              <image class="h-top-img" src="../../assets/images/img2.png" />
+              <image class="level-img" src="../../assets/images/top2.png" />
+            </view>
+            <view class="h-name ellipsis">南长城</view>
+          </navigator>
+        </view>
+        <view class="ui-item">
+          <navigator url="" hover-class="none">
+            <view>
+              <image class="h-top-img" src="../../assets/images/img2.png" />
+              <image class="level-img" src="../../assets/images/top3.png" />
+            </view>
+            <view class="h-name ellipsis">一条很长的景区名称名一条很长的景区名称名</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+</view>
