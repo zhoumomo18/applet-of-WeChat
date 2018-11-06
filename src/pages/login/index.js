@@ -1,4 +1,4 @@
-let app= getApp()
+let app = getApp()
 Page({
     data: {
         
@@ -15,9 +15,9 @@ Page({
                             //从数据库获取用户信息
                             // that.queryUsreInfo();
                             //用户已经授权过
-                            wx.switchTab({
-                                url: '/pages/index/index'
-                            })
+                            // wx.switchTab({
+                            //     url: '/pages/index/index'
+                            // })
                         }
                     });
                 }
@@ -32,28 +32,32 @@ Page({
                 success:(res) => {
                     if(res.code){
                         //插入登录的用户的相关信息到数据库
-                        // wx.request({
-                        //     url: app.globalData.urlPath + 'user/add',
-                        //     data: {
-                        //         code: res.code,
-                        //         nickName: e.detail.userInfo.nickName,
-                        //         avatarUrl: e.detail.userInfo.avatarUrl,
-                        //         province:e.detail.userInfo.province,
-                        //         city: e.detail.userInfo.city
-                        //     },
-                        //     header: {
-                        //         'content-type': 'application/json'
-                        //     },
-                        //     success: function (res) {
-                        //         //从数据库获取用户信息
-                        //         wx.setStorageSync('userinfo', res.data)
-                        //         console.log("插入小程序登录用户信息成功！");
-                        //     }
-                        // });
-                        //授权成功后，跳转进入小程序首页
-                        wx.switchTab({
-                            url: '/pages/index/index'  
-                        })
+                        wx.request({
+                            url: app.globalData.urlPath + '/weChatAuthorization/getuserinfo',
+                            data: {
+                                code: res.code,
+                                nickName: e.detail.userInfo.nickName,
+                                avatarUrl: e.detail.userInfo.avatarUrl,
+                                province:e.detail.userInfo.province,
+                                city: e.detail.userInfo.city
+                            },
+                            method : 'POST',
+                            success: function (res) {
+                                //从数据库获取用户信息
+                                if (res.code == 200) {
+                                    wx.setStorageSync('userinfo', res.data)
+                                    //授权成功后，跳转进入小程序首页
+                                    wx.switchTab({
+                                        url: '/pages/index/index'  
+                                    })
+                                } else {
+                                    wx.showToast({
+                                        title: '登录失败',
+                                        icon: 'none'
+                                    })
+                                }
+                            }
+                        });
                     }
                 }
             })

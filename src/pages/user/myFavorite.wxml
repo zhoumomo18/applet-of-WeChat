@@ -1,0 +1,15 @@
+<view class="container">
+    <import src="../../components/list.wxml" />
+    <view class="ui-content clear">
+      <view class="left">
+        <block wx:for="{{products}}" wx:key="">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{products}}" wx:key="">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
+    </view>
+</view>

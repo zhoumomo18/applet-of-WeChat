@@ -1,0 +1,20 @@
+<template name="item">
+    <view class="item">
+        <navigator url="/pages/strategy/detail?id=1" hover-class="none">
+            <image class="item-img" src="{{url}}" mode="widthFix" />
+            <view class="item-title-box">
+                <text class="item-title clamp">{{title}}</text>
+            </view>
+        </navigator>
+        <view class="name">
+            <view class="avatar">
+                <image class="item-ava" src="{{avatar}}" />    
+                <text class="name-title ellipsis">{{name}}</text>
+            </view>
+            <view class="heart_">
+                <image class="heart" src="../../assets/images/dianzan.png"></image>
+                <text class="heart-title">{{heart_num}}</text>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,25 @@
+<view class="container">
+    <scroll-view scroll-x="true" style="height:41px;" class="tab-container">
+        <view class="ui-navbar">
+            <block wx:for-items="{{list}}" wx:for-item="item" wx:key="{{index}}">
+                <view id="{{index}}" class="ui-navbar__item {{activeIndex == index ? 'ui-bar__item_on' : ''}}" bindtap="tabClick" data-state="{{item.state}}">
+                    <view class="ui-navbar__title">{{item.title}}</view>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+
+    <import src="../../components/list.wxml" />
+    <view class="ui-content clear">
+      <view class="left">
+        <block wx:for="{{products}}" wx:key="item">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{products}}" wx:key="item">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
+    </view>
+</view>

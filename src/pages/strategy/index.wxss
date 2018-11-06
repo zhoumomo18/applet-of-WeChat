@@ -1,0 +1,27 @@
+@import "../../components/list.wxss";
+
+.tab-container{
+    width: 100%;
+    white-space: nowrap;
+    padding-left: 30rpx;
+    background: #fff;
+}
+.tab-container .ui-navbar__item{
+    display: inline-block;
+    padding-top: 29rpx;
+    margin-right: 115rpx;
+}
+.tab-container .ui-navbar__item .ui-navbar__title{
+    font-weight: bold;
+    font-size: 28rpx;
+    color: #333333;
+    margin-bottom: 8rpx;
+}
+.tab-container .ui-bar__item_on::after{
+    content: '';
+    width: 30rpx;
+    height: 6rpx;
+    background: #FFA819;
+    display: block;
+    transform: translateX(50%);
+}

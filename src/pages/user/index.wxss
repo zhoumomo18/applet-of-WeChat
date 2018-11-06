@@ -1,0 +1,120 @@
+.container{
+    background: #F0F4F7;
+    height: 100%;
+}
+.container .head-img{
+    background: #fff;
+    height: 256rpx;
+    padding: 0 30rpx;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30rpx;
+}
+.container .head-img .my-img{
+    width: 160rpx;
+    height: 160rpx;
+    float: left;
+    margin-right: 30rpx;
+}
+.container .head-img .my-img image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1rpx solid #ccc;
+}
+.container .head-img .my-person-info{
+    float: left;
+}
+.container .head-img .my-person-info text{
+    font-size: 34rpx;
+    color: #333333;
+    margin-right: 20rpx;
+}
+.container .head-img .my-person-info image{
+    width: 32rpx;
+    height: 32rpx;
+}
+.ui-cont{
+    background: #fff;
+    padding: 0 28rpx 0 34rpx;
+}
+.ui-cont .ui-cell_access{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 142rpx;
+    border-bottom: 1rpx solid #F0F4F7;
+}
+.ui-cont .ui-cell_access .icon{
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 30rpx;
+}
+.ui-cell__bd{
+    display: flex;
+    align-items: center;
+}
+
+.ui-cell__ft_in-access{
+    padding-right:13px;
+    position:relative;
+}
+.ui-cell__ft_in-access:after{
+    content:" ";
+    display:inline-block;
+    height:6px;
+    width:6px;
+    border-width:2px 2px 0 0;
+    border-color:#99A0AA;
+    border-style:solid;
+    -webkit-transform:matrix(.71,.71,-.71,.71,0,0);
+    transform:matrix(.71,.71,-.71,.71,0,0);
+    position:relative;
+    top:-2px;
+    position:absolute;
+    top:50%;
+    margin-top:-4px;
+    right:2px
+}
+
+.ui-overlay{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ui-overlay .ui-modal-main{
+    width: 596rpx;
+    z-index: 10;
+    background: #fff;
+    border-radius: 25rpx;
+}
+.ui-overlay .ui-modal-main .ui-modal-body{
+    text-align: center;
+    font-size: 34rpx;
+    color: #666666;
+    height: 138rpx;
+    line-height: 137rpx;
+    border-bottom: 2rpx solid #E3E3E3;
+}
+.ui-overlay .ui-modal-main .ui-modal-body text{
+    color: #FFA819;
+}
+.ui-overlay .ui-modal-main .ui-modal-button{
+    height: 110rpx;
+    display: flex;
+    align-items: center;
+}
+.ui-overlay .ui-modal-main .ui-modal-button text{
+    flex: 1;
+    text-align: center;
+}
+.ui-overlay .ui-modal-main .ui-modal-button .cancel-btn{
+    border-right: 1rpx solid #E3E3E3;
+    color: #999999;
+}
