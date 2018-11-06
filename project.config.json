@@ -1,6 +1,5 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
+	"miniprogramRoot": "src/",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -26,16 +25,6 @@
 		},
 		"game": {
 			"list": []
-		},
-		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
-				}
-			]
 		}
 	}
 }
