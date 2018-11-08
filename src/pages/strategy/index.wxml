@@ -1,9 +1,14 @@
 <view class="container">
     <scroll-view scroll-x="true" style="height:41px;" class="tab-container">
         <view class="ui-navbar">
-            <block wx:for-items="{{list}}" wx:for-item="item" wx:key="{{index}}">
-                <view id="{{index}}" class="ui-navbar__item {{activeIndex == index ? 'ui-bar__item_on' : ''}}" bindtap="tabClick" data-state="{{item.state}}">
-                    <view class="ui-navbar__title">{{item.title}}</view>
+          <view class="ui-navbar__item {{activeIndex == 0 ? 'ui-bar__item_on' : ''}}" 
+            bindtap="getStrategyById" id="0" data-id="">
+                <view class="ui-navbar__title">全部</view>
+            </view>
+            <block wx:for="{{columnList}}" wx:for-item="item" wx:key="{{index}}">
+                <view class="ui-navbar__item {{activeIndex == index+1 ? 'ui-bar__item_on' : ''}}" 
+                bindtap="getStrategyById" id="{{index+1}}" data-id="{{item.id}}">
+                    <view class="ui-navbar__title">{{item.name}}</view>
                 </view>
             </block>
         </view>
@@ -11,14 +16,14 @@
 
     <import src="../../components/list.wxml" />
     <view class="ui-content clear">
-      <view class="left">
-        <block wx:for="{{products}}" wx:key="item">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+      <view class="list left-list">
+        <block wx:for="{{strategyList}}" wx:key="item">
+          <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==0}}"></template>
         </block>
       </view>
-      <view class="right">
-        <block wx:for="{{products}}" wx:key="item">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      <view class="list right-list">
+        <block wx:for="{{strategyList}}" wx:key="item">
+          <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==1}}"></template>
         </block>
       </view>
     </view>

@@ -1,6 +1,19 @@
 Page({
     data: {
-        showMadal: false
+        canUseEdit: true,
+        showMadal: false,
+        userInfo: wx.getStorageSync('userinfo')
+    },
+    onLoad: function(){
+        
+    },
+    handleEditDisable: function(){
+        this.setData({
+            canUseEdit: !this.data.canUseEdit
+        })
+    },
+    editNickname:function(e){
+        console.log(e.detail.value)
     },
     showDialModal: function(){
         let that = this

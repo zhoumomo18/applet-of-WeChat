@@ -5,8 +5,12 @@
   padding: 0 30rpx;
   box-sizing: border-box;
 }
-page swiper{
+.container swiper{
   width: 100%;
+}
+.container .banner{
+  width: 100%;
+  height: 300rpx;
 }
 .container image{
   width: 100%;

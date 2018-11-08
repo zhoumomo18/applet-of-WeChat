@@ -1,30 +1,24 @@
 <!--index.wxml-->
 <view class="container">
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
+    <!--<swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{imgUrls}}" wx:key="img">
             <swiper-item>
             <image src="{{item}}" class="slide-image" width="100%" height="100%"/>
             </swiper-item>
         </block>
-    </swiper>
+    </swiper>-->
+    <view class="banner">
+      <image src="{{imgUrls}}" class="slide-image" width="100%" height="100%"/>
+    </view>
     <view class="ui-grids">
-        <navigator class="grid" hover-class="none">
-            <view class="ui_grid-icon"><image src="../../assets/images/icon_1.png" /></view>
-            <view class="ui_grid-label">景区门票</view>
+      <block wx:for="{{moduleList}}" wx:for-index="idx" wx:key="module" wx:if="{{idx<4}}">
+        <navigator url="{{item.linkUrl}}" class="grid" hover-class="none">
+            <view class="ui_grid-icon"><image src="{{baseUrl}}{{item.icon}}" /></view>
+            <view class="ui_grid-label">{{item.name}}</view>
         </navigator>
-        <navigator class="grid" hover-class="none">
-            <view class="ui_grid-icon"><image src="../../assets/images/icon_2.png" /></view>
-            <view class="ui_grid-label">景点攻略</view>
-        </navigator>
-        <navigator class="grid" hover-class="none">
-            <view class="ui_grid-icon"><image src="../../assets/images/icon_1.png" /></view>
-            <view class="ui_grid-label">景区门票</view>
-        </navigator>
-        <navigator class="grid" hover-class="none">
-            <view class="ui_grid-icon"><image src="../../assets/images/icon_2.png" /></view>
-            <view class="ui_grid-label">景点攻略</view>
-        </navigator>
+      </block>
+        
     </view>
     <view class="ui-hot-section">
       <text class="h-title">热门景点</text>

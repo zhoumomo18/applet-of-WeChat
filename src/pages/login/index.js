@@ -1,33 +1,15 @@
 let app = getApp()
 Page({
     data: {
-        
+        userinfo: {}
     },
     onLoad: function () {
-        var that = this;
-        // 查看是否授权
-        wx.getSetting({
-            success: (res) => {
-                if (res.authSetting['scope.userInfo']) {
-                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                    wx.getUserInfo({
-                        success: function (res) {
-                            //从数据库获取用户信息
-                            // that.queryUsreInfo();
-                            //用户已经授权过
-                            // wx.switchTab({
-                            //     url: '/pages/index/index'
-                            // })
-                        }
-                    });
-                }
-            }
-        })
+        
     },
+    // 用户登录
     bindGetUserInfo: function (e) {
         if (e.detail.userInfo) {
             //用户按了允许授权按钮
-            var that = this;
             wx.login({
                 success:(res) => {
                     if(res.code){
@@ -39,13 +21,18 @@ Page({
                                 nickName: e.detail.userInfo.nickName,
                                 avatarUrl: e.detail.userInfo.avatarUrl,
                                 province:e.detail.userInfo.province,
-                                city: e.detail.userInfo.city
+                                city: e.detail.userInfo.city,
+                                gender: e.detail.userInfo.gender
                             },
                             method : 'POST',
                             success: function (res) {
-                                //从数据库获取用户信息
-                                if (res.code == 200) {
-                                    wx.setStorageSync('userinfo', res.data)
+                                if (res.data.code == 200) {
+                                    let userinfo = {
+                                        nickName: e.detail.userInfo.nickName,
+                                        avatarUrl: e.detail.userInfo.avatarUrl,
+                                    }
+                                    wx.setStorageSync('userinfo', userinfo)
+                                    wx.setStorageSync('userToken', res.data.data.token)
                                     //授权成功后，跳转进入小程序首页
                                     wx.switchTab({
                                         url: '/pages/index/index'  
@@ -75,24 +62,5 @@ Page({
                 }
             })
         }
-    },
-
-    //获取用户信息接口
-    // queryUsreInfo: function () {
-    //     wx.request({
-    //         url: app.globalData.urlPath + 'user/userInfo',
-    //         data: {
-    //             openid: app.globalData.openid
-    //         },
-    //         header: {
-    //             'content-type': 'application/json'
-    //         },
-    //         success: function (res) {
-    //             console.log(res.data);
-    //             wx.setStorageSync('userinfo', res.data)
-    //             // getApp().globalData.userInfo = res.data;
-    //         }
-    //     })
-    // },
-
+    }
 })

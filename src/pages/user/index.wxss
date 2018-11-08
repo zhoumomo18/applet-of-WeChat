@@ -24,11 +24,20 @@
 }
 .container .head-img .my-person-info{
     float: left;
+    display: flex;
+    align-items: center;
 }
-.container .head-img .my-person-info text{
+.container .head-img .my-person-info input{
     font-size: 34rpx;
     color: #333333;
     margin-right: 20rpx;
+    display: inline-block;
+    min-width: 100rpx;
+    max-width: 200rpx;
+    background: #F0F4F7;
+}
+.container .head-img .my-person-info .disable{
+    background: #fff;
 }
 .container .head-img .my-person-info image{
     width: 32rpx;

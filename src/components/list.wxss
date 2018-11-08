@@ -3,14 +3,19 @@
     min-height: 100%;
 }
 .ui-content{
-    margin: 0 30rpx;
+    width: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
     display: flex;
-}  
-.ui-content .left{
+} 
+.list{
+    width: 334rpx; 
+} 
+.list:first-child{
     margin-right: 22rpx;
 }
 .item{
-    width: 334rpx;
+    width: 100%;
     background-color: #fff;
     margin-top: 30rpx;
     display: inline-block;
@@ -39,7 +44,7 @@
     justify-content: space-between;
 }
 .item .name .avatar{
-    width: 215rpx;
+    width: 180rpx;
     display: flex;
     align-items: center;
 }
@@ -59,8 +64,8 @@
     align-items: center;
 }
 .item .name .heart{
-    width: 30rpx;
-    height: 26rpx;
+    width: 24rpx;
+    height: 25rpx;
     margin-right: 8rpx;
 }
 .item .name .heart-title{

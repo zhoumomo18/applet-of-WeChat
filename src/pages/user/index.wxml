@@ -1,11 +1,16 @@
 <view class="container">
     <view class="head-img clear">
         <view class="my-img">
-            <image src="../../assets/images/avator.jpg" />
+            <image src="{{userInfo.avatarUrl}}" />
         </view>
         <view class="my-person-info">
-            <text>蜗牛</text>
-            <image src="../../assets/images/edit_icon.png" />
+            <input value="{{userInfo.nickName}}" type="text" 
+            class="{{canUseEdit ? 'disable':''}}"
+            placeholder="修改昵称" 
+            disabled="{{canUseEdit}}"
+            bindblur="editNickname"
+            bindconfirm="editNickname" />
+            <image src="/assets/images/edit_icon.png" bindtap="handleEditDisable" />
         </view>
     </view>
     <view class="ui-cont">

@@ -5,7 +5,8 @@
     "pages/user/myFavorite",
     "pages/strategy/index",
     "pages/user/index",
-    "pages/strategy/detail"
+    "pages/strategy/detail",
+    "pages/invoice/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -23,7 +24,7 @@
       "iconPath": "./assets/images/index_icon.png",
       "selectedIconPath": "./assets/images/index_icon_active.png"
     }, {
-      "pagePath": "pages/strategy/index",
+      "pagePath": "pages/invoice/index",
       "text": "景点门票",
       "iconPath": "./assets/images/invoice_icon.png",
       "selectedIconPath": "./assets/images/invoice_icon_active.png"

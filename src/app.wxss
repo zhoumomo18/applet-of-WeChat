@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import "/wxParse/wxParse.wxss";
+
 page{
   color: #333;
   font-family: PingFangSC-Regular,'微软雅黑', '宋体', sans-serif;
