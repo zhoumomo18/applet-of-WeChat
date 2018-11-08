@@ -21,6 +21,7 @@
     height: 100%;
     border-radius: 50%;
     border: 1rpx solid #ccc;
+    box-sizing: border-box;
 }
 .container .head-img .my-person-info{
     float: left;

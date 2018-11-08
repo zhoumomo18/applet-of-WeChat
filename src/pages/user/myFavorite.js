@@ -1,32 +1,40 @@
+const app = getApp()
+let {ajax} = require('../../utils/ajax.js')
 Page({
     data: {
-        products:[
-            {
-                name: '大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼',
-                heart_num: '1',
-                title: '你所不知道的红酒知识',
-                url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-                avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-            },
-            {
-                name: '大脸猫爱吃鱼',
-                heart_num: '2',
-                title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-                url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-                avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-            },
-            {
-                name: '大脸猫爱吃鱼',
-                heart_num: '3',
-                title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-                url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-                avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-            }
-        ]
+        baseUrl: app.globalData.imgUrlPath,
+        pageNo: 1,
+        pageSize: 10,
+        favorateList:[]
     },
 
     onLoad: function(){
-        
+        this.getFavorateList()
     },
+    // 获取初始攻略列表
+    getFavorateList(){
+        let that = this,
+            pageNo = that.data.pageNo,
+            requestConfig = {
+                method: 'GET',
+                url: '/strategy/getallbyuser',
+                data:{
+                    pageNo: that.data.pageNo,
+                    pageSize: that.data.pageSize
+                },
+                successCallback: (res) => {
+                    if (res.code==200){
+                        that.setData({
+                            favorateList: that.data.favorateList.concat(res.data.rows),
+                            pageNo: pageNo+1
+                        })
+                    }
+                }
+            }
+        ajax.request(requestConfig)
+    },
+    onReachBottom: function(){
+        this.getFavorateList()
+    }
 
 })

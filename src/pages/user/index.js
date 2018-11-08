@@ -1,3 +1,5 @@
+const app = getApp()
+let {ajax} = require('../../utils/ajax.js')
 Page({
     data: {
         canUseEdit: true,
@@ -7,13 +9,34 @@ Page({
     onLoad: function(){
         
     },
+    onShow: function(){
+        // 在data里直接读取，有时候取不到值
+        this.setData({
+            userInfo: wx.getStorageSync('userinfo')
+        })
+    },
     handleEditDisable: function(){
         this.setData({
             canUseEdit: !this.data.canUseEdit
         })
     },
     editNickname:function(e){
-        console.log(e.detail.value)
+        let that = this,
+            userInfo = that.data.userInfo,
+            requestConfig = {
+                method: 'PUT',
+                url: '',
+                data: {
+                    nickName: e.detail.value
+                },
+                successCallback: (res) => {
+                    if (res.code == 200){
+                        userInfo.nickName = e.detail.value
+                        wx.setStorageSync('userinfo', userInfo)
+                    }
+                }
+            }
+        ajax.request(requestConfig)
     },
     showDialModal: function(){
         let that = this
@@ -23,7 +46,7 @@ Page({
     },
     callPhone: () => {
         wx.makePhoneCall({
-            phoneNumber: '021-343345564',
+            phoneNumber: '021-12345678',
             success: function(res) {
                 // success
             }

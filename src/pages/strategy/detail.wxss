@@ -78,3 +78,6 @@
     margin-left: 10rpx;
     font-size: 34rpx;
 }
+.ui-footer_fixed-bottom .active_links{
+    color: #FFA819;
+}

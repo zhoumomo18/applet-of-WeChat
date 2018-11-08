@@ -14,6 +14,9 @@ Page({
         this.getColumnList()
         this.getStrategyList()
     },
+    onShow: function(){
+        this.getStrategyList()
+    },
     // 获取栏目列表
     getColumnList(){
         let that = this,

@@ -1,32 +1,27 @@
+<import src="../../wxParse/wxParse.wxml"/> 
 <view class="container">
     <view class="banner">
-        <image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" />
+        <image src="{{baseUrl}}{{detailInfo.photo}}" data-src="{{baseUrl}}{{detailInfo.photo}}" />
     </view>
     <view class="ui-content">
         <view class="publisher-info clear"> 
-            <image class="publisher-avator" src="../../assets/images/avator.jpg" />
+            <image class="publisher-avator" src="{{detailInfo.headImage ? detailInfo.headImage:'/assets/images/avator.jpg'}}" />
             <view class="publisher-r">
-                <view class="publisher-name">凤凰旅行</view>
-                <view class="publisher-time">3小时前</view>
+                <view class="publisher-name" wx:if="{{detailInfo.createuser}}">{{detailInfo.createuser}}</view>
+                <view class="publisher-time" wx:if="{{detailInfo.updatedate}}">{{detailInfo.updatedate}}</view>
             </view>
         </view>
-        <view  class="desc-title">文章标题文章标题文章标题文章标题</view>
+        <view  class="desc-title">{{detailInfo.title}}</view>
         <view class="desc-main">
-            吊脚楼是凤凰古城中富有浓郁苗族建筑。
-            凤凰古城中开始发展旅游后，吊脚楼里的人们纷纷将自家的吊脚楼重新装修，以接纳游客。
-            看吊脚楼的最佳地点是沙湾一带，或者坐沱吊脚楼是凤凰古城中富有浓郁苗族建筑特色的古建筑之一。
-            凤凰古城中开始发展旅游后，吊脚楼里的人们纷纷将自家的吊脚楼重新。
-            看吊脚楼的最佳地点是沙湾一带，或者坐沱吊脚楼是凤凰古城中富有浓郁苗族建筑特色的古建筑之一。
-            凤凰古城中开始发展旅游后，吊脚楼里的人们纷纷将自家的吊脚楼重新装修，以接纳游客。
-            看吊脚楼的最佳地点是沙湾一带，或者坐沱看吊脚楼的最佳地点是沙湾一带。
+            <template is="wxParse" data="{{wxParseData:strategyDetail.nodes}}"/> 
         </view>
     </view>
     <view class="ui-footer_fixed-bottom">
-        <view class="ui-footer__links">
-            <image class="ui-footer__icon" src="../../assets/images/dianzan.png" />
-            <text class="ui-footer__text">234</text>
+        <view class="{{isPraise ? 'ui-footer__links active_links':'ui-footer__links'}}" bindtap="handlePraise">
+            <image class="ui-footer__icon" src="{{isPraise ? '../../assets/images/dianzan_active.png':'../../assets/images/dianzan.png'}}" />
+            <text class="ui-footer__text">{{detailInfo.totalpraise}}</text>
         </view>
-        <view class="ui-footer__links">
+        <view class="{{isLike? 'ui-footer__links active_links':'ui-footer__links'}}" bindtap="addToFavorite">
             <image class="ui-footer__icon" src="{{isLike? '../../assets/images/fav_icon_active.png':'../../assets/images/fav_icon.png'}}" />
             <text class="ui-footer__text">取消收藏</text>
         </view>
