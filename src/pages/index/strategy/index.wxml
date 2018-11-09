@@ -14,7 +14,7 @@
         </view>
     </scroll-view>
 
-    <import src="../../components/list.wxml" />
+    <import src="../../../components/list.wxml" />
     <view class="ui-content clear">
       <view class="list left-list">
         <block wx:for="{{strategyList}}" wx:key="item">

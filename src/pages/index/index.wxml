@@ -9,7 +9,9 @@
         </block>
     </swiper>-->
     <view class="banner">
-      <image src="{{imgUrls}}" class="slide-image" width="100%" height="100%"/>
+      <navigator url="{{adList.linkurl}}" hover-class="none">
+        <image src="{{baseUrl}}{{adList.photo}}" class="slide-image" width="100%" height="100%"/>
+      </navigator>
     </view>
     <view class="ui-grids">
       <block wx:for="{{moduleList}}" wx:for-index="idx" wx:key="module" wx:if="{{idx<4}}">

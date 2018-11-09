@@ -1,5 +1,5 @@
 <view class="container">
-    <import src="../../components/list.wxml" />
+    <import src="../../../components/list.wxml" />
     <view class="ui-content clear">
       <view class="list left-list">
         <block wx:for="{{favorateList}}" wx:key="">

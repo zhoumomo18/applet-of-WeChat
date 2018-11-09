@@ -1,4 +1,4 @@
-<import src="../../wxParse/wxParse.wxml"/> 
+<import src="../../../wxParse/wxParse.wxml"/> 
 <view class="container">
     <view class="banner">
         <image src="{{baseUrl}}{{detailInfo.photo}}" data-src="{{baseUrl}}{{detailInfo.photo}}" />
@@ -17,13 +17,13 @@
         </view>
     </view>
     <view class="ui-footer_fixed-bottom">
-        <view class="{{isPraise ? 'ui-footer__links active_links':'ui-footer__links'}}" bindtap="handlePraise">
-            <image class="ui-footer__icon" src="{{isPraise ? '../../assets/images/dianzan_active.png':'../../assets/images/dianzan.png'}}" />
+        <view class="ui-footer__links {{detailInfo.isPraise==1 ? 'active_links':''}}" bindtap="handlePraise">
+            <image class="ui-footer__icon" src="/assets/images{{detailInfo.isPraise==1 ? '/dianzan_active.png':'/dianzan.png'}}" />
             <text class="ui-footer__text">{{detailInfo.totalpraise}}</text>
         </view>
-        <view class="{{isLike? 'ui-footer__links active_links':'ui-footer__links'}}" bindtap="addToFavorite">
-            <image class="ui-footer__icon" src="{{isLike? '../../assets/images/fav_icon_active.png':'../../assets/images/fav_icon.png'}}" />
-            <text class="ui-footer__text">取消收藏</text>
+        <view class="ui-footer__links {{detailInfo.isCollection==1? 'active_links':''}}" bindtap="addToFavorite">
+            <image class="ui-footer__icon" src="/assets/images{{detailInfo.isCollection==1? '/fav_icon_active.png':'/fav_icon.png'}}" />
+            <text class="ui-footer__text">{{detailInfo.isCollection==1? '已收藏':'收藏'}}</text>
         </view>
     </view>
 </view>

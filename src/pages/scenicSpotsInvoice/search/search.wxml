@@ -1,0 +1,58 @@
+<view>
+    <view class="search-wrap">
+        <form bindsubmit="" bindreset="">
+            <view class="search-bar-wrap" bindsubmit="searchList">
+                <view class="search-bar">
+                    <input type="text" placeholder="景点/关键词" />
+                </view>
+                <image class="icon_search" src="/assets/images/delete.png" />
+            </view>
+        </form>
+    </view>
+
+    <view class="search-list">
+        <view class="search-item">
+            <text>上海外滩</text>
+        </view>
+        <view class="search-item">
+            <text>上海迪斯尼</text>
+        </view>
+        <view class="search-item">
+            <text>上海东方明珠</text>
+        </view>
+    </view>
+
+    <view class="ui-list" hidden>
+        <view class="ui-item">
+            <view class="ui-image"><image src="/assets/images/tooopen_sy_143912755726.jpg" /></view>
+            <view class="ui-box">
+                <view class="ui-title">上海市外滩</view>
+                <view class="ui-label m-color">推荐指数：4.5</view>
+                <view class="ui-num">111人来过</view>
+            </view>
+            <view class="ui-price"><text class="m-color">￥150.00</text>起</view>
+        </view>
+        <view class="ui-item">
+            <view class="ui-image"><image src="/assets/images/tooopen_sy_143912755726.jpg" /></view>
+            <view class="ui-box">
+                <view class="ui-title">上海市外滩</view>
+                <view class="ui-label m-color">推荐指数：4.5</view>
+                <view class="ui-num">111人来过</view>
+            </view>
+            <view class="ui-price"><text class="m-color">￥150.00</text>起</view>
+        </view>
+        <view class="ui-item">
+            <view class="ui-image"><image src="/assets/images/tooopen_sy_143912755726.jpg" /></view>
+            <view class="ui-box">
+                <view class="ui-title">上海市外滩</view>
+                <view class="ui-label m-color">推荐指数：4.5</view>
+                <view class="ui-num">111人来过</view>
+            </view>
+            <view class="ui-price"><text class="m-color">￥150.00</text>起</view>
+        </view>
+        <view class="text">
+            <text>已无更多</text>
+        </view>
+    </view>
+
+</view>

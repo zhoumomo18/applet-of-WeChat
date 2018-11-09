@@ -1,5 +1,5 @@
 const app = getApp()
-let {ajax} = require('../../utils/ajax.js')
+let {ajax} = require('../../../utils/ajax.js')
 Page({
     data: {
         baseUrl: app.globalData.imgUrlPath,

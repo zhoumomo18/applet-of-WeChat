@@ -15,7 +15,7 @@ Page({
                     if(res.code){
                         //插入登录的用户的相关信息到数据库
                         wx.request({
-                            url: app.globalData.urlPath + '/weChatAuthorization/getuserinfo',
+                            url: app.globalData.urlPath + '/weChatAuthorization/getuserinfo/anon',
                             data: {
                                 code: res.code,
                                 nickName: e.detail.userInfo.nickName,

@@ -1,4 +1,4 @@
-@import "../../components/list.wxss";
+@import "../../../components/list.wxss";
 
 .tab-container{
     width: 100%;

@@ -9,8 +9,26 @@ Page({
     moduleList: []
   },
   onLoad(){
+    this.getAdList()
     this.getModuleList()
   },
+  // 获取广告图
+  getAdList(){
+    let that = this,
+      requestConfig = {
+        method: 'GET',
+        url: '/adviertisement/getall?type=1',
+        successCallback: (res) => {
+          if (res.code==200){
+            that.setData({
+              adList: res.data[0]
+            })
+          }
+        }
+      }
+    ajax.request(requestConfig)
+  },
+  // 获取模块列表
   getModuleList(){
     let that = this,
       requestConfig = {

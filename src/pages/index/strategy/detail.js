@@ -1,11 +1,9 @@
 const app = getApp()
-let {ajax} = require('../../utils/ajax.js')
-let WxParse = require('../../wxParse/wxParse.js');//在使用的View中引入WxParse模块
+let {ajax} = require('../../../utils/ajax.js')
+let WxParse = require('../../../wxParse/wxParse.js');//在使用的View中引入WxParse模块
 Page({
     data: {
         baseUrl: app.globalData.imgUrlPath,
-        isLike: false,
-        isPraise: false,
         currentId: '',
         detailInfo: {},
         imgUrls: []
@@ -55,13 +53,14 @@ Page({
     // 收藏商品
     addToFavorite: function(){
         let that = this,
+            isCollection = that.data.detailInfo.isCollection,
             requestConfig = {
                 method: 'POST',
                 url: '/strategy/saveconsumerstrategycollection?strategyId='+that.data.currentId,
                 successCallback: (res) => {
                     if (res.code == 200) {
                         that.setData({
-                            isLike: !that.data.isLike
+                            'detailInfo.isCollection': (isCollection==1) ? 0:1
                         })
                     }
                 }
@@ -71,6 +70,8 @@ Page({
     // 点赞
     handlePraise: function(){
         let that = this,
+            isPraise = that.data.detailInfo.isPraise,
+            totalpraise = that.data.detailInfo.totalpraise,
             requestConfig = {
                 method: 'PUT',
                 url: '/strategy/savetconsumerstrategypraise?strategyId='+that.data.currentId,
@@ -78,7 +79,8 @@ Page({
                     if (res.code == 200) {
                         that.setData({
                             isPraise: !that.data.isPraise,
-                            'detailInfo.totalpraise': that.data.isPraise ? that.data.detailInfo.totalpraise-1:that.data.detailInfo.totalpraise+1
+                            'detailInfo.isPraise':  (isPraise==1) ? 0:1,
+                            'detailInfo.totalpraise': (isPraise==1) ? totalpraise-1:totalpraise+1
                         })
                     }
                 }
