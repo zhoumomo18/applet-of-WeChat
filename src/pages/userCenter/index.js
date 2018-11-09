@@ -7,7 +7,7 @@ Page({
         userInfo: wx.getStorageSync('userinfo')
     },
     onLoad: function(){
-        
+        this.getUserInfo()
     },
     onShow: function(){
         // 在data里直接读取，有时候取不到值
@@ -22,13 +22,14 @@ Page({
             requestConfig = {
                 method: 'GET',
                 url: '/constumer/getbyopenid',
+                publicUrlType: 2,
                 successCallback: (res) => {
                     if (res.code == 200){
                         that.setData({
                             userInfo: res.data
                         })
-                        userInfo.nickName = e.detail.value
-                        wx.setStorageSync('userinfo', userInfo)
+                        // userInfo.nickName = e.detail.value
+                        // wx.setStorageSync('userinfo', userInfo)
                     }
                 }
             }
@@ -47,6 +48,7 @@ Page({
             requestConfig = {
                 method: 'PUT',
                 url: '/constumer/updatenickname',
+                publicUrlType: 2,
                 data: {
                     nickName: e.detail.value
                 },

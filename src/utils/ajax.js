@@ -1,4 +1,4 @@
-let baseURL = "https://admintour.cworld-china.com/tourWeb/v1.0"
+// let baseURL = "https://admintour.cworld-china.com/tourWeb/v1.0"
 
 /**
  *  请求类
@@ -12,17 +12,37 @@ let ajax = {
      */
     error_resp: function (response, errorCallback) {
         if (!response) {
-            wx.showLoading({
-                title: '加载失败',
+            wx.showToast({
+                title: '系统错误，请联系相关人员！',
+                icon: 'loading'
             });
             if (errorCallback instanceof Function) {
                 errorCallback && errorCallback(response);
             }
         } else {
-            
+            // 登录超时
+            if (response.code === 400 || response.code === 401) {
+                wx.showToast({
+                    title: '登录超时，请重新登录',
+                    icon: 'loading'
+                })
+                wx.clearStorageSync()
+                wx.redirectTo({
+                    url: '/pages/login/index'
+                })
+            } else if (response.code === 406){
+                wx.showToast({
+                    title: '登录超时，请重新登录',
+                    icon: 'loading'
+                })
+                wx.clearStorageSync()
+                wx.redirectTo({
+                    url: '/pages/login/index'
+                })
+            }
         }
         // loading结束
-        wx.hideLoading();
+        wx.hideToast();
     },
     /**
      *通用的wx.request成功回调处理
@@ -63,9 +83,9 @@ let ajax = {
      *   @isNotErrorPropmt 是否不显示错误信息true:不显示
      *   @publicUrlType   必传  请求目录类型  1.webManager 2.matterManager 3. 服务运行 4. 电子监察
      */
-    request: function (requestConfig) {
+    request: function (requestConfig, baseURL) {
         wx.request({
-            url: baseURL + requestConfig.url,
+            url: (baseURL ? baseURL : this.publicDirectory(requestConfig.publicUrlType)) + requestConfig.url,
             data: requestConfig.data || {},
             method: requestConfig.method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: requestConfig.method == 'get' ? {
@@ -101,10 +121,26 @@ let ajax = {
             },
             complete: function() {
                 // complete
-                wx.hideLoading();
+                wx.hideToast();
             }
         });
     },
+    //公共接口请求目录
+    publicDirectory: function (val) {
+        let publicUrl = '';
+        switch (val) {
+            case 1:
+                publicUrl = 'https://admintour.cworld-china.com/tourWeb/v1.0';
+                break;
+            case 2:
+                publicUrl = 'https://admintour.cworld-china.com/tourWeb/V1.0';
+                break;
+            default:
+                publicUrl = 'https://admintour.cworld-china.com/tourWeb/v1.0';
+                break;
+        }
+        return publicUrl;
+    }
     
 };
 export {
