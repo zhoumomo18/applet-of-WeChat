@@ -1,0 +1,70 @@
+.container{
+    background: #F0F4F7;
+    height: 100%;
+}
+.bg-white{
+    background: #fff;
+    box-sizing: border-box;
+}
+.inv-info-box .inv-title{
+    font-family: PingFangSC-Medium;
+    font-size: 34rpx;
+    color: #333333;
+    font-weight: 700;
+    border-top: 1rpx solid #F1F1F1;
+    padding: 0 30rpx;
+}
+.section{
+    padding: 20rpx 30rpx;
+}
+.section_flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #F0F4F7;
+}
+.section_flex_fj{
+    display: flex;
+    align-items: center;
+}
+.action-btns{
+    width: 180rpx;
+    height: 50rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #AAAAAA;
+    border-radius: 8rpx;
+}
+.action-btns .btn{
+    width: 48rpx;
+    height: 100%;
+    display: block;
+    text-align: center;
+}
+.action-btns .btn-minus{
+    border-right: 1rpx solid #AAAAAA;
+}
+.action-btns .btn-plus{
+    border-left: 1rpx solid #AAAAAA;
+}
+.action-btns .disabled{
+    background: #F1F1F1;
+}
+.action-btns .int{
+    width: 82rpx;
+    text-align: center;
+}
+.ui-border{
+    border: 1rpx solid #AAAAAA;
+    border-radius: 8rpx;
+    padding: 0 20rpx;
+    margin-left: 20rpx;
+}
+
+
+
+.receiver{
+    font-size: 24rpx;
+    color: #AAAAAA;
+    padding: 30rpx 30rpx 10rpx;
+}
+

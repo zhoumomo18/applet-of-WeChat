@@ -59,3 +59,54 @@ page{
   height: 0;
   color: transparent;
 }
+
+
+.ui-cell__bd{
+  display: flex;
+  align-items: center;
+}
+
+.ui-cell__ft_in-access{
+  padding-right:13px;
+  position:relative;
+}
+.ui-cell__ft_in-access:after{
+  content:" ";
+  display:inline-block;
+  height:6px;
+  width:6px;
+  border-width:2px 2px 0 0;
+  border-color:#000;
+  border-style:solid;
+  -webkit-transform:matrix(.71,.71,-.71,.71,0,0);
+  transform:matrix(.71,.71,-.71,.71,0,0);
+  position:relative;
+  top:-2px;
+  position:absolute;
+  top:50%;
+  margin-top:-4px;
+  right:2px
+}
+
+.section{
+  display: flex;
+  align-items: center;
+  height: 78rpx;
+  position: relative;
+  font-size: 28rpx;
+  color: #333333;
+}
+.viewport .section{
+background: #fff;
+}
+.section_title{
+  width: 290rpx;
+}
+.section_access_after::after{
+  content: "";
+  border-top: 1rpx solid #F1F1F1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

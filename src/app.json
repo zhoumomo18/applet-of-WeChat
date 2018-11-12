@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/login/index",
     "pages/index/index",
     "pages/index/strategy/index",
@@ -8,6 +9,7 @@
     "pages/scenicSpotsInvoice/index",
     "pages/scenicSpotsInvoice/scenicSpotsDetail/detail",
     "pages/scenicSpotsInvoice/search/search",
+    "pages/scenicSpotsInvoice/shoppingOrder/reserveOrder",
 
     "pages/userCenter/index",
     "pages/userCenter/myFavorite/myFavorite"
