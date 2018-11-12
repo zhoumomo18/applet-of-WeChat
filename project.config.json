@@ -25,6 +25,17 @@
 		},
 		"game": {
 			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "美食列表",
+					"pathName": "pages/foods/list/list",
+					"query": ""
+				}
+			]
 		}
 	}
 }

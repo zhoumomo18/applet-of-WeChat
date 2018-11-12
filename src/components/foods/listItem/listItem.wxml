@@ -1,0 +1,15 @@
+<!--components/foods/listItem/listItem.wxml-->
+<view class='foods-item'>
+    <view class='foods-item-con' data-id='1' bindtap='gotoDetail'>
+        <view class='foods-item-left'
+              style="background:#eee"><image></image></view>
+        <view class='foods-item-right'>
+            <view class='foods-item-title line-one'>商户名称商户名称商户名称商户名称商户名称商户名称商户名称</view>
+            <view class='foods-item-pay'><text class='orange'>￥150</text>/人</view>
+            <view class='foods-item-tip'>
+                <view class='foods-item-star orange'>推荐指数：4.5</view>
+                <view class='foods-item-tag'>川菜</view>
+            </view>
+        </view>
+    </view>
+</view>

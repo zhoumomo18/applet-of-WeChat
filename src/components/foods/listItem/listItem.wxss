@@ -1,0 +1,64 @@
+/* components/foods/listItem/listItem.wxss */
+.foods-item{
+    box-sizing: border-box;
+    padding-left: 26rpx;
+}
+.foods-item-con{
+    display: flex;
+    display: -webkit-flex; 
+    border-bottom: 1rpx solid #F3F3F3;
+    padding: 29rpx 26rpx 29rpx 0;
+}
+.foods-item-left{
+    width: 200rpx;
+    height: 150rpx;
+    margin-right: 28rpx;
+}
+.foods-item-left image{
+    width: 100%;
+    height: 100%;
+}
+.foods-item-right{
+    width:470rpx; 
+}
+.foods-item-title{
+    font-size: 34rpx;
+    color: #333333;
+    font-weight: bold;
+}
+.line-one{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    display:-webkit-box;
+}
+.orange{
+    color: #FFA819 
+}
+.foods-item-pay{
+    font-size: 24rpx;
+}
+.foods-item-pay .orange{
+    font-size: 34rpx;
+} 
+.foods-item-tip{
+    display: flex;
+    display: -webkit-flex;
+    margin-top:14rpx;
+    justify-content:space-between;
+}
+.foods-item-star{
+    border: 1rpx solid #FFA819;
+    padding:0 4rpx;
+    line-height: 34rpx;
+    font-size: 26rpx;
+}
+.foods-item-tag{
+   font-size: 20rpx;
+   line-height: 20rpx;
+   padding:6rpx 4rpx 2rpx;
+   background: #E6E6E6;
+   border-radius: 4rpx;
+   color: #666666; 
+}
