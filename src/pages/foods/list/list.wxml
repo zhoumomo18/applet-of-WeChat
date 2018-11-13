@@ -30,10 +30,10 @@
         <!-- 筛选条件列表 -->
         <view wx:if="{{isShowSelect && isShowSelect!=0}}" class='fd-sel-list'>
             <block wx:if="{{isShowSelect==1}}">
-                <view class='fd-sel-list-item'>123123</view>
-                <view class='fd-sel-list-item'>456</view>
-                <view class='fd-sel-list-item'>456</view>
-                <view class='fd-sel-list-item'>456</view>
+                <view wx:for="{{cookList}}" 
+                      wx:key="*this"
+                      data-id='{{item.id}}'
+                      class='fd-sel-list-item'>{{item.name}}</view>
             </block>
             <block wx:elif="{{isShowSelect==2}}">
                 <view class='fd-sel-list-item'

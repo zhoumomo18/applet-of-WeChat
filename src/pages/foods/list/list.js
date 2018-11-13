@@ -1,3 +1,4 @@
+var { foodsMethods} = require('../../../service/foods/foodsService.js');
 Page({
     data: {
         isShowSelect: null,
@@ -6,28 +7,32 @@ Page({
             { value: 2, label: '推荐优先' },
             { value: 3, label: '价格优先' },
             { value: 4, label: '全部'}
-        ]
+        ],
+        cookList:[], //菜系列表
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
-        
+        var that = this;
+        that.getAllGroupList();
+    },
+    onShow: function () {
+
+    },
+    onShareAppMessage: function () {
+
     },
     //获取页面高度
     getHeight:function(){
-            var that = this
-            // 获取系统信息
-            wx.getSystemInfo({
-                success: function (res) {
-                    console.log(res);
-                    // 可使用窗口宽度、高度
-                    console.log('height=' + res.windowHeight);
-                    console.log('width=' + res.windowWidth);
-                    // 计算主体部分高度,单位为px
-                }
-            })
+        var that = this
+        // 获取系统信息
+        wx.getSystemInfo({
+            success: function (res) {
+                console.log(res);
+                // 可使用窗口宽度、高度
+                console.log('height=' + res.windowHeight);
+                console.log('width=' + res.windowWidth);
+                // 计算主体部分高度,单位为px
+            }
+        })
     },
     //点击筛选条件
     switchModal(e){
@@ -37,52 +42,18 @@ Page({
         isShowSelect = isShowSelect == key ? null:key;
         that.setData({ isShowSelect: isShowSelect});
     },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    //获取菜系
+    getAllGroupList:function() {
+        var that = this;
+        foodsMethods.getAllGroupList(function(res){
+            if (res && res.code==200){
+                that.setData({ cookList: res.data});
+            } else if(res && res.msg){
+                wx.showToast({title: res.msg})
+            } else {
+                wx.showToast({ title:'服务异常'})
+            }
+        })
     }
+    
 })
