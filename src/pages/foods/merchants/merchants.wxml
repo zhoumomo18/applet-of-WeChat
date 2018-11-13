@@ -68,7 +68,6 @@
         <scroll-view class='foods-scroll'
                      wx:if="{{foodList && foodList.length>0}}"
                      scroll-y="true"
-                     style="height:{{foodList.length<9?(380*foodList.length%2):'1900'}}px"
                      bindscrolltolower="loadMore">
             <view class='foods-scroll-item'
                   wx:for="{{foodList}}"

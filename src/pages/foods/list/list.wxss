@@ -73,7 +73,7 @@
     padding: 10rpx 30rpx;
     background: #fff;   
     position: relative;
-    height: 730rpx;
+    max-height: 730rpx;
     overflow-y: scroll;
     z-index: 2;  
 }

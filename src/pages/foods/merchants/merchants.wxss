@@ -155,6 +155,7 @@ view{
     padding: 10rpx 0;
     flex-flow:wrap;
     width: 700rpx;
+    max-height: 1900rpx;
     margin: 0 auto; 
 }
 .foods-scroll-item{
