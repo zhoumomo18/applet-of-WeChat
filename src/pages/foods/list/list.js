@@ -56,6 +56,8 @@ Page({
         } else {
             that.setData({ aiSel: id})
         }
+        that.pageNo = 1;
+        that.getFoodsList();
     },
     //获取菜系
     getAllGroupList:function() {
