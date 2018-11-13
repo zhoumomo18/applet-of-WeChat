@@ -28,7 +28,9 @@
             </view>
         </view>
         <!-- 筛选条件列表 -->
-        <view wx:if="{{isShowSelect && isShowSelect!=0}}" class='fd-sel-list'>
+        <scroll-view wx:if="{{isShowSelect && isShowSelect!=0}}" 
+                     class='fd-sel-list' 
+                     scroll-y="true">
             <block wx:if="{{isShowSelect==1}}">
                 <view wx:for="{{cookList}}" 
                       wx:key="{{item.id}}"
@@ -46,7 +48,7 @@
                       bindtap='selectOption'
                       data-type='2'>{{item.label}}</view>
             </block>
-        </view>
+        </scroll-view>
     </view>
 
     <!-- 数据列表 -->
