@@ -1,4 +1,3 @@
-// components/foods/listItem/listItem.js
 Component({
     properties: {
         itemObj: {
@@ -6,17 +5,9 @@ Component({
             value: {}
         }
     },
-
-    /**
-     * 组件的初始数据
-     */
     data: {
         isClick: false
     },
-
-    /**
-     * 组件的方法列表
-     */
     methods: {
         gotoDetail:function(e){
             let that = this;

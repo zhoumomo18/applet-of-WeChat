@@ -20,15 +20,6 @@ Page({
         that.getFoodsDetail();
         that.getFoodsDetailList();
     },
-    onReady: function () {
-
-    },
-    onShow: function () {
-
-    },
-    onPullDownRefresh: function () {
-
-    },
     //预览菜品
     viewDetail:function(e){
         var that = this;
@@ -133,6 +124,29 @@ Page({
             current: urls[0],
             urls: urls
         })
+    },
+    //打开地图
+    openMap:function(){
+        var that = this;
+        var latitude = that.data.infoObj.dimension;
+        var longitude = that.data.infoObj.longitude;
+        var name = that.data.infoObj.name;
+        var address = that.data.infoObj.address;
+        if (!latitude || !longitude)return;
+        wx.getLocation({
+            type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+            success(res) {
+                wx.openLocation({
+                    latitude,
+                    longitude,
+                    scale: 18,
+                    name: name,
+                    address: address
+                })
+            },
+            fail(res) {
 
+            }
+        })
     }
 })

@@ -22,12 +22,6 @@ Page({
         that.getAllGroupList();
         that.getFoodsList();
     },
-    onShow: function () {
-
-    },
-    onShareAppMessage: function () {
-
-    },
     //去搜索页
     gotoSearch:function(){
         wx.navigateTo({url: '/pages/foods/searchList/searchList',})
