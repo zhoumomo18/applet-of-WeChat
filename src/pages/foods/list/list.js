@@ -1,18 +1,26 @@
 var { foodsMethods} = require('../../../service/foods/foodsService.js');
 Page({
+    pageNo: 1,
+    pageSize: 6,
     data: {
+        winHeight: null,
         isShowSelect: null,
+        cookSel: -1, //选中的菜系
+        aiSel: 2, //选中的智能排序方式
         aiList: [ //距离优先，推荐优先，价格优先；默认全部
-            { value: 1, label: '距离优先' },
             { value: 2, label: '推荐优先' },
+            { value: 1, label: '距离优先' },
             { value: 3, label: '价格优先' },
-            { value: 4, label: '全部'}
         ],
-        cookList:[], //菜系列表
+        cookList: [], //菜系列表
+        foodsList: [], //展示的列表数据
+        foodsObjCount: 0, //数据总数
     },
     onLoad: function (options) {
         var that = this;
+        that.getHeight();        
         that.getAllGroupList();
+        that.getFoodsList();
     },
     onShow: function () {
 
@@ -20,21 +28,22 @@ Page({
     onShareAppMessage: function () {
 
     },
+    //去搜索页
+    gotoSearch:function(){
+        wx.navigateTo({url: '/pages/foods/searchList/searchList',})
+    },
     //获取页面高度
     getHeight:function(){
         var that = this
-        // 获取系统信息
         wx.getSystemInfo({
             success: function (res) {
-                console.log(res);
-                // 可使用窗口宽度、高度
                 console.log('height=' + res.windowHeight);
                 console.log('width=' + res.windowWidth);
-                // 计算主体部分高度,单位为px
+                that.setData({ winHeight: res.windowHeight})
             }
         })
     },
-    //点击筛选条件
+    //switch筛选弹框
     switchModal(e){
         let that = this;
         let key = e.currentTarget.dataset.key;
@@ -42,18 +51,75 @@ Page({
         isShowSelect = isShowSelect == key ? null:key;
         that.setData({ isShowSelect: isShowSelect});
     },
+    //选中筛选条件
+    selectOption:function(e) {
+        let that = this;
+        let id = e.currentTarget.dataset.id;
+        let ty = e.currentTarget.dataset.type;
+        if (ty==1) {
+            that.setData({ cookSel: id})
+        } else {
+            that.setData({ aiSel: id})
+        }
+    },
     //获取菜系
     getAllGroupList:function() {
         var that = this;
         foodsMethods.getAllGroupList(function(res){
             if (res && res.code==200){
-                that.setData({ cookList: res.data});
+                var arr = res.data;
+                arr.unshift({
+                    id: -1,
+                    name: '全部'
+                });
+                that.setData({ cookList: arr});
             } else if(res && res.msg){
                 wx.showToast({title: res.msg})
             } else {
                 wx.showToast({ title:'服务异常'})
             }
         })
-    }
-    
+    },
+    //获取商家信息列表
+    getFoodsList: function() {
+        wx.showLoading();
+        var that = this;
+        var params = {
+            pageNo: that.pageNo,
+            pageSize: that.pageSize,
+            sortType: that.data.aiSel
+        };
+        if (that.data.cookSel && that.data.cookSel!=-1){
+            params.groupId = that.data.cookSel;
+        }
+        foodsMethods.getFoodsList(params, function (res) {
+            if (res && res.code == 200 && res.data) {
+                var foodsList = that.data.foodsList;
+                var foodsObjCount = res.data.totalCount;
+                if(that.pageNo==1) {
+                    foodsList = res.data.rows;
+                } else {
+                    foodsList = foodsList.concat(res.data.rows);
+                }
+                that.setData({ foodsList: foodsList, foodsObjCount: foodsObjCount });
+                wx.hideLoading();
+            } else if (res && res.msg) {
+                wx.hideLoading();
+                wx.showToast({ title: res.msg })
+            } else {
+                wx.hideLoading();
+                wx.showToast({ title: '服务异常' })
+            }
+        })
+    },
+    //上拉加载更多
+    loadMore:function(){
+        var that = this;
+        var pageNo = that.pageNo;
+        var pageSize = that.pageSize;
+        if ((pageNo * pageSize) < that.data.foodsObjCount){
+            that.pageNo++;
+            that.getFoodsList();
+        }
+    },
 })

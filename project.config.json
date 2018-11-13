@@ -27,12 +27,24 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
 					"name": "美食列表",
 					"pathName": "pages/foods/list/list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "美食搜索页",
+					"pathName": "pages/foods/searchList/searchList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "美食商家详情",
+					"pathName": "pages/foods/merchants/merchants",
 					"query": ""
 				}
 			]

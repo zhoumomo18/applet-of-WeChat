@@ -11,7 +11,20 @@ var foodsMethods = {
             callBack && callBack(response);
         }
         ajax.request(requestConfig);
-    }
+    },
+    getFoodsList: function (params, callBack) { //商家信息列表查询
+        var requestConfig = {
+            method: 'GET',
+            data: params,
+            url: '/foodbusiness/getall',
+            successCallback: action,
+            errorCallback: action
+        };
+        function action(response) {
+            callBack && callBack(response);
+        }
+        ajax.request(requestConfig);
+    },
 };
 export {
     foodsMethods

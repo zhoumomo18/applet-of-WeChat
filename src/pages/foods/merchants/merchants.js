@@ -1,9 +1,4 @@
-// pages/foods/merchants/merchants.js
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
 
     },

@@ -6,7 +6,7 @@
         <view wx:if="{{isShowSelect && isShowSelect!=0}}" class='fd-bgbox'data-key="0"
                   bindtap='switchModal'></view>
         <!--搜索框-->
-        <view class="fd-search-box bgfff">
+        <view class="fd-search-box bgfff" bindtap='gotoSearch'>
             <view class="fd-search-con">
                 <input placeholder='商户名/关键词' disabled="{{true}}"></input>
                 <image class="fd-search-btn" src="../../../assets/images/foods/search-icon.png"/>
@@ -33,19 +33,31 @@
                 <view wx:for="{{cookList}}" 
                       wx:key="*this"
                       data-id='{{item.id}}'
-                      class='fd-sel-list-item'>{{item.name}}</view>
+                      data-type='1'
+                      bindtap='selectOption'
+                      class="{{cookSel==item.id?'fd-sel-list-item orange':'fd-sel-list-item'}}">{{item.name}}</view>
             </block>
             <block wx:elif="{{isShowSelect==2}}">
-                <view class='fd-sel-list-item'
+                <view class="{{aiSel==item.value?'fd-sel-list-item orange':'fd-sel-list-item'}}"
                       wx:for="{{aiList}}"
                       wx:key="*this"
-                      data-type='{{item.value}}'>{{item.label}}</view>
+                      data-id='{{item.value}}'
+                      data-type='2'
+                      bindtap='selectOption'
+                      data-type='2'>{{item.label}}</view>
             </block>
         </view>
     </view>
 
     <!-- 数据列表 -->
-    <view class='fd-data-list'>
-        <listItem></listItem>
-    </view>
+    <scroll-view class='fd-data-list' 
+                 style="height:{{winHeight}}px"
+                 scroll-y="true"
+                 bindscrolltolower="loadMore">
+        <listItem wx:for="{{foodsList}}"
+                  wx:key="*this"
+                  itemObj="{{item}}"></listItem>
+        <view wx:if="{{foodsList && foodsObjCount && foodsList.length==foodsObjCount}}" 
+              class="bottom-txt">没有更多了</view>
+    </scroll-view>
 </view>

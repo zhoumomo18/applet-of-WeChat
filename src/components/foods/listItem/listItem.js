@@ -1,10 +1,10 @@
 // components/foods/listItem/listItem.js
 Component({
-    /**
-     * 组件的属性列表
-     */
     properties: {
-
+        itemObj: {
+            type: Object,
+            value: {}
+        }
     },
 
     /**

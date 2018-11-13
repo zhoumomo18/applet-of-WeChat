@@ -1,2 +1,30 @@
-<!--pages/foods/merchants/merchants.wxml-->
-<text>pages/foods/merchants/merchants.wxml</text>
+<!--美食商家详情-->
+<view>
+    <view>
+        <!-- 商户详细信息 -->
+        <view>
+            <!-- banner -->
+            <view>
+                <image></image>
+                <view>共5张</view>
+            </view>
+            <view>商户名称</view>
+            <view>
+                <view>推荐指数：4.5</view>
+                <view>￥<text>35</text>/人</view>
+            </view>
+            <view>地址</view>
+            <view>营业时间</view>
+        </view>
+        <!-- 横划特色菜菜单 -->
+        <view>
+            <view>特色菜</view>
+            <scroll-view></scroll-view>
+        </view>
+    </view>
+    <scroll-view>
+        <view>商家菜单</view>
+        
+    </scroll-view>
+
+</view>
