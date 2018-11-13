@@ -1,5 +1,4 @@
 <!--美食搜索页-->
-<!--美食列表-->
 <view class='fd-list'>
     <view class="fixedbox" 
         style="{{isShowSelect && isShowSelect!=0?'height:100%;':'height:98rpx;'}}">
