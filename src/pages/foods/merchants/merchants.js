@@ -1,61 +1,138 @@
+var { foodsMethods } = require('../../../service/foods/foodsService.js');
 Page({
+    ID: null,
+    pageNo: 1,
+    pageSize: 6,
     data: {
-
+        winHeight: null,
+        isShowModal: false,
+        infoObj: {},
+        listCount: null,
+        foodList: [],
+        swiperData: [],
+        currentSwiper: 0,
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
-
+        var that = this;
+        that.getHeight();
+        that.ID = options.id;
+        if(!that.ID) return;
+        that.getFoodsDetail();
+        that.getFoodsDetailList();
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     onReady: function () {
 
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function () {
 
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
     onPullDownRefresh: function () {
 
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
+    //预览菜品
+    viewDetail:function(e){
+        var that = this;
+        var currentSwiper = e.currentTarget.dataset.index;
+        var ty = e.currentTarget.type;
+        var swiperData = [];
+        if(ty == 1) {
+            swiperData = that.data.infoObj.specialDishesList;
+        } else {
+            swiperData = that.data.foodList;
+        }
+        that.setData({ currentSwiper: currentSwiper, swiperData: swiperData, isShowModal: true})
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
+    //关闭预览弹框
+    closeModal:function(){
+        var that = this;
+        that.setData({ isShowModal: false})
+    },
+    //获取页面高度
+    getHeight: function () {
+        var that = this
+        wx.getSystemInfo({
+            success: function (res) {
+                console.log('height=' + res.windowHeight);
+                console.log('width=' + res.windowWidth);
+                that.setData({ winHeight: res.windowHeight })
+            }
+        })
+    },
+    //获取商户详情
+    getFoodsDetail:function(){
+        wx.showLoading();
+        var that = this;
+        var params = {
+            id: that.ID
+        };
+        if (!params.id) return;
+        foodsMethods.getFoodsDetail(params, function (res) {
+            if (res && res.code == 200 && res.data) {
+                that.setData({ infoObj: res.data})
+                wx.hideLoading();
+            } else if (res && res.msg) {
+                wx.hideLoading();
+                wx.showToast({ title: res.msg })
+            } else {
+                wx.hideLoading();
+                wx.showToast({ title: '服务异常' })
+            }
+        })
+    },
+    //分页获取商家菜单列表
+    getFoodsDetailList:function(){
+        wx.showLoading();
+        var that = this;
+        var params = {
+            id: that.ID,
+            pageNo: that.pageNo,
+            pageSize: that.pageSize,
+        };
+        foodsMethods.getFoodsDetailList(params, function (res) {
+            if (res && res.code == 200 && res.data) {
+                var foodList = that.data.foodList;
+                var listCount = res.data.totalCount;
+                if (that.pageNo==1){
+                    foodList = res.data.rows;
+                } else {
+                    foodList = foodList.concat(res.data.rows);
+                }
+                that.setData({ foodList: foodList, listCount: listCount })
+                wx.hideLoading();
+            } else if (res && res.msg) {
+                wx.hideLoading();
+                wx.showToast({ title: res.msg })
+            } else {
+                wx.hideLoading();
+                wx.showToast({ title: '服务异常' })
+            }
+        })
+    },
+    //上拉加载更多
+    loadMore: function () {
+        var that = this;
+        var pageNo = that.pageNo;
+        var pageSize = that.pageSize;
+        if ((pageNo * pageSize) < that.data.listCount) {
+            that.pageNo++;
+            that.getFoodsDetailList();
+        }
+    },
+    //查看相册
+    previewImage:function(){
+        var that = this;
+        if (!that.data.infoObj || !that.data.infoObj.fileList) return;
+        var fileList = that.data.infoObj.fileList;
+        var urls = [];
+        for (var i = 0; i < fileList.length;i++) {
+            if (fileList.src){
+                urls.push(fileList.src);
+            }
+        }
+        wx.previewImage({
+            current: urls[0],
+            urls: urls
+        })
 
     }
 })

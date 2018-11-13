@@ -25,6 +25,32 @@ var foodsMethods = {
         }
         ajax.request(requestConfig);
     },
+    getFoodsDetailList: function (params, callBack) { //商家菜单列表查询通过id
+        var requestConfig = {
+            method: 'GET',
+            data: params,
+            url: '/foodbusiness/getallfoodbussiness',
+            successCallback: action,
+            errorCallback: action
+        };
+        function action(response) {
+            callBack && callBack(response);
+        }
+        ajax.request(requestConfig);
+    },
+    getFoodsDetail: function (params, callBack) { //查看商家详情通过id
+        var requestConfig = {
+            method: 'GET',
+            url: '/foodbusiness/getbyid/'+ params.id,
+            successCallback: action,
+            errorCallback: action
+        };
+        function action(response) {
+            callBack && callBack(response);
+        }
+        ajax.request(requestConfig);
+    },
+
 };
 export {
     foodsMethods
