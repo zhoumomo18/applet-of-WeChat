@@ -17,6 +17,7 @@ Page({
         foodsObjCount: 0, //数据总数
     },
     onLoad: function (options) {
+        wx.showLoading();
         var that = this;
         that.getHeight();        
         that.getAllGroupList();
@@ -66,17 +67,25 @@ Page({
                     id: -1,
                     name: '全部'
                 });
+                wx.hideLoading();
                 that.setData({ cookList: arr});
             } else if(res && res.msg){
-                wx.showToast({title: res.msg})
+                wx.hideLoading();
+                wx.showToast({
+                    title: res.msg, 
+                    icon: 'none',
+                    duration: 2000})
             } else {
-                wx.showToast({ title:'服务异常'})
+                wx.hideLoading();
+                wx.showToast({
+                    title: '服务异常',
+                    icon: 'none',
+                    duration: 2000})
             }
         })
     },
     //获取商家信息列表
     getFoodsList: function() {
-        wx.showLoading();
         var that = this;
         var params = {
             pageNo: that.pageNo,
@@ -99,10 +108,15 @@ Page({
                 wx.hideLoading();
             } else if (res && res.msg) {
                 wx.hideLoading();
-                wx.showToast({ title: res.msg })
+                wx.showToast({ 
+                    title: res.msg,
+                    icon: 'none',
+                    duration: 2000 })
             } else {
                 wx.hideLoading();
-                wx.showToast({ title: '服务异常' })
+                wx.showToast({ title: '服务异常',
+                    icon: 'none',
+                    duration: 2000 })
             }
         })
     },

@@ -31,7 +31,7 @@
         <view wx:if="{{isShowSelect && isShowSelect!=0}}" class='fd-sel-list'>
             <block wx:if="{{isShowSelect==1}}">
                 <view wx:for="{{cookList}}" 
-                      wx:key="*this"
+                      wx:key="{{item.id}}"
                       data-id='{{item.id}}'
                       data-type='1'
                       bindtap='selectOption'

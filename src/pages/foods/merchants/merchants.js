@@ -17,6 +17,7 @@ Page({
         that.getHeight();
         that.ID = options.id;
         if(!that.ID) return;
+        wx.showLoading();
         that.getFoodsDetail();
         that.getFoodsDetailList();
     },
@@ -51,7 +52,6 @@ Page({
     },
     //获取商户详情
     getFoodsDetail:function(){
-        wx.showLoading();
         var that = this;
         var params = {
             id: that.ID
