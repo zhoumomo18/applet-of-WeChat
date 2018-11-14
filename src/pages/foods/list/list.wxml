@@ -42,7 +42,7 @@
             <block wx:elif="{{isShowSelect==2}}">
                 <view class="{{aiSel==item.value?'fd-sel-list-item orange':'fd-sel-list-item'}}"
                       wx:for="{{aiList}}"
-                      wx:key="*this"
+                      wx:key="{{item.value}}"
                       data-id='{{item.value}}'
                       data-type='2'
                       bindtap='selectOption'
