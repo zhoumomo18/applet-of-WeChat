@@ -1,9 +1,11 @@
 var { foodsMethods } = require('../../../service/foods/foodsService.js');
+var App = getApp();
 Page({
     ID: null,
     pageNo: 1,
     pageSize: 6,
     data: {
+        imgUrlPath: App.globalData.imgUrlPath,
         winHeight: null,
         isShowModal: false,
         infoObj: {},

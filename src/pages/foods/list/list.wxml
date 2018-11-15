@@ -17,7 +17,8 @@
             <view class='fd-sel-item vertical-line'
                   data-key="1"
                   bindtap='switchModal'>菜系
-                <image wx:if="{{isShowSelect==1}}"                     src='../../../assets/images/foods/open-icon.png'></image>
+                <image wx:if="{{isShowSelect==1}}"                     
+                       src='../../../assets/images/foods/open-icon.png'></image>
                 <image wx:else src='../../../assets/images/foods/close-icon.png'></image>
             </view>
             <view class='fd-sel-item'

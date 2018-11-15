@@ -3,7 +3,7 @@
     <!-- banner -->
     <view class='foods-banner' bindtap='previewImage'>
         <image wx:if="{{infoObj.fileTitle && infoObj.fileTitle.src}}"
-               src='{{infoObj.fileTitle.src}}'></image>
+               src='{{imgUrlPath}}{{infoObj.fileTitle.src}}'></image>
         <view class='foods-banner-tag'>共{{infoObj.fileList.length || 0}}张</view>
     </view>
     <view class='pad30 bgfff'>
@@ -16,7 +16,8 @@
             <view class='foods-tag'>{{infoObj.foodGroup}}</view>
         </view>
         <view class='foods-column-box border-btm'
-              wx:if="{{infoObj.address}}">
+              wx:if="{{infoObj.address}}"
+              bindtap='openMap'>
             <view class='left-block line-one'>
                 <image src="../../../assets/images/foods/address-icon.png"></image>
                 <text class=''>{{infoObj.address}}</text>
@@ -50,7 +51,7 @@
                   data-type="1"
                   bindtap='viewDetail'
                   >
-                <image src='{{item.fileTitle.src}}'></image>
+                <image src='{{imgUrlPath}}{{item.fileTitle.src}}'></image>
                 <view class='foods-slide-item-title line-one'>{{item.name||''}}</view>
                 <view class='foods-slide-item-price line-one'>￥{{item.price}}</view>
             </view>
@@ -76,7 +77,7 @@
                   data-index='{{index}}'
                   data-type="2"
                   bindtap='viewDetail'>
-                <image src='{{item.fileTitle.src}}'></image>
+                <image src='{{imgUrlPath}}{{item.fileTitle.src}}'></image>
                 <view class='foods-scroll-item-title line-one'>{{item.name}}</view>
                 <view class='foods-scroll-item-price line-one'>￥{{item.price}}</view>
             </view>
@@ -95,7 +96,7 @@
                                  bindtap='closeModal'>
                         <view >
                             <view class='preview-modal-item'>
-                                <image src='{{item.fileTitle.src}}'></image>
+                                <image src='{{imgUrlPath}}{{item.fileTitle.src}}'></image>
                                 <view class='preview-modal-tag'>3/6</view>
                             </view>
                             <view class='preview-modal-name'>{{item.name}}</view>

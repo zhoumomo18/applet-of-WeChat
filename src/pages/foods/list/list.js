@@ -1,8 +1,10 @@
 var { foodsMethods} = require('../../../service/foods/foodsService.js');
+var App = getApp();
 Page({
     pageNo: 1,
     pageSize: 6,
     data: {
+        imgUrlPath: App.globalData.imgUrlPath,
         winHeight: null,
         isShowSelect: null,
         cookSel: -1, //选中的菜系

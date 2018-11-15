@@ -4,14 +4,15 @@
         <view class='foods-item-left'
               style="{{itemObj.fileTitle && itemObj.fileTitle.src?'background:none':'background:#eee'}}">
               <image wx:if="{{itemObj.fileTitle && itemObj.fileTitle.src}}" 
-                     src="{{itemObj.fileTitle.src}}"></image>
+                     src="{{imgUrlPath}}{{itemObj.fileTitle.src}}"></image>
               </view>
         <view class='foods-item-right'>
             <view class='foods-item-title line-one'>{{itemObj.name || ''}}</view>
             <view class='foods-item-pay'><text class='orange'>￥{{itemObj.averageConsume || '0.00'}}</text>/人</view>
             <view class='foods-item-tip'>
                 <view class='foods-item-star orange'>推荐指数：{{itemObj.ratings || '0'}}</view>
-                <view wx:if="{{itemObj.foodGroup}}" class='foods-item-tag'>{{itemObj.foodGroup || ''}}</view>
+                <view wx:if="{{itemObj.foodGroup && itemObj.foodGroup.length}}" class='foods-item-tag'>
+                    <block wx:for="{{itemObj.foodGroup}}" wx:key="{{item.id}}">{{item.name || ''}}</block></view>
             </view>
         </view>
     </view>

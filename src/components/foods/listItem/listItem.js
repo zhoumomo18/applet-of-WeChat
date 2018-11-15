@@ -1,3 +1,4 @@
+var App = getApp();
 Component({
     properties: {
         itemObj: {
@@ -6,6 +7,7 @@ Component({
         }
     },
     data: {
+        imgUrlPath: App.globalData.imgUrlPath,
         isClick: false
     },
     methods: {
