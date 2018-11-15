@@ -2,26 +2,31 @@
     <form bindsubmit="" >
         <view class="inv-info-box bg-white">
             <view class="inv-title">票种名称</view>
-            <view class="section section_flex section_access_after">
+            <navigator url="../notice/ticketDescript?source=order" 
+                class="section section_flex section_access_after">
                 <view class="section_title">票种说明</view>
                 <view class="ui-cell__ft_in-access"></view>
-            </view>
+            </navigator>
             <view class="section section_flex section_access_after">
                 <view class="section_title section_sm">入园日期</view>
+                <input name="date" value=""  hidden />
                 <view class="ui-date-box section_flex_sp">
                     <view class="ui-border section_flex_fj">
                         <view class="ui-label">今天</view>
-                        <view class="ui-price">免费</view>
+                        <view class="ui-price" wx:if="{{detailInfo.price==0}}">免费</view>
+                        <view class="ui-price" wx:else>{{detailInfo.price}}</view>
                     </view>
                     <view class="ui-border section_flex_fj">
                         <view class="ui-label">明天</view>
-                        <view class="ui-price">￥180</view>
+                        <view class="ui-price" wx:if="{{detailInfo.price==0}}">免费</view>
+                        <view class="ui-price" wx:else>{{detailInfo.price}}</view>
                     </view>
-                    <view class="ui-more ui-border section_flex_fj active-color">
+                    <navigator class="ui-more ui-border section_flex_fj active-color"
+                    url="../datePicker/datePicker" hover-class="none">
                         <view class="ui-text" hidden>更多日期</view>
                         <view class="ui-label">2018-11-14</view>
                         <view class="ui-price">￥180</view>
-                    </view>
+                    </navigator>
                 </view>
             </view>
 
@@ -38,15 +43,15 @@
         <view class="receiver-info-list bg-white">
             <view class="section section_access_after">
                 <view class="section_title">取票人</view>
-                <input name="bankNum" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="30" />
+                <input name="receiver" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="20" />
             </view>
             <view class="section section_access_after">
                 <view class="section_title">手机号码</view>
-                <input name="bankNum" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="30" />
+                <input name="phone" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="11" />
             </view>
             <view class="section section_access_after">
                 <view class="section_title">身份证号</view>
-                <input name="bankNum" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="30" />
+                <input name="ID" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="20" />
             </view>
         </view>
         <view class="ui-bottom-fixed">
