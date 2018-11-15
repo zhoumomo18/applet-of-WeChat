@@ -53,6 +53,12 @@ Page({
                             pageNo: pageNo+1
                         })
                     }
+                },
+                errorCallBack: () => {
+                    wx.showToast({
+                        title: '请求失败',
+                        icon: 'loading'
+                    })
                 }
             }
         ajax.request(requestConfig)

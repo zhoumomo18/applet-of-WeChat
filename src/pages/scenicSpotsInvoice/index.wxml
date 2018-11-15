@@ -20,7 +20,8 @@
                         <view class="ui-num">{{item.peoplenum}}人来过</view>
                     </view>
                     <view class="ui-box-r">
-                        <view class="ui-price"><text class="m-color">￥{{item.lowestTicketPrice}}</text>起</view>
+                        <view class="ui-price" wx:if="{{item.lowestTicketPrice==0}}"><text class="m-color">免费</text>起</view>
+                        <view class="ui-price" wx:else><text class="m-color">￥{{item.lowestTicketPrice}}</text>起</view>
                     </view>
                 </view>
             </navigator>

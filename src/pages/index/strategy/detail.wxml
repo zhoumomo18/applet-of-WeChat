@@ -1,4 +1,4 @@
-<import src="../../../wxParse/wxParse.wxml"/> 
+<import src="/wxParse/wxParse.wxml"/> 
 <view class="container">
     <view class="banner">
         <image src="{{baseUrl}}{{detailInfo.photo}}" data-src="{{baseUrl}}{{detailInfo.photo}}" />

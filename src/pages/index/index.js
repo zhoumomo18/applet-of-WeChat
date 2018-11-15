@@ -6,7 +6,8 @@ Page({
   data: {
     baseUrl: app.globalData.imgUrlPath,
     imgUrls:'/assets/images/banner.png',
-    moduleList: []
+    moduleList: [],
+    adList: ''
   },
   onLoad(){
     this.getAdList()

@@ -26,7 +26,7 @@ let ajax = {
                     title: '登录超时',
                     icon: 'loading'
                 })
-                wx.clearStorageSync()
+                // wx.clearStorageSync()
                 wx.redirectTo({
                     url: '/pages/login/index'
                 })
@@ -35,7 +35,7 @@ let ajax = {
                     title: '登录超时',
                     icon: 'loading'
                 })
-                wx.clearStorageSync()
+                // wx.clearStorageSync()
                 wx.redirectTo({
                     url: '/pages/login/index'
                 })
