@@ -1,0 +1,17 @@
+.weeks-box{
+    height: 64rpx;
+    line-height: 64rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25rpx;
+}
+.week{
+    text-align: center;
+    flex-grow: 1;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+.wrap-box{
+    padding: 0 25rpx;
+}

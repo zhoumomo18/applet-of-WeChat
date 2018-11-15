@@ -10,13 +10,13 @@
     </swiper>-->
     <view class="banner">
       <navigator url="{{adList.linkurl}}" hover-class="none">
-        <image src="{{baseUrl}}{{adList.photo}}" class="slide-image" width="100%" height="100%"/>
+        <image src="{{adList.photo}}" class="slide-image" width="100%" height="100%"/>
       </navigator>
     </view>
     <view class="ui-grids">
       <block wx:for="{{moduleList}}" wx:for-index="idx" wx:key="module" wx:if="{{idx<4}}">
         <navigator url="{{item.linkUrl}}" class="grid" hover-class="none">
-            <view class="ui_grid-icon"><image src="{{baseUrl}}{{item.icon}}" /></view>
+            <view class="ui_grid-icon"><image src="{{item.icon}}" /></view>
             <view class="ui_grid-label">{{item.name}}</view>
         </navigator>
       </block>

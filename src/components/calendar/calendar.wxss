@@ -1,0 +1,38 @@
+.days-box{
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+}
+.month-tt{
+    font-size: 34rpx;
+    text-align: center;
+}
+.grid {
+    width: 100rpx;
+    height: 100rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.day{
+    color: #DDDDDD;
+    font-size: 24rpx;
+    font-weight: bold;
+}
+.active_grid .day{
+    color: #333333;
+} 
+.active_grid .price{
+    color: #FF5A2D;
+    font-size: 24rpx;
+    font-weight: 600;
+}
+.selected_grid{
+    background: #FFA819;
+    border-radius: 8rpx;
+}
+.selected_grid .day{
+    color: #fff;
+}

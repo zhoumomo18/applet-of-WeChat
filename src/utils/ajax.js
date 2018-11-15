@@ -13,7 +13,7 @@ let ajax = {
     error_resp: function (response, errorCallback) {
         if (!response) {
             wx.showToast({
-                title: '系统错误，请联系相关人员！',
+                title: '系统错误',
                 icon: 'loading'
             });
             if (errorCallback instanceof Function) {
@@ -23,7 +23,7 @@ let ajax = {
             // 登录超时
             if (response.code === 400 || response.code === 401) {
                 wx.showToast({
-                    title: '登录超时，请重新登录',
+                    title: '登录超时',
                     icon: 'loading'
                 })
                 wx.clearStorageSync()
@@ -32,7 +32,7 @@ let ajax = {
                 })
             } else if (response.code === 406){
                 wx.showToast({
-                    title: '登录超时，请重新登录',
+                    title: '登录超时',
                     icon: 'loading'
                 })
                 wx.clearStorageSync()
@@ -40,9 +40,10 @@ let ajax = {
                     url: '/pages/login/index'
                 })
             }
+            if (errorCallback instanceof Function) {
+                errorCallback && errorCallback(response);
+            }
         }
-        // loading结束
-        wx.hideToast();
     },
     /**
      *通用的wx.request成功回调处理
@@ -112,7 +113,6 @@ let ajax = {
                     //一些错误是在设置请求时触发的
                     console.log('Error', error.message);
                 }
-                wx.hideLoading()
                 wx.showToast({
                     title: '请求超时',
                     icon: 'loading'
@@ -121,7 +121,6 @@ let ajax = {
             },
             complete: function() {
                 // complete
-                wx.hideToast();
             }
         });
     },

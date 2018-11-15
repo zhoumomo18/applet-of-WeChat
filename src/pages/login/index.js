@@ -27,11 +27,6 @@ Page({
                             method : 'POST',
                             success: function (res) {
                                 if (res.data.code == 200) {
-                                    let userinfo = {
-                                        nickName: e.detail.userInfo.nickName,
-                                        avatarUrl: e.detail.userInfo.avatarUrl,
-                                    }
-                                    wx.setStorageSync('userinfo', userinfo)
                                     wx.setStorageSync('userToken', res.data.data.token)
                                     //授权成功后，跳转进入小程序首页
                                     wx.switchTab({
