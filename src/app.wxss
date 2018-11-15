@@ -97,7 +97,7 @@ page{
   color: #333333;
 }
 .viewport .section{
-background: #fff;
+  background: #fff;
 }
 .section_title{
   width: 290rpx;
@@ -109,4 +109,14 @@ background: #fff;
   left: 0;
   right: 0;
   bottom: 0;
+}
+.section_flex_fj{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section_flex_sp{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

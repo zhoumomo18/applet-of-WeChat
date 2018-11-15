@@ -7,18 +7,20 @@
                 <view class="ui-cell__ft_in-access"></view>
             </view>
             <view class="section section_flex section_access_after">
-                <view class="section_title">入园日期</view>
-                <view class="ui-date-box section_flex_fj">
-                    <view class="ui-today ui-border">
+                <view class="section_title section_sm">入园日期</view>
+                <view class="ui-date-box section_flex_sp">
+                    <view class="ui-border section_flex_fj">
                         <view class="ui-label">今天</view>
-                        <view class="ui-price">￥180</view>
+                        <view class="ui-price">免费</view>
                     </view>
-                    <view class="ui-today ui-border">
+                    <view class="ui-border section_flex_fj">
                         <view class="ui-label">明天</view>
                         <view class="ui-price">￥180</view>
                     </view>
-                        <view class="ui-more ui-border">
-                        <view class="ui-label">更多日期</view>
+                    <view class="ui-more ui-border section_flex_fj active-color">
+                        <view class="ui-text" hidden>更多日期</view>
+                        <view class="ui-label">2018-11-14</view>
+                        <view class="ui-price">￥180</view>
                     </view>
                 </view>
             </view>
@@ -45,6 +47,12 @@
             <view class="section section_access_after">
                 <view class="section_title">身份证号</view>
                 <input name="bankNum" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="30" />
+            </view>
+        </view>
+        <view class="ui-bottom-fixed">
+            <view class="ui-bottom-inner section_flex_sp">
+                <view class="pay-total">应付金额：<text>￥</text><text>0</text></view>
+                <button class="action-btn" bindtap="" hover-class="none">立即预定</button>
             </view>
         </view>
     </form>

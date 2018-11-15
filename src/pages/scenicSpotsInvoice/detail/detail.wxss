@@ -1,0 +1,178 @@
+.bg-white{
+    background: #fff;
+}
+.swiper-container{
+    position: relative;
+}
+.swiper-container swiper{
+    height: 450rpx;
+}
+.swiper-container swiper image{
+    width: 100%;
+    height: 100%;
+}
+.swiper-container .dots{
+    height: 40rpx;
+    line-height: 40rpx;
+    padding: 0 14rpx;
+    font-size: 24rpx;
+    color: #fff;
+    background: rgba(63,63,63,0.40);
+    border-radius: 18rpx;
+    position: absolute;
+    bottom: 20rpx;
+    right: 30rpx;
+}
+.tt-box{
+    background: #F3F3F3;
+    padding-bottom: 20rpx;
+}
+.tt-box .tt-box-inner{
+    padding: 0 30rpx;
+}
+.tt-box .p-title{
+    font-size: 34rpx;
+    line-height: 48rpx;
+    font-weight: bold;
+    padding: 25rpx 0 30rpx;
+}
+
+.section_box{
+    font-size: 28rpx;
+    padding: 30rpx 0;
+    border-top: 1rpx solid #E3E3E3;
+}
+.section_box .icon{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 12rpx;
+}
+.section_box .p-time{
+    display: flex;
+}
+.section_box .p-time text{
+    width: 156rpx;
+}
+.section_box .p-time .t-desc{
+    flex: 1;
+}
+.ui-content .ui-tabs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #E3E3E3;
+}
+.ui-content .ui_tab_item{
+    width: 50%;
+    text-align: center;
+    position: relative;
+    padding: 24rpx 0;
+    font-size: 28rpx;
+    color: #666666;
+}
+.ui-tab_active::after{
+    content: '';
+    width: 30rpx;
+    height: 6rpx;
+    background: #FFA819;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tab-cont .ticket-info-box{
+    border-bottom: 15rpx solid #F3F3F3;
+}
+.tab-cont .ticket-info-box .ticket-item{
+    border-bottom: 5rpx solid #F3F3F3;
+}
+.tab-cont .ticket-info-box .pad{
+    padding: 0 30rpx;
+}
+.tab-cont .ticket-info-box .ticket-item .ticket-desc{
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #ECECEC;
+}
+.tab-cont .ticket-info-box .ticket-item .t-name{
+    font-size: 28rpx;
+    color: #666666;
+}
+.tab-cont .ticket-info-box .ticket-item .box-left .border-box{
+    border: 1px solid #999999;
+    font-size: 20rpx;
+    color: #999999;
+}
+.tab-cont .ticket-info-box .ticket-item .t-price{
+    font-size: 34rpx;
+    color: #FFA819;
+    font-weight: bold;
+    margin-top: 12rpx;
+}
+.tab-cont .ticket-info-box .ticket-item .ticket-action{
+    height: 76rpx;
+    border-bottom: 5rpx solid #F3F3F3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tab-cont .ticket-info-box .ticket-item .ticket-action .ticket-intro{
+    font-size: 24rpx;
+    color: #FFA819;
+    flex: 1;
+}
+.tab-cont .ticket-info-box .ticket-item .ticket-action image{
+    width: 18rpx;
+    height: 20rpx;
+}
+.order-btn{
+    width: 103rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    background: #FFA819;
+    border-radius: 6rpx;
+    color: #fff;
+    text-align: center;
+    font-size: 24rpx;
+}
+.scenic-spots-box{
+    padding: 0 30rpx;
+}
+.scenic-spots-box .tt{
+    height: 90rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+    border-bottom: 1rpx solid #ECECEC;
+}
+.scenic-spots-box .tt image{
+    width: 16rpx;
+    height: 28rpx;
+}
+.text-box{
+    padding: 0 36rpx;
+    position: relative;
+    margin: 15rpx 0;
+}
+.text-box .text-title{
+    font-size: 34rpx;
+    line-height: 48rpx;
+    color: #999999;
+}
+.text-box .text-title::before{
+    content: '';
+    width: 16rpx;
+    height: 16rpx;
+    background: #FFA819;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0rpx;
+    top: 16rpx;
+}
+.text-box .text-desp{
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: #999999;
+}
+.scenic-spots-intro{
+    padding: 30rpx;
+}

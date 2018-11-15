@@ -1,0 +1,10 @@
+<view class="wrap-box">
+    <view class="month-tt">{{curYear}}年{{curMonth}}月</view>
+    <view class="days-box">
+        <view class="grid {{activeIndex!='' && activeIndex==index ? 'selected_grid':''}}" 
+        wx:for="{{days}}" wx:key="{{day}}" id="{{index}}"
+        bindtap="datePicker">
+            <view class="day">{{item.day}}</view>
+        </view>
+    </view>
+</view>

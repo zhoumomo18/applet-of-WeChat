@@ -44,9 +44,16 @@
 }
 .ui-box{
     flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+.ui-box-l{
+    flex: 1;
+}
+.ui-box-r{
+    margin-top: 32rpx;
 }
 .ui-box .ui-title{
-    font-family: PingFangSC-Semibold;
     font-size: 34rpx;
     color: #333333;
     font-weight: bold;
@@ -64,9 +71,6 @@
     color: #666666;
 }
 .ui-price{
-    position: absolute;
-    top: 32rpx;
-    right: 30rpx;
     font-size: 24rpx;
 }
 .ui-price .m-color{

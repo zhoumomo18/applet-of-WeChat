@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/login/index",
     "pages/index/index",
     "pages/index/strategy/index",
@@ -10,6 +9,10 @@
     "pages/scenicSpotsInvoice/scenicSpotsDetail/detail",
     "pages/scenicSpotsInvoice/search/search",
     "pages/scenicSpotsInvoice/shoppingOrder/reserveOrder",
+    "pages/scenicSpotsInvoice/notice/ticketDescript",
+    "pages/scenicSpotsInvoice/notice/scenicSpotsNotice",
+    "pages/scenicSpotsInvoice/detail/detail",
+    "pages/scenicSpotsInvoice/datePicker/datePicker",
 
     "pages/userCenter/index",
     "pages/userCenter/myFavorite/myFavorite"

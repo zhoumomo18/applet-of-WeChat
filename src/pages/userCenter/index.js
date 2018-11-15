@@ -4,16 +4,10 @@ Page({
     data: {
         canUseEdit: true,
         showMadal: false,
-        userInfo: wx.getStorageSync('userinfo')
+        userInfo: ''
     },
     onLoad: function(){
         this.getUserInfo()
-    },
-    onShow: function(){
-        // 在data里直接读取，有时候取不到值
-        this.setData({
-            userInfo: wx.getStorageSync('userinfo')
-        })
     },
     // 获取用户信息详情
     getUserInfo(){
@@ -22,15 +16,22 @@ Page({
             requestConfig = {
                 method: 'GET',
                 url: '/constumer/getbyopenid',
-                publicUrlType: 2,
                 successCallback: (res) => {
                     if (res.code == 200){
                         that.setData({
                             userInfo: res.data
                         })
-                        // userInfo.nickName = e.detail.value
-                        // wx.setStorageSync('userinfo', userInfo)
+                    } else {
+                        wx.showToast({
+                            title: '请求超时'
+                        })
                     }
+                },
+                errorCallback: (err) => {
+                    wx.showToast({
+                        title: '请求失败',
+                        icon: 'loading'
+                    })
                 }
             }
         ajax.request(requestConfig)
@@ -48,7 +49,6 @@ Page({
             requestConfig = {
                 method: 'PUT',
                 url: '/constumer/updatenickname',
-                publicUrlType: 2,
                 data: {
                     nickName: e.detail.value
                 },

@@ -1,7 +1,7 @@
 <view class="container">
     <view class="head-img clear">
         <view class="my-img">
-            <image src="{{userInfo.avatarUrl}}" />
+            <image src="{{userInfo.headUrl}}" />
         </view>
         <view class="my-person-info">
             <input value="{{userInfo.nickName}}" type="text" 

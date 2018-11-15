@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "选择入园日期",
+    "usingComponents": {
+        "calendar": "/components/calendar/calendar"
+    }
+}

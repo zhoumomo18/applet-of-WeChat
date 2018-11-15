@@ -1,0 +1,39 @@
+<view class="container">
+    <view class="calendar">
+        <view class="weeks-box">
+            <view class="week" wx:for="{{weeks_ch}}" wx:key="{{index}}">{{item}}</view>
+        </view>
+        <!--
+        <view class="wrap-box">
+            <view class="month-tt">{{cur_year}}年{{cur_month}}月</view>
+            <view class="days-box">
+                <view class="grid" wx:for="{{days}}" wx:key="{{day}}" bindtap="datePicker">
+                    <view class="day">{{item.day}}</view>
+                </view>
+            </view>
+        </view>
+        
+        <view class="wrap-box">
+            <view class="month-tt">{{next_year}}年{{next_month}}月</view>
+            <view class="days-box">
+                <view class="grid active_grid" 
+                wx:for="{{nextDays}}" wx:key="{{day}}">
+                    <view class="day">{{item.day}}</view>
+                    <view class="price" wx:if="{{item.day!=''}}">￥150</view>
+                </view>
+            </view>
+        </view>-->
+
+        <calendar
+            curYear="{{cur_year}}" 
+            curMonth="{{cur_month}}"
+            bind:datePicker="datePicker">
+        </calendar>
+
+        <calendar
+            curYear="{{next_year}}" 
+            curMonth="{{next_month}}"
+            bind:datePicker="datePicker">
+        </calendar>
+    </view>
+</view>
