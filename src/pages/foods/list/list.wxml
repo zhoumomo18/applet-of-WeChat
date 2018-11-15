@@ -57,7 +57,7 @@
                  scroll-y="true"
                  bindscrolltolower="loadMore">
         <listItem wx:for="{{foodsList}}"
-                  wx:key="*this"
+                  wx:key="{{item.idu}}"
                   itemObj="{{item}}"></listItem>
         <view wx:if="{{foodsList && foodsObjCount && foodsList.length==foodsObjCount}}" 
               class="bottom-txt">没有更多了</view>
