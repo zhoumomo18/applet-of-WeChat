@@ -55,10 +55,14 @@
     font-size: 26rpx;
 }
 .foods-item-tag{
+    display: inline-block;
    font-size: 20rpx;
    line-height: 20rpx;
-   padding:6rpx 4rpx 2rpx;
+   padding:5rpx 4rpx 4rpx ;
    background: #E6E6E6;
    border-radius: 4rpx;
-   color: #666666; 
+   color: #999; 
+}
+.md5{
+    margin: 0 5rpx;
 }

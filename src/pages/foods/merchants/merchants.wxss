@@ -84,7 +84,7 @@ view{
     padding:4rpx;
     background: #E6E6E6;
     border-radius: 4rpx;
-    color: #666666;
+    color: #999;
 }
 .foods-column-box{
     display:flex;
@@ -254,4 +254,7 @@ view{
 .preview-modal-remark text{
     font-size: 28rpx;
     font-weight: bold;
+}
+.md5{
+    margin: 0 5rpx;
 }

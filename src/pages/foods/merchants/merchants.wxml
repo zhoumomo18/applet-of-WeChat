@@ -13,11 +13,13 @@
             <text class='foods-remand'>推荐指数：{{infoObj.ratings || '0.0'}}</text>
         </view>
         <view class='foods-border'>
-            <view class='foods-tag'>{{infoObj.foodGroup}}</view>
+            <view wx:for="{{infoObj.foodGroupList}}" 
+                    wx:key="{{item.id}}"
+                    wx:if="{{index<3}}"
+                    class='foods-tag md5'>{{item.name || ''}}</view>
         </view>
         <view class='foods-column-box border-btm'
-              wx:if="{{infoObj.address}}"
-              bindtap='openMap'>
+              wx:if="{{infoObj.address}}">
             <view class='left-block line-one'>
                 <image src="../../../assets/images/foods/address-icon.png"></image>
                 <text class=''>{{infoObj.address}}</text>

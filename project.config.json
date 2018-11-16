@@ -27,7 +27,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -46,6 +46,29 @@
 					"name": "美食商家详情",
 					"pathName": "pages/foods/merchants/merchants",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "酒店预定",
+					"pathName": "pages/hotel/booking/booking",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "景区搜索",
+					"pathName": "pages/hotel/attractionsList/attractionsList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "酒店列表",
+					"pathName": "pages/hotel/booklingList/booklingList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "酒店详情",
+					"pathName": "pages/hotel/hotelDetail/hotelDetail"
 				}
 			]
 		}

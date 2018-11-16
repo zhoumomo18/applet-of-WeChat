@@ -1,56 +1,61 @@
 {
-  "pages": [
-    "pages/login/index",
-    "pages/index/index",
-    "pages/index/strategy/index",
-    "pages/index/strategy/detail",
-    
-    "pages/scenicSpotsInvoice/index",
-    "pages/scenicSpotsInvoice/scenicSpotsDetail/detail",
-    "pages/scenicSpotsInvoice/search/search",
-    "pages/scenicSpotsInvoice/shoppingOrder/reserveOrder",
-    "pages/scenicSpotsInvoice/notice/ticketDescript",
-    "pages/scenicSpotsInvoice/notice/scenicSpotsNotice",
-    "pages/scenicSpotsInvoice/detail/detail",
-    "pages/scenicSpotsInvoice/datePicker/datePicker",
-
-    "pages/userCenter/index",
-    "pages/userCenter/myFavorite/myFavorite",
-    
-    "pages/foods/list/list",
-    "pages/foods/merchants/merchants",
-    "pages/foods/searchList/searchList"
-  ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "凤凰旅游",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#AAAAAA",
-    "selectedColor": "#FFA819",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "./assets/images/index_icon.png",
-      "selectedIconPath": "./assets/images/index_icon_active.png"
-    }, {
-      "pagePath": "pages/scenicSpotsInvoice/index",
-      "text": "景点门票",
-      "iconPath": "./assets/images/invoice_icon.png",
-      "selectedIconPath": "./assets/images/invoice_icon_active.png"
-    }, {
-      "pagePath": "pages/userCenter/index",
-      "text": "我的",
-      "iconPath": "./assets/images/user_icon.png",
-      "selectedIconPath": "./assets/images/user_icon_active.png"
-    }]
-  },
-  "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
-  },
-  "debug": true
+    "pages": [
+        "pages/login/index",
+        "pages/index/index",
+        "pages/index/strategy/index",
+        "pages/index/strategy/detail",
+        "pages/scenicSpotsInvoice/index",
+        "pages/scenicSpotsInvoice/scenicSpotsDetail/detail",
+        "pages/scenicSpotsInvoice/search/search",
+        "pages/scenicSpotsInvoice/shoppingOrder/reserveOrder",
+        "pages/scenicSpotsInvoice/notice/ticketDescript",
+        "pages/scenicSpotsInvoice/notice/scenicSpotsNotice",
+        "pages/scenicSpotsInvoice/detail/detail",
+        "pages/scenicSpotsInvoice/datePicker/datePicker",
+        "pages/userCenter/index",
+        "pages/userCenter/myFavorite/myFavorite",
+        "pages/foods/list/list",
+        "pages/foods/merchants/merchants",
+        "pages/foods/searchList/searchList",
+        "pages/hotel/booking/booking",
+        "pages/hotel/attractionsList/attractionsList",
+        "pages/hotel/booklingList/booklingList",
+        "pages/hotel/hotelDetail/hotelDetail"
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarTitleText": "凤凰旅游",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#AAAAAA",
+        "selectedColor": "#FFA819",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "./assets/images/index_icon.png",
+                "selectedIconPath": "./assets/images/index_icon_active.png"
+            },
+            {
+                "pagePath": "pages/scenicSpotsInvoice/index",
+                "text": "景点门票",
+                "iconPath": "./assets/images/invoice_icon.png",
+                "selectedIconPath": "./assets/images/invoice_icon_active.png"
+            },
+            {
+                "pagePath": "pages/userCenter/index",
+                "text": "我的",
+                "iconPath": "./assets/images/user_icon.png",
+                "selectedIconPath": "./assets/images/user_icon_active.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
 }

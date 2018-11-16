@@ -1,0 +1,108 @@
+<!--酒店详情-->
+<view>
+   <view class='hl-dt-banner'>
+        <swiper>
+            <swiper-item>
+                <image class='hl-dt-banner-item' src='../../../assets/images/banner.png'></image>
+            </swiper-item>
+        </swiper>
+        <view class='hl-dt-banner-tag'>3/6</view>
+   </view> 
+   <view class='hl-dt-top'>
+        <view class='hl-dt-top-title'>
+            <text class='hl-dt-top-titletxt'>名字</text>
+            <!-- 收藏按钮 -->
+            <view class='hl-dt-top-collect'><image></image></view>
+        </view>
+
+        <view class='hl-dt-top-type'>
+            <view class='hl-dt-top-type-left'>豪华型 | 2015年装修</view>
+            <view class='hl-dt-top-type-right'>
+                <text>设备与服务</text>
+                <image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
+        </view>
+
+        <view class='foods-column-box'>
+            <view class='left-block line-one'>
+                <image src="../../../assets/images/foods/address-icon.png"></image>
+                <text class=''>沱江镇凤凰县仙剑路1号</text>
+                <view class='left-block-txt'>周边景区 | 凤凰古镇</view>
+            </view>
+            <view class='right-block'><image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
+        </view>
+   </view>
+
+   <!-- 酒店规格 -->
+    <view class='mt20 bgfff'>
+        <view class='hl-dt-datebox'>
+            <view class='hl-dt-datebox-txt hl-dt-flex'>
+                <view>入住</view>
+                <view>离店</view>
+            </view>
+
+            <view class='hl-dt-datebox-msg hl-dt-flex'>
+                <view>11月14日<text class='small'>今天</text></view>
+                <view>11月14日<text class='small'>周四</text></view>
+            </view>
+            <view class='hl-dt-datebox-tag'>共8玩</view>
+        </view>
+    </view>
+    <!-- 展示的规格列表 -->
+    <view class='bl-list-list'>
+        <block>
+            <view class='bl-list-item bgfff'>
+                <view class='bl-list-item-left'><image></image></view>
+                <view class='bl-list-item-right'>
+                    <view class='bl-list-item-title'>四季</view>  
+                    <view class='bl-list-item-type'>豪华型</view> 
+                    <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>350.00</text><text class='small'>起</text>
+                        <image class='bl-list-item-icon open' src=''></image>
+                        <image class='bl-list-item-icon close' src=''></image></view>
+                </view>
+            </view>
+            <!-- 隐藏的具体规格列表 -->
+            <view class="bl-list-itemDetail-list">
+                <view class="bl-itemDetail-item border-bottom">
+                    <view class="bl-itemDetail-title">大床</view>
+                    <view class="bl-itemDetail-type">无早餐 | 无窗 | 无阳台</view>
+                    <view class="bl-itemDetail-tag">支持退订</view>
+                    <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>350.00</text><text class='small'>起</text>
+                        <view class='book-btn'>预定</view>
+                    </view>
+                </view>
+                <view class="bl-itemDetail-item border-bottom">
+                    <view class="bl-itemDetail-title">大床</view>
+                    <view class="bl-itemDetail-type">无早餐 | 无窗 | 无阳台</view>
+                    <view class="bl-itemDetail-tag">支持退订</view>
+                    <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>350.00</text><text class='small'>起</text>
+                        <view class='book-btn'>预定</view>
+                    </view>
+                </view>
+                <!-- 打开列表 -->
+                <view class='tag-btn'>查看全部报价<image class='tag-btn-icon'></image></view>
+                <!-- 收起列表 -->
+                <view class='tag-btn'>收起<image class='tag-btn-icon'></image></view>
+            </view>
+        </block>
+         <!-- 外层打开列表 -->
+        <view class='tag-btn' style='background:#fff'>查看全部房型<image class='tag-btn-icon'></image></view>
+        <!-- 外层收起列表 -->
+        <view class='tag-btn' style='background:#fff'>收起<image class='tag-btn-icon'></image></view>
+    </view>
+
+    <!-- 入住须知 -->
+    <view class='bgfff mt20'>
+        <view class='hl-dt-top-type border-bottom pd30'>
+            <view class='hl-dt-top-type-left'
+                style='font-size:34rpx;color:#333;'>入住须知</view>
+            <view class='hl-dt-top-type-right'>
+                <text>详情</text>
+                <image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
+        </view>
+        <view class='bgfff padding30'>
+            <view class='hl-dt-tips'>入住时间<text class='hl-dt-tipstxt'>14:00后入住 | 12:00前退房</text></view>
+            <view class='hl-dt-tips'>入住时间<text class='hl-dt-tipstxt'>14:00后入住 | 12:00前退房</text></view>
+        </view>
+        
+    </view>
+</view>
