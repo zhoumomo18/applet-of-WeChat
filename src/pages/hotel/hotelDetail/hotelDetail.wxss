@@ -304,3 +304,6 @@ page {
 .padding30{
     padding: 30rpx;
 }
+.pt20{
+    padding-top: 20rpx;
+}
