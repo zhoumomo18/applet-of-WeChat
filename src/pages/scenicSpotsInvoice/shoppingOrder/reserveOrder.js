@@ -3,25 +3,37 @@ let {ajax} = require('../../../utils/ajax.js')
 
 Page({
     data: {
-        curTickt: wx.getStorageSync('curTickt'),
+        ticketId:'',
         quantity: 1,
+        ticketInfo: '',
         form: {
             receiver: '',
             tel: '',
             idcard: ''
         }
     },
-    onLoad(){
+    onLoad(options){
+        this.setData({
+            ticketId: options.ticketId
+        })
+        this.getTicketByid()
         this.initValidate()
     },
-    onshow(){
-        let curTickt = wx.getStorageSync('curTickt')
-        this.setData({
-            curTickt: curTickt
-        })
-    },
-    onUnload(){
-        wx.removeStorageSync('curTickt')
+    // 获取当前票种详情
+    getTicketByid(){
+        let that = this,
+            requestConfig = {
+                method: 'GET',
+                url: '/ScenicSpotController/getbyid/'+that.data.ticketId,
+                successCallback: (res) => {
+                    if (res.code &&　res.code==200){
+                        that.setData({
+                            ticketInfo: res.data
+                        })
+                    }
+                }
+            }
+        ajax.request(requestConfig)
     },
     // 数量减少
     handleMinus(){

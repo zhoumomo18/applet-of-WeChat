@@ -21,7 +21,7 @@ Page({
                 pageNo: that.data.pageNo,
                 pageSize: that.data.pageSize,
                 callBack: (res) => {
-                    if (res.code==200){
+                    if (res.code && res.code==200){
                         that.setData({
                             scenicSpotList: that.data.scenicSpotList.concat(res.data.rows),
                             pageNo: pageNo+1

@@ -30,17 +30,6 @@ Page({
                             detailInfo: res.data,
                             imgUrls: res.data.imgInfo
                         })
-                        // 将景点须知和票种说明所需字段存入缓存
-                        let detailInfo = {
-                            "notice": res.data.notice,
-                            "opentime": res.data.opentime,
-                            "specialPopulationPolicyRemark": res.data.specialPopulationPolicyRemark,
-                            "otherremark": res.data.otherremark,
-                            "subscriberule": res.data.subscriberule,
-                            "returnticketrule": res.data.returnticketrule,
-                            "subscriberemark": res.data.subscriberemark
-                        }
-                        wx.setStorageSync('detailInfo', detailInfo)
 
                         // 解析文本
                         var scenicSpotIntro = res.data.remark;
