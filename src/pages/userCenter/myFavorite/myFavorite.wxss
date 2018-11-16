@@ -1,1 +1,50 @@
 @import "../../../components/list.wxss";
+@import "../../scenicSpotsInvoice/index.wxss";
+
+.container .ui-tabs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #E3E3E3;
+    background: #fff;
+}
+.container .ui_tab_item{
+    width: 50%;
+    text-align: center;
+    position: relative;
+    padding: 24rpx 0;
+    font-size: 28rpx;
+    color: #666666;
+    font-weight: bold;
+}
+.ui-tab_active::after{
+    content: '';
+    width: 30rpx;
+    height: 6rpx;
+    background: #FFA819;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.p-list{
+    background: #fff;
+}
+.ui-box-l{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.ui-label-txt{
+    font-size: 24rpx;
+    color: #999999;
+}
+.ui-box .ui-num{
+    display: flex;
+    align-items: center;
+}
+.location_icon{
+    width: 20rpx;
+    height: 27rpx;
+    margin-right: 10rpx;
+}

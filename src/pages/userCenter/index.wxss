@@ -8,7 +8,7 @@
     padding: 0 30rpx;
     display: flex;
     align-items: center;
-    margin-bottom: 30rpx;
+    margin-bottom: 20rpx;
 }
 .container .head-img .my-img{
     width: 160rpx;
@@ -44,18 +44,23 @@
     width: 32rpx;
     height: 32rpx;
 }
-.ui-cont{
+.ui-cont-top{
     background: #fff;
-    padding: 0 28rpx 0 34rpx;
+    padding: 0 30rpx;
+    margin-bottom: 20rpx;
 }
-.ui-cont .ui-cell_access{
+.ui-cell-bot{
+    padding: 0 30rpx;
+    background: #fff;
+}
+.ui-cell_access{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 142rpx;
     border-bottom: 1rpx solid #F0F4F7;
 }
-.ui-cont .ui-cell_access .icon{
+.ui-cell_access .icon{
     width: 48rpx;
     height: 48rpx;
     margin-right: 30rpx;
@@ -63,6 +68,10 @@
 .ui-cell__bd{
     display: flex;
     align-items: center;
+}
+.arrow_right{
+    width: 13rpx;
+    height: 22rpx;
 }
 
 .ui-overlay{

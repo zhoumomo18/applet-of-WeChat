@@ -7,7 +7,7 @@ Page({
         // 判断入口。从详情页进入有立即预定按钮，否则无按钮
         let isShow = (e.source == 'detail') ? true: false
         this.setData({
-            isShow: !isShow
+            isShow: isShow
         })
     },
     onshow(){

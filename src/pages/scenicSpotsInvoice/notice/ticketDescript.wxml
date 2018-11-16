@@ -15,5 +15,7 @@
         <view class="text-title">预定须知</view>
         <view class="text-desp">{{detailInfo.subscriberemark}}</view>
     </view>
-    <view class="bott-btn" wx:if="{{isShow}}">立即预定</view>
+    <navigator class="bott-btn" hover-class="none"
+        url="../shoppingOrder/reserveOrder"
+        wx:if="{{isShow}}">立即预定</navigator>
 </view>

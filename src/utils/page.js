@@ -19,7 +19,7 @@ let commonMethod = {
             method: 'GET',
             publicUrlType: 1,
             url: '/ScenicSpotController/getall',
-            params: params,
+            data: params,
             successCallback: action,
             errorCallback: action
         }

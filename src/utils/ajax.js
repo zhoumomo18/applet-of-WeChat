@@ -13,8 +13,8 @@ let ajax = {
     error_resp: function (response, errorCallback) {
         if (!response) {
             wx.showToast({
-                title: '系统错误',
-                icon: 'loading'
+                title: '系统错误，请联系管理员',
+                icon: 'none'
             });
             if (errorCallback instanceof Function) {
                 errorCallback && errorCallback(response);
@@ -23,8 +23,8 @@ let ajax = {
             // 登录超时
             if (response.code === 400 || response.code === 401) {
                 wx.showToast({
-                    title: '登录超时',
-                    icon: 'loading'
+                    title: '登录超时，请重新登录',
+                    icon: 'none'
                 })
                 // wx.clearStorageSync()
                 wx.redirectTo({
@@ -32,8 +32,8 @@ let ajax = {
                 })
             } else if (response.code === 406){
                 wx.showToast({
-                    title: '登录超时',
-                    icon: 'loading'
+                    title: '登录超时，请重新登录',
+                    icon: 'none'
                 })
                 // wx.clearStorageSync()
                 wx.redirectTo({

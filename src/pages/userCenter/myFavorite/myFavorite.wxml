@@ -1,15 +1,58 @@
 <view class="container">
-    <import src="../../../components/list.wxml" />
-    <view class="ui-content clear">
-      <view class="list left-list">
-        <block wx:for="{{favorateList}}" wx:key="">
-          <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==0}}"></template>
-        </block>
-      </view>
-      <view class="list right-list">
-        <block wx:for="{{favorateList}}" wx:key="">
-          <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==1}}"></template>
-        </block>
+  <view class="ui-tabs">
+    <view class="ui_tab_item {{curIndex == 0 ? 'ui-tab_active':''}}" 
+      bindtap="getProductDetail" data-index="0">攻略</view>
+    <view class="ui_tab_item {{curIndex == 1 ? 'ui-tab_active':''}}" 
+      bindtap="getProductDetail" data-index="1">酒店</view>
+  </view>
+
+  <view class="tab-cont">
+    <view  class="tab-cont-item" wx:if="{{curIndex == 0}}">
+      <import src="../../../components/list.wxml" />
+      <view class="ui-content clear">
+        <view class="list left-list">
+          <block wx:for="{{favorateList}}" wx:key="">
+            <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==0}}"></template>
+          </block>
+        </view>
+        <view class="list right-list">
+          <block wx:for="{{favorateList}}" wx:key="">
+            <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==1}}"></template>
+          </block>
+        </view>
       </view>
     </view>
+    <view  class="tab-cont-item" wx:if="{{curIndex == 1}}">
+      <view class="p-list">
+        <navigator class="ui-item" url="" hover-class="none">
+          <view class="ui-image"><image src="/assets/images/tooopen_sy_143912755726.jpg" /></view>
+          <view class="ui-box">
+            <view class="ui-box-l">
+              <view class="ui-title ellipsis">上海来来大酒店</view>
+              <view class="ui-label-txt">豪华型</view>
+              <view class="ui-num ellipsis">
+                <image class="location_icon" src="/assets/images/location2.png" />沱江镇凤凰县仙剑路1号</view>
+            </view>
+            <view class="ui-box-r">
+              <view class="ui-price"><text class="m-color">￥200</text>起</view>
+            </view>
+          </view>
+        </navigator>
+        <navigator class="ui-item" url="" hover-class="none">
+          <view class="ui-image"><image src="/assets/images/tooopen_sy_143912755726.jpg" /></view>
+          <view class="ui-box">
+            <view class="ui-box-l">
+              <view class="ui-title ellipsis">上海来来大酒店</view>
+              <view class="ui-label-txt">豪华型</view>
+              <view class="ui-num ellipsis">
+                <image class="location_icon" src="/assets/images/location2.png" />沱江镇凤凰县仙剑路1号</view>
+            </view>
+            <view class="ui-box-r">
+              <view class="ui-price"><text class="m-color">￥200</text>起</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
 </view>

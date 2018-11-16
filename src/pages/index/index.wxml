@@ -1,22 +1,24 @@
 <!--index.wxml-->
 <view class="container">
-    <!--<swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{imgUrls}}" wx:key="img">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
+        autoplay="autoplay">
+        <block wx:for="{{adList}}" wx:key="img">
+          <navigator hover-class="none" url="{{item.linkurl}}">
             <swiper-item>
-            <image src="{{item}}" class="slide-image" width="100%" height="100%"/>
+              <image src="{{imagePrefix}}{{item.photo}}" class="slide-image" width="100%" height="100%"/>
             </swiper-item>
+          </navigator>
         </block>
-    </swiper>-->
-    <view class="banner">
+    </swiper>
+    <!--<view class="banner">
       <navigator url="{{adList.linkurl}}" hover-class="none">
         <image src="{{adList.photo}}" class="slide-image" width="100%" height="100%"/>
       </navigator>
-    </view>
+    </view>-->
     <view class="ui-grids">
       <block wx:for="{{moduleList}}" wx:for-index="idx" wx:key="module" wx:if="{{idx<4}}">
         <navigator url="{{item.linkUrl}}" class="grid" hover-class="none">
-            <view class="ui_grid-icon"><image src="{{item.icon}}" /></view>
+            <view class="ui_grid-icon"><image src="{{imagePrefix}}{{item.icon}}" /></view>
             <view class="ui_grid-label">{{item.name}}</view>
         </navigator>
       </block>

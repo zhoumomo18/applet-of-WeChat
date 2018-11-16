@@ -14,26 +14,35 @@
         </view>
     </view>
     <view class="ui-cont">
-        <view class="ui-cell_access">
-            <view class="ui-cell__bd">
-                <image class="icon" src="/assets/images/u_order_icon.png" />
-                <text>我的订单</text>
+        <view class="ui-cont-top">
+            <navigator url="./userInfo/userInfo" hover-class="none" class="ui-cell_access">
+                <view class="ui-cell__bd">
+                    <image class="icon" src="/assets/images/u_info_icon.png" />
+                    <text>我的资料</text>
+                </view>
+                <image class="arrow_right" src="/assets/images/user_arrow.png" />
+            </navigator>
+            <view class="ui-cell_access">
+                <view class="ui-cell__bd">
+                    <image class="icon" src="/assets/images/u_order_icon.png" />
+                    <text>我的订单</text>
+                </view>
+                <image class="arrow_right" src="/assets/images/user_arrow.png" />
             </view>
-            <view class="ui-cell__ft_in-access"></view>
+            <navigator url="./myFavorite/myFavorite" hover-class="none" class="ui-cell_access">
+                <view class="ui-cell__bd">
+                    <image class="icon" src="/assets/images/u_fav_icon.png" />
+                    <text>我的收藏</text>
+                </view>
+                <image class="arrow_right" src="/assets/images/user_arrow.png" />
+            </navigator>
         </view>
-        <navigator url="./myFavorite/myFavorite" hover-class="none" class="ui-cell_access">
-            <view class="ui-cell__bd">
-                <image class="icon" src="/assets/images/u_fav_icon.png" />
-                <text>我的收藏</text>
-            </view>
-            <view class="ui-cell__ft_in-access"></view>
-        </navigator>
-        <view class="ui-cell_access" bindtap="showDialModal">
+        <view class="ui-cell_access ui-cell-bot" bindtap="showDialModal">
             <view class="ui-cell__bd">
                 <image class="icon" src="/assets/images/u_kefu_icon.png" />
                 <text>客服</text>
             </view>
-            <view class="ui-cell__ft_in-access"></view>
+            <image class="arrow_right" src="/assets/images/user_arrow.png" />
         </view>
     </view>
 
