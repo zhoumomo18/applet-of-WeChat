@@ -4,7 +4,7 @@
         <swiper autoplay="true">
             <block wx:for="{{imgUrls}}" wx:key="img">
                 <swiper-item>
-                <image src="{{item.src}}" class="slide-image" width="100%" height="100%"/>
+                <image src="{{imagePrefix}}{{item.src}}" class="slide-image" width="100%" height="100%"/>
                 </swiper-item>
             </block>
         </swiper>
@@ -53,7 +53,7 @@
                                 <navigator class="ticket-intro" url="../notice/ticketDescript?source=detail" hover-class="none">
                                     票种说明 <image src="/assets/images/arrow_right.png" />
                                 </navigator>
-                                <navigator class="order-btn" url="../shoppingOrder/reserveOrder" hover-class="none">
+                                <navigator class="order-btn" url="../shoppingOrder/reserveOrder" hover-class="none" bindtap="selTicket" data-index="{{index}}">
                                     预定
                                 </navigator>
                             </view>

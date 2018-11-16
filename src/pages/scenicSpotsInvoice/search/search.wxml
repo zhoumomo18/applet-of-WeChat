@@ -21,7 +21,7 @@
     <view class="ui-list" wx:else>
         <block wx:for="{{scenicSpotList}}" wx:key="item">
             <navigator class="ui-item" url="../detail/detail?id={{item.id}}" hover-class="none">
-                <view class="ui-image"><image src="{{item.img}}" /></view>
+                <view class="ui-image"><image src="{{imagePrefix}}{{item.img}}" /></view>
                 <view class="ui-box">
                     <view class="ui-box-l">
                         <view class="ui-title ellipsis">{{item.name}}</view>

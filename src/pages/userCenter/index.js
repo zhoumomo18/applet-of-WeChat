@@ -16,7 +16,6 @@ Page({
             requestConfig = {
                 method: 'GET',
                 url: '/constumer/getbyopenid',
-                publicUrlType: 2,
                 successCallback: (res) => {
                     if (res.code == 200){
                         that.setData({
@@ -50,7 +49,6 @@ Page({
             requestConfig = {
                 method: 'PUT',
                 url: '/constumer/updatenickname',
-                publicUrlType: 2,
                 data: {
                     nickName: e.detail.value
                 },

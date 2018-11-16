@@ -24,14 +24,21 @@
     height: 32rpx;
 }
 .ui-list{
-    margin-top: 43rpx;
+    margin-top: 13rpx;
 }
-.ui-list .ui-item{
-    padding: 0 30rpx;
+.ui-item{
+    padding: 30rpx;
     box-sizing: border-box;
     display: flex;
     position: relative;
-    margin-bottom: 62rpx;
+}
+.ui-item::after{
+    content: "";
+    border-top: 1rpx solid #F3F3F3;
+    position: absolute;
+    left: 30rpx;
+    right: 30rpx;
+    bottom: 0;
 }
 .ui-image{
     width: 200rpx;
@@ -77,5 +84,9 @@
     font-size: 40rpx;
 }
 .m-color{
+    color: #FFA819;
+}
+.m-text{
+    font-size: 32rpx;
     color: #FFA819;
 }

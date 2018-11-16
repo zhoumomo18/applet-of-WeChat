@@ -1,7 +1,9 @@
+const app = getApp()
 let {ajax} = require('../../utils/ajax.js')
 let {commonMethod} = require('../../utils/page.js')
 Page({
     data: {
+        imagePrefix: app.globalData.imgUrlPath,
         name: '',
         pageNo: 1,
         pageSize: 10,

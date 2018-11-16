@@ -1,3 +1,4 @@
+const app = getApp()
 let {ajax} = require('../../../utils/ajax.js')
 let WxParse = require('../../../wxParse/wxParse.js');//在使用的View中引入WxParse模块
 let QQMapWX = require('../../../utils/qqmap-wx-jssdk.js')  //引入获得地址的js文件
@@ -6,6 +7,7 @@ let demo = new QQMapWX({
 })
 Page({
     data: {
+        imagePrefix: app.globalData.imgUrlPath,
         imgUrls: [],
         curIndex: 0,
         detailInfo: ''
@@ -89,5 +91,11 @@ Page({
                })
             }
         });
+    },
+    selTicket(e){
+        console.log(e)
+        let index =  e.target.dataset.index,
+            curTickt = this.data.detailInfo.ticketList[index]
+        wx.setStorageSync('curTickt', curTickt)
     }
 })

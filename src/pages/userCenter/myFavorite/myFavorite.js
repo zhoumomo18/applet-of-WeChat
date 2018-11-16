@@ -5,7 +5,8 @@ Page({
         baseUrl: app.globalData.imgUrlPath,
         pageNo: 1,
         pageSize: 10,
-        favorateList:[]
+        favorateList:[],
+        curIndex: 0
     },
 
     onLoad: function(){
@@ -32,6 +33,14 @@ Page({
                 }
             }
         ajax.request(requestConfig)
+    },
+    //切换对应的列表
+    getProductDetail: function(e){
+        var curSelected = e.target.dataset.index;
+
+        this.setData({
+            curIndex: curSelected
+        });
     },
     onReachBottom: function(){
         this.getFavorateList()

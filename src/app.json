@@ -1,12 +1,12 @@
 {
   "pages": [
+    
     "pages/login/index",
     "pages/index/index",
     "pages/index/strategy/index",
     "pages/index/strategy/detail",
     
     "pages/scenicSpotsInvoice/index",
-    "pages/scenicSpotsInvoice/scenicSpotsDetail/detail",
     "pages/scenicSpotsInvoice/search/search",
     "pages/scenicSpotsInvoice/shoppingOrder/reserveOrder",
     "pages/scenicSpotsInvoice/notice/ticketDescript",
@@ -15,6 +15,7 @@
     "pages/scenicSpotsInvoice/datePicker/datePicker",
 
     "pages/userCenter/index",
+    "pages/userCenter/userInfo/userInfo",
     "pages/userCenter/myFavorite/myFavorite"
   ],
   "window": {

@@ -4,7 +4,7 @@ let {ajax} = require('../../utils/ajax.js')
 
 Page({
   data: {
-    baseUrl: app.globalData.imgUrlPath,
+    imagePrefix: app.globalData.imgUrlPath,
     imgUrls:'/assets/images/banner.png',
     moduleList: [],
     adList: ''
@@ -21,8 +21,9 @@ Page({
         url: '/adviertisement/getall?type=1',
         successCallback: (res) => {
           if (res.code==200){
+            console.log(res.data)
             that.setData({
-              adList: res.data[0]
+              adList: res.data
             })
           }
         }
@@ -36,11 +37,21 @@ Page({
         method: 'GET',
         url: '/module/getallroleauthority',
         successCallback: (res) => {
-          if (res.code==200){
+          if (res.code && res.code==200){
             that.setData({
               moduleList: res.data
             })
+          } else {
+            wx.showToast({
+                title: '请求失败',
+                icon: 'loading'
+            })
           }
+        },
+        errorCallback: () => {
+          wx.showLoading({
+            title: '请求失败'
+          })
         }
       }
     ajax.request(requestConfig)
