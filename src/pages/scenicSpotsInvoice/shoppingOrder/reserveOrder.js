@@ -14,7 +14,7 @@ Page({
     },
     onLoad(options){
         this.setData({
-            ticketId: options.ticketId
+            ticketId: options.id
         })
         this.getTicketByid()
         this.initValidate()
@@ -28,7 +28,7 @@ Page({
                 successCallback: (res) => {
                     if (res.code &&　res.code==200){
                         that.setData({
-                            ticketInfo: res.data
+                            curTickt: res.data
                         })
                     }
                 }
