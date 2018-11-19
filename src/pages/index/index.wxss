@@ -21,10 +21,12 @@
 .ui-grids{
   width: 100%;
   display: flex;
-  margin: 23rpx 0 27rpx;
+  flex-wrap: wrap;
+  margin-bottom: 26rpx;
 }
 .ui-grids .grid{
-  flex: 1;
+  width: 25%;
+  margin-top: 26rpx;
 }
 .ui-grids .ui_grid-icon{
   width: 88rpx;

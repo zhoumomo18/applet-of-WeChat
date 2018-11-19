@@ -16,7 +16,7 @@
       </navigator>
     </view>-->
     <view class="ui-grids">
-      <block wx:for="{{moduleList}}" wx:for-index="idx" wx:key="module" wx:if="{{idx<4}}">
+      <block wx:for="{{moduleList}}" wx:for-index="idx" wx:key="module" wx:if="{{idx<8}}">
         <navigator url="{{item.linkUrl}}" class="grid" hover-class="none">
             <view class="ui_grid-icon"><image src="{{imagePrefix}}{{item.icon}}" /></view>
             <view class="ui_grid-label">{{item.name}}</view>

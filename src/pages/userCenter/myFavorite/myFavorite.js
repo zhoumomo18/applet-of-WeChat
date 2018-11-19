@@ -8,7 +8,6 @@ Page({
         favorateList:[],
         curIndex: 0
     },
-
     onLoad: function(){
         this.getFavorateList()
     },
@@ -25,10 +24,12 @@ Page({
                 },
                 successCallback: (res) => {
                     if (res.code==200){
-                        that.setData({
-                            favorateList: that.data.favorateList.concat(res.data.rows),
-                            pageNo: pageNo+1
-                        })
+                        if (pageNo < res.data.totalPage+1){
+                            that.setData({
+                                favorateList: that.data.favorateList.concat(res.data.rows),
+                                pageNo: pageNo+1
+                            })
+                        }
                     }
                 }
             }

@@ -24,7 +24,7 @@ Page({
         let that = this,
             requestConfig = {
                 method: 'GET',
-                url: '/ScenicSpotController/getbyid/'+that.data.ticketId,
+                url: '/ticket/getbyid/'+that.data.ticketId,
                 successCallback: (res) => {
                     if (res.code &&　res.code==200){
                         that.setData({

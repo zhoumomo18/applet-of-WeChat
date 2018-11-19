@@ -22,10 +22,12 @@ Page({
                 pageSize: that.data.pageSize,
                 callBack: (res) => {
                     if (res.code && res.code==200){
-                        that.setData({
-                            scenicSpotList: that.data.scenicSpotList.concat(res.data.rows),
-                            pageNo: pageNo+1
-                        })
+                        if (pageNo < res.data.currentPage+1){
+                            that.setData({
+                                scenicSpotList: that.data.scenicSpotList.concat(res.data.rows),
+                                pageNo: pageNo+1
+                            })
+                        }
                     } else {
                         wx.showToast({
                             title: '请求失败',

@@ -13,6 +13,10 @@ Page({
     this.getAdList()
     this.getModuleList()
   },
+  onShow(){
+    this.getAdList()
+    this.getModuleList()
+  },
   // 获取广告图
   getAdList(){
     let that = this,
@@ -20,8 +24,7 @@ Page({
         method: 'GET',
         url: '/adviertisement/getall?type=1',
         successCallback: (res) => {
-          if (res.code==200){
-            console.log(res.data)
+          if (res.code && res.code==200){
             that.setData({
               adList: res.data
             })

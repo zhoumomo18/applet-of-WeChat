@@ -15,6 +15,10 @@ Page({
         this.getStrategyList()
     },
     onShow: function(){
+        this.setData({
+            strategyList:[]
+        })
+        this.getColumnList()
         this.getStrategyList()
     },
     // 获取栏目列表
@@ -25,7 +29,6 @@ Page({
                 url: '/column/getall',
                 successCallback: (res) => {
                     if (res.code==200){
-                        console.log(res)
                         that.setData({
                             columnList: res.data
                         })
@@ -48,10 +51,12 @@ Page({
                 },
                 successCallback: (res) => {
                     if (res.code==200){
-                        that.setData({
-                            strategyList: that.data.strategyList.concat(res.data.rows),
-                            pageNo: pageNo+1
-                        })
+                        if (pageNo < res.data.totalPage+1) {
+                            that.setData({
+                                strategyList: that.data.strategyList.concat(res.data.rows),
+                                pageNo: pageNo+1
+                            })
+                        }
                     }
                 },
                 errorCallBack: () => {
