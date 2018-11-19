@@ -57,7 +57,7 @@
         </view>
         <view class="ui-bottom-fixed">
             <view class="ui-bottom-inner section_flex_sp">
-                <view class="pay-total">应付金额：<text>￥</text><text>0</text></view>
+                <view class="pay-total">应付金额：<text>￥</text><text>{{curTickt.price*quantity}}</text></view>
                 <button class="action-btn" form-type="submit" hover-class="none">立即预定</button>
             </view>
         </view>
