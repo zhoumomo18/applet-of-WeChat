@@ -4,6 +4,7 @@ Page({
     data: {
         canUseEdit: true,
         showMadal: false,
+        showEditBtn: true,
         userInfo: ''
     },
     onLoad: function(){
@@ -39,7 +40,8 @@ Page({
     // 点击编辑图标
     handleEditDisable(){
         this.setData({
-            canUseEdit: !this.data.canUseEdit
+            canUseEdit: !this.data.canUseEdit,
+            showEditBtn: !this.data.showEditBtn
         })
     },
     // 保存编辑昵称
@@ -47,15 +49,19 @@ Page({
         let that = this,
             userInfo = that.data.userInfo,
             requestConfig = {
-                method: 'PUT',
+                method: 'POST',
                 url: '/constumer/updatenickname',
                 data: {
                     nickName: e.detail.value
                 },
                 successCallback: (res) => {
-                    if (res.code == 200){
+                    if (res.code && res.code == 200){
                         userInfo.nickName = e.detail.value
                         wx.setStorageSync('userinfo', userInfo)
+                        that.setData({
+                            canUseEdit: !that.data.canUseEdit,
+                            showEditBtn: !that.data.showEditBtn
+                        })
                     }
                 }
             }
