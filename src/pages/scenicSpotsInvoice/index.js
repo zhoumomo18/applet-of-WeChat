@@ -7,9 +7,17 @@ Page({
         name: '',
         pageNo: 1,
         pageSize: 10,
-        scenicSpotList: []
+        scenicSpotList: [],
+        loading: app.globalData.loading,  // loading
     },
     onLoad(){
+        // this.getScenicSpotList()
+    },
+    onShow(){
+        this.setData({
+            pageNo: 1,
+            scenicSpotList: []
+        })
         this.getScenicSpotList()
     },
     // 获取初始攻略列表
@@ -24,15 +32,13 @@ Page({
                     if (res.code && res.code==200){
                         if (pageNo < res.data.currentPage+1){
                             that.setData({
+                                'loading.loadingHidden': true,
                                 scenicSpotList: that.data.scenicSpotList.concat(res.data.rows),
                                 pageNo: pageNo+1
                             })
                         }
                     } else {
-                        wx.showToast({
-                            title: '请求失败',
-                            icon: 'loading'
-                        })
+                        app.showToast(that,'数据请求失败')
                     }
                 }
             }

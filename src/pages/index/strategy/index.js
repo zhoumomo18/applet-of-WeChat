@@ -11,12 +11,14 @@ Page({
         pageSize: 10
     },
     onLoad: function(){
-        this.getColumnList()
-        this.getStrategyList()
+        
     },
     onShow: function(){
         this.setData({
-            strategyList:[]
+            columnList:[],
+            strategyList:[],
+            pageNo: 1,
+            pageSize: 10
         })
         this.getColumnList()
         this.getStrategyList()

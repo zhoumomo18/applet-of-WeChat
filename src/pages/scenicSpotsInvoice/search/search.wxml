@@ -11,7 +11,7 @@
     </view>
 
     <view class="search-list" wx:if="{{!isShow}}">
-        <block wx:for="{{scenicSpotList}}" wx:key="item">
+        <block wx:for="{{searchList}}" wx:key="item">
             <view class="search-item" bindtap="chooseKeyName" data-name="{{item.name}}">
                 <text>{{item.name}}</text>
             </view>

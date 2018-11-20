@@ -8,6 +8,7 @@
             class="{{canUseEdit ? 'disable':''}}"
             placeholder="修改昵称" 
             disabled="{{canUseEdit}}"
+            focus="{{canUseEdit}}"
             bindblur="editNickname"
             bindconfirm="editNickname" />
             <image src="/assets/images/edit_icon.png" bindtap="handleEditDisable" />

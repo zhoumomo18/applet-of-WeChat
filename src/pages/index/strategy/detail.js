@@ -1,5 +1,6 @@
 const app = getApp()
 let {ajax} = require('../../../utils/ajax.js')
+let common = require('../../../utils/common.js')
 let WxParse = require('../../../wxParse/wxParse.js');//在使用的View中引入WxParse模块
 Page({
     data: {
@@ -24,7 +25,14 @@ Page({
                 successCallback: (res) => {
                     if (res.code==200){
                         imgUrls.push(that.data.imagePrefix+res.data.photo)
-                        console.log("需要预览的图片列表"+imgUrls);
+
+                        /* 
+                        * IOS系统不支持year-month-day格式。将格式转成year/month/day。
+                        * 否则在使用new Date(time)时会得到invalid date
+                        */
+                        let formatUpdate = res.data.updatedate.replace(/-/g, '/')                 
+                        res.data.actualDate = common.timeago(formatUpdate)
+                        
                         that.setData({
                             detailInfo: res.data,
                             imgUrls: imgUrls

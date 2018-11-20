@@ -2,10 +2,10 @@
 <view class="container">
     <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
         autoplay="autoplay">
-        <block wx:for="{{adList}}" wx:key="img">
-          <navigator hover-class="none" url="{{item.linkurl}}">
+        <block wx:for="{{adList}}" wx:key="img" wx:for-index="idx" wx:if="{{idx<1}}">
+          <navigator hover-class="none" url="{{item.linkurl}}" >
             <swiper-item>
-              <image src="{{imagePrefix}}{{item.photo}}" class="slide-image" width="100%" height="100%"/>
+              <image src="{{imagePrefix}}{{item.photo}}" class="slide-image" width="100%"  mode="widthFix" />
             </swiper-item>
           </navigator>
         </block>
@@ -27,27 +27,18 @@
     <view class="ui-hot-section">
       <text class="h-title">热门景点</text>
       <view class="h-top-fisrt">
-        <image class="h-top-img" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" />
+        <image class="h-top-img" src="{{imagePrefix}}{{hotsList[0].fileList[0].src}}" />
         <image class="level-img" src="../../assets/images/top1.png" />
       </view>
-      <view class="sm-title">凤凰神凤文化景区</view>
+      <view class="sm-title">{{hotsList[0].name}}"</view>
       <view class="ui-list">
-        <view class="ui-item">
+        <view class="ui-item" wx:for="{{hotsList}}" wx:for-index="idx" wx:key="item" wx:if="{{idx>1}}">
           <navigator url="" hover-class="none">
             <view>
-              <image class="h-top-img" src="../../assets/images/img2.png" />
-              <image class="level-img" src="../../assets/images/top2.png" />
+              <image class="h-top-img" src="{{item.fileList[0].src}}" />
+              <image class="level-img" src="../../assets/images/top{{idx}}.png" />
             </view>
-            <view class="h-name ellipsis">南长城</view>
-          </navigator>
-        </view>
-        <view class="ui-item">
-          <navigator url="" hover-class="none">
-            <view>
-              <image class="h-top-img" src="../../assets/images/img2.png" />
-              <image class="level-img" src="../../assets/images/top3.png" />
-            </view>
-            <view class="h-name ellipsis">一条很长的景区名称名一条很长的景区名称名</view>
+            <view class="h-name ellipsis">{{item.name}}</view>
           </navigator>
         </view>
       </view>

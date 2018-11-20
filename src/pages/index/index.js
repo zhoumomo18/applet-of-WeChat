@@ -7,11 +7,13 @@ Page({
     imagePrefix: app.globalData.imgUrlPath,
     imgUrls:'/assets/images/banner.png',
     moduleList: [],
-    adList: ''
+    adList: '',
+    hotsList:[]
   },
   onLoad(){
     this.getAdList()
     this.getModuleList()
+    this.getHotScenicSpots()
   },
   onShow(){
     this.getAdList()
@@ -43,6 +45,32 @@ Page({
           if (res.code && res.code==200){
             that.setData({
               moduleList: res.data
+            })
+          } else {
+            wx.showToast({
+                title: '请求失败',
+                icon: 'loading'
+            })
+          }
+        },
+        errorCallback: () => {
+          wx.showLoading({
+            title: '请求失败'
+          })
+        }
+      }
+    ajax.request(requestConfig)
+  },
+  // 获取热门景点
+  getHotScenicSpots(){
+    let that = this,
+      requestConfig = {
+        method: 'GET',
+        url: '/hotscenicspots/getall',
+        successCallback: (res) => {
+          if (res.code && res.code==200){
+            that.setData({
+              hotsList: res.data
             })
           } else {
             wx.showToast({

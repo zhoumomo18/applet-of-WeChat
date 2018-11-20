@@ -1,14 +1,14 @@
 <import src="/wxParse/wxParse.wxml"/> 
 <view class="container">
     <view class="banner">
-        <image src="{{imagePrefix}}{{detailInfo.photo}}" data-src="{{imagePrefix}}{{detailInfo.photo}}" bindtap="previewImage" />
+        <image mode="widthFix" src="{{imagePrefix}}{{detailInfo.photo}}" data-src="{{imagePrefix}}{{detailInfo.photo}}" bindtap="previewImage" />
     </view>
     <view class="ui-content">
         <view class="publisher-info clear"> 
             <image class="publisher-avator" src="{{detailInfo.headImage ? detailInfo.headImage:'/assets/images/avator.jpg'}}" />
             <view class="publisher-r">
                 <view class="publisher-name" wx:if="{{detailInfo.createuser}}">{{detailInfo.createuser}}</view>
-                <view class="publisher-time" wx:if="{{detailInfo.updatedate}}">{{detailInfo.updatedate}}</view>
+                <view class="publisher-time" wx:if="{{detailInfo.updatedate}}">{{detailInfo.actualDate}}</view>
             </view>
         </view>
         <view  class="desc-title">{{detailInfo.title}}</view>

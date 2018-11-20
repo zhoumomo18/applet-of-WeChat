@@ -8,10 +8,8 @@ Page({
         name: '',
         pageNo: 1,
         pageSize: 10,
-        scenicSpotList: []
-    },
-    onLoad(){
-        
+        scenicSpotList: [],
+        searchList: []
     },
     searchName(e){
         this.setData({
@@ -31,7 +29,7 @@ Page({
                 successCallback: (res) => {
                     if (res.code && res.code==200){
                         that.setData({
-                            scenicSpotList: res.data
+                            searchList: res.data
                         })
                     }
                 },
@@ -50,7 +48,7 @@ Page({
             name: e.currentTarget.dataset.name,
             isShow: true
         })
-        this.getKeyNameList()
+        this.searchList()
     },
     searchList(){
         let that = this,

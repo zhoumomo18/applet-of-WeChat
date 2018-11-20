@@ -29,3 +29,5 @@
         </block>
     </view>
 </view>
+
+<loading hidden="{{loading.loadingHidden}}">{{loading.content}}</loading>

@@ -9,6 +9,13 @@ Page({
         curIndex: 0
     },
     onLoad: function(){
+        // this.getFavorateList()
+    },
+    onShow: function(){
+        this.setData({
+            pageNo: 1,
+            favorateList:[]
+        })
         this.getFavorateList()
     },
     // 获取初始攻略列表
@@ -23,14 +30,24 @@ Page({
                     pageSize: that.data.pageSize
                 },
                 successCallback: (res) => {
-                    if (res.code==200){
+                    if (res.code && res.code==200){
                         if (pageNo < res.data.totalPage+1){
                             that.setData({
                                 favorateList: that.data.favorateList.concat(res.data.rows),
                                 pageNo: pageNo+1
                             })
+                            console.log(that.data.favorateList)
                         }
+                    } else {
+                        wx.showLoading({
+                            title: '请求失败'
+                        })
                     }
+                },
+                errorCallback:() => {
+                    wx.showLoading({
+                        title: '请求失败'
+                      })
                 }
             }
         ajax.request(requestConfig)

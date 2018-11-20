@@ -59,7 +59,15 @@ Page({
                     }
                 }
             }
-        ajax.request(requestConfig)
+        if (e.detail.value.length<2 || e.detail.value.length>24){
+            wx.showToast({
+                title: '昵称长度为2-24个字符',
+                icon: 'none'
+            })
+        } else {
+            ajax.request(requestConfig)
+        }
+        
     },
     // 打开客服弹窗
     showDialModal(){
