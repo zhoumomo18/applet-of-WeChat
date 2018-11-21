@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "美食",
+    "navigationBarBackgroundColor": "#fff",
+    "usingComponents": {
+        "listItem": "../../../components/foods/listItem/listItem"
+    }
+}

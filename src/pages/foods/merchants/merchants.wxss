@@ -1,0 +1,271 @@
+view{
+    overflow:initial;
+}
+.bgf3f3{
+    background: #f3f3f3;    
+}
+.fixedbox{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+.bgfff{
+    background: #fff;
+}
+.foods-banner{
+    width: 100%;
+    height: 450rpx; 
+    position: relative;
+}
+.foods-banner image{
+    width: 100%;
+    height: 100%;
+}
+.foods-banner-tag{
+    position: absolute;
+    bottom: 20rpx;
+    right: 37rpx;
+    z-index: 2;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    padding: 8rpx 15rpx;
+    color: #FFFFFF;
+    background: rgba(63,63,63,0.4);
+    border-radius: 18rpx;
+}
+.pad30{
+    padding: 0 30rpx;
+}
+.foods-title{
+    font-size: 34rpx;
+    line-height: 48rpx;
+    padding-top: 16rpx;
+    padding-bottom: 5rpx;
+    color: #333333;
+    font-weight: bold;
+}
+.line-one{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    display:-webkit-box;
+}
+.foods-pay{
+   font-size: 24rpx;
+   color: #999999; 
+   margin-right: 25rpx;
+}
+.foods-msgbox{
+    height: 48rpx;
+}
+.foods-pay .orange{
+    font-size: 34rpx;
+    color: #FFA819;
+}
+.foods-remand{
+    font-size: 24rpx;
+    line-height: 24rpx;
+    padding: 5rpx 8rpx;
+    border: 1rpx solid #FFA819;
+    color: #FFA819;
+}
+.foods-border{
+    border-bottom: 1rpx solid #E3E3E3;
+    padding-bottom: 16rpx;
+}
+.foods-tag{
+    font-size: 20rpx;
+    display: inline-block;
+    line-height: 20rpx;
+    padding:4rpx;
+    background: #E6E6E6;
+    border-radius: 4rpx;
+    color: #999;
+}
+.foods-column-box{
+    display:flex;
+    display: -webkit-flex;
+    padding: 30rpx 0;
+    justify-content: space-between;
+}
+.border-btm{
+    border-bottom: 1rpx solid #E3E3E3;
+}
+.left-block{
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: #666666;
+}
+.left-block image{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 12rpx;
+}
+.left-block .left-block-bold{
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333333;
+}
+.right-block image{
+    width: 16rpx;
+    height: 27rpx;
+}
+.mt20{
+    margin-top:20rpx;
+}
+.foods-slide{
+    padding-top:26rpx; 
+    padding-bottom:26rpx; 
+    height: 250rpx;
+    overflow-x: scroll;
+    white-space:nowrap;
+}
+.foods-slide .foods-slide-item{
+    background: #FAFAFA;
+    box-shadow: 0 0 5rpx 2rpx rgba(0,0,0,0.07);
+    width: 200rpx;
+    height: 250rpx;
+    margin-right: 20rpx;
+    display: inline-block; 
+}
+.foods-slide .foods-slide-item image {
+    width: 200rpx;
+    height: 155rpx; 
+}
+.foods-slide .foods-slide-item .foods-slide-item-title{
+    padding: 0 16rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #666666;
+}
+.foods-slide .foods-slide-item .foods-slide-item-price{
+    font-size: 34rpx;
+    padding: 0 16rpx;
+    color: #FFA819;
+}
+.over-hide{
+    width: 100%;
+    overflow-x: hidden;
+}
+.foods-scroll{
+    padding: 10rpx 0;
+    flex-flow:wrap;
+    width: 700rpx;
+    margin: 0 auto; 
+}
+.foods-scroll-item{
+    display: inline-block;
+    width: 320rpx;
+    height: 350rpx;
+    margin: 15rpx 15rpx;
+    background: #FAFAFA;
+    box-shadow: 0 0 5rpx 2rpx rgba(0,0,0,0.07);
+}
+.foods-scroll-item image{
+    width: 320rpx;
+    height: 258rpx;
+}
+.foods-scroll-item .foods-scroll-item-title{
+    font-size: 28rpx;
+    padding: 0 16rpx;
+    color: #666666;
+}
+.foods-scroll-item .foods-scroll-item-price{
+    font-size: 34rpx;
+    padding: 0 16rpx;
+    color: #FFA819;
+}
+.preview-modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 999991;
+    top:0;
+    left: 0;
+}
+.preview-modal .preview-modal-bg{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999991;
+    background: #000;
+}
+.preview-modal .preview-modal-con{
+    position: relative;
+    z-index: 999992;
+}
+.preview-modal .preview-modal-con .preview-modal-swiper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.preview-modal .preview-modal-con .preview-modal-swiper swiper{
+    width: 100%;
+    height: 1129rpx;
+}
+.preview-modal .preview-modal-con .preview-modal-swiper swiper .preview-modal-item{
+    width: 100%;
+    position: relative;
+    height: 691rpx;
+}
+.preview-modal .preview-modal-con .preview-modal-swiper swiper .preview-modal-item image{
+    width: 100%;
+    height: 100%;
+}
+.preview-modal-tag{
+    position: absolute;
+    bottom: 38rpx;
+    right: 38rpx;
+    z-index: 999993;
+    background: #FFA819;
+    border-radius: 18rpx;
+    line-height: 24rpx;
+    padding: 3rpx 15rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
+}
+.preview-modal-name{
+    padding: 14rpx 30rpx;
+    color: #fff;
+    font-size: 34rpx;
+    line-height: 48rpx;
+}
+.preview-modal-price{
+    padding: 0rpx 30rpx 16rpx;
+    font-size: 34rpx;
+    color: #FFA819; 
+    border-bottom: 1rpx solid #2F2F2F;
+}
+.preview-modal-remark{
+    padding: 15rpx 30rpx;
+    line-height: 34rpx;
+    font-size: 26rpx;
+    color: #fff;
+    font-weight: lighter;
+}
+.preview-modal-remark text{
+    font-size: 28rpx;
+    font-weight: bold;
+}
+.md5{
+    margin: 0 5rpx;
+}
+.fixdBox{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9
+}
+/* #manuList{
+    transition: all 0.5s ease-in-out;
+    -webkit-transition:  all 0.5s ease-in-out;
+} */

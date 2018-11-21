@@ -1,0 +1,24 @@
+<!--components/foods/listItem/listItem.wxml-->
+<view class='foods-item'>
+    <view class='foods-item-con' data-id='{{itemObj.id}}' bindtap='gotoDetail'>
+        <view class='foods-item-left'
+              style="{{itemObj.fileTitle && itemObj.fileTitle.src?'background:none':'background:#eee'}}">
+              <image wx:if="{{itemObj.fileTitle && itemObj.fileTitle.src}}" 
+                     src="{{imgUrlPath}}{{itemObj.fileTitle.src}}"></image>
+              </view>
+        <view class='foods-item-right'>
+            <view class='foods-item-title line-one'>{{itemObj.name || ''}}</view>
+            <view class='foods-item-pay'><text class='orange'>￥{{itemObj.averageConsume || '0.00'}}</text>/人</view>
+            <view class='foods-item-tip'>
+                <view class='foods-item-star orange'>推荐指数：{{itemObj.ratings || '0'}}</view>
+                <view class='foods-item-tip-right' wx:if="{{itemObj.foodGroupList && itemObj.foodGroupList.length}}">
+                    <text  
+                        class='foods-item-tag md5'
+                        wx:for="{{itemObj.foodGroupList}}" 
+                        wx:key="{{item.id}}"
+                        wx:if="{{index<3}}">{{item.name || ''}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

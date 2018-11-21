@@ -1,0 +1,111 @@
+<!--美食商家详情-->
+<view class='bgf3f3'>
+    <!-- banner -->
+    <view class='foods-banner' bindtap='previewImage'>
+        <image wx:if="{{infoObj.fileList && infoObj.fileList.length}}"
+               src='{{imgUrlPath}}{{infoObj.fileList[0].src}}'></image>
+        <view class='foods-banner-tag'>共{{infoObj.fileList.length || 0}}张</view>
+    </view>
+    <view class='pad30 bgfff'>
+        <view class='foods-title line-one'>{{infoObj.name}}</view>
+        <view class='foods-msgbox'>
+            <text class='foods-pay'><text class='orange'>￥{{infoObj.averageConsume || '0.00'}}</text>/人</text>
+            <text class='foods-remand'>推荐指数：{{infoObj.ratings || '0.0'}}</text>
+        </view>
+        <view class='foods-border'>
+            <view wx:for="{{infoObj.foodGroupList}}" 
+                    wx:key="{{item.id}}"
+                    wx:if="{{index<3}}"
+                    class='foods-tag md5'>{{item.name || ''}}</view>
+        </view>
+        <view class='foods-column-box border-btm'
+              wx:if="{{infoObj.address}}">
+            <view class='left-block line-one'>
+                <image src="../../../assets/images/foods/address-icon.png"></image>
+                <text class=''>{{infoObj.address}}</text>
+            </view>
+            <view class='right-block'><image src="../../../assets/images/foods/arrow-icon.png"></image></view>
+        </view>
+        <view class='foods-column-box'>
+            <view class='left-block line-one'>
+                <image src="../../../assets/images/foods/time-icon.png"></image>
+                <text class=''>营业时间：{{infoObj.openTime}}</text>
+            </view>
+        </view>
+    </view>
+    <!-- 横划特色菜菜单 -->
+    <view class='mt20 over-hide' wx:if="{{infoObj.specialDishesList && infoObj.specialDishesList.length}}">
+        <view class='pad30 bgfff'>
+            <view class='foods-column-box border-btm'>
+                <view class='left-block line-one'>
+                    <text class='left-block-bold'>特色菜</text>
+                </view>
+            </view>
+        </view>
+        <scroll-view class='foods-slide pad30 bgfff' 
+                     scroll-x
+                     wx:if="{{infoObj.specialDishesList && infoObj.specialDishesList.length}}">
+            <view class='foods-slide-item'
+                  wx:for="{{infoObj.specialDishesList}}"
+                  wx:key="{{item.id}}"
+                  data-id='{{item.id}}'
+                  data-index='{{index}}'
+                  data-type="1"
+                  bindtap='viewDetail'
+                  >
+                <image src='{{imgUrlPath}}{{item.fileTitle.src}}'></image>
+                <view class='foods-slide-item-title line-one'>{{item.name||''}}</view>
+                <view class='foods-slide-item-price line-one'>￥{{item.price}}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- 商家菜单 -->
+    <view class="bgfff mt20" id='manuList' wx:if="{{foodList && foodList.length>0}}">
+        <view class='pad30 bgfff'>
+            <view class='foods-column-box border-btm'>
+                <view class='left-block line-one'>
+                    <text class='left-block-bold'>商家菜单</text>
+                </view>
+            </view>
+        </view>
+        <scroll-view class='foods-scroll'
+                     wx:if="{{foodList && foodList.length>0}}">
+            <view class='foods-scroll-item'
+                  wx:for="{{foodList}}"
+                  wx:key="{{item.id}}"
+                  data-id='{{item.id}}'
+                  data-index='{{index}}'
+                  data-type="2"
+                  bindtap='viewDetail'>
+                <image src='{{imgUrlPath}}{{item.fileTitle.src}}'></image>
+                <view class='foods-scroll-item-title line-one'>{{item.name}}</view>
+                <view class='foods-scroll-item-price line-one'>￥{{item.price}}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- 预览菜品弹框 -->
+    <view class='preview-modal' 
+          wx:if="{{isShowModal}}"
+          style="padding-top:{{winHeight*0.06}}px;">
+        <view class='preview-modal-bg'></view>
+        <view class='preview-modal-con'>
+            <view class='preview-modal-swiper' bindtap='closeModal'>
+                <swiper current="{{currentSwiper}}" bindchange="changeCurrent">
+                    <swiper-item wx:for="{{swiperData}}"
+                                 wx:key="{{item.id}}"
+                                 bindtap='closeModal'>
+                        <view >
+                            <view class='preview-modal-item'>
+                                <image src='{{imgUrlPath}}{{item.fileTitle.src}}'></image>
+                                <view class='preview-modal-tag'>{{currentSwiper+1}}/{{swiperData.length}}</view>
+                            </view>
+                            <view class='preview-modal-name'>{{item.name}}</view>
+                            <view class='preview-modal-price'>￥{{item.price}}</view>
+                            <view class='preview-modal-remark'><text>美食简介：</text>{{item.remark}}</view>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+    </view>
+</view>

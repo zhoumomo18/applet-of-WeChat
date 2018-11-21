@@ -1,0 +1,39 @@
+<!--美食搜索页-->
+<view class='fd-list'>
+    <view class="fixedbox" 
+        style="{{isShowSelect && isShowSelect!=0?'height:100%;':'height:98rpx;'}}">
+        <!-- 底层遮罩 -->
+        <view wx:if="{{isShowSelect && isShowSelect!=0}}"
+              class='fd-bgbox'
+              data-key="0"
+              bindtap='switchModal'></view>
+        <!--搜索框-->
+        <view class="fd-search-box bgfff">
+            <view class="fd-search-con">
+                <input placeholder='商户名/关键词' 
+                       value="{{name}}" 
+                       focus="{{true}}"
+                       bindinput="inputName"
+                       bindconfirm='getFoodsList'></input>
+                <image class="fd-search-btn" 
+                       bindtap='searchData'
+                       src="../../../assets/images/foods/search-icon.png"/>
+            </view>    
+        </view>
+    </view>
+    <!-- 数据列表 -->
+    <scroll-view class='fd-data-list' 
+                 style="height:{{winHeight}}px"
+                 scroll-y="true"
+                 bindscrolltolower="loadMore">
+        <listItem wx:for="{{foodsList}}"
+                  wx:key="*this"
+                  itemObj="{{item}}"></listItem>
+        <view wx:if="{{foodsObjCount==0}}" 
+              class="bottom-txt">没有找到符合条件的商家</view>
+        <view wx:if="{{foodsList && foodsObjCount && foodsList.length==foodsObjCount}}" 
+              class="bottom-txt">没有更多了</view>
+    </scroll-view>
+</view>
+
+

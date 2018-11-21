@@ -1,0 +1,66 @@
+<!--美食列表-->
+<view class='fd-list'>
+    <view class="fixedbox" 
+        style="{{isShowSelect && isShowSelect!=0?'height:100%;':'height:178rpx;'}}">
+        <!-- 底层遮罩 -->
+        <view wx:if="{{isShowSelect && isShowSelect!=0}}" class='fd-bgbox'data-key="0"
+                  bindtap='switchModal'></view>
+        <!--搜索框-->
+        <view class="fd-search-box bgfff" bindtap='gotoSearch'>
+            <view class="fd-search-con">
+                <input placeholder='商户名/关键词' disabled="{{true}}"></input>
+                <image class="fd-search-btn" src="../../../assets/images/foods/search-icon.png"/>
+            </view>    
+        </view>
+        <!-- 筛选条件 -->
+        <view class='flex-box fd-sel-box bgfff'>  
+            <view class='fd-sel-item vertical-line'
+                  data-key="1"
+                  bindtap='switchModal'>菜系
+                <image wx:if="{{isShowSelect==1}}"                     
+                       src='../../../assets/images/foods/open-icon.png'></image>
+                <image wx:else src='../../../assets/images/foods/close-icon.png'></image>
+            </view>
+            <view class='fd-sel-item'
+                  data-key="2"
+                  bindtap='switchModal'>智能
+                <image wx:if="{{isShowSelect==2}}" src='../../../assets/images/foods/open-icon.png'></image>
+                <image wx:else src='../../../assets/images/foods/close-icon.png'></image>
+            </view>
+        </view>
+        <!-- 筛选条件列表 -->
+        <scroll-view wx:if="{{isShowSelect && isShowSelect!=0}}" 
+                     class='fd-sel-list' 
+                     scroll-y="true">
+            <block wx:if="{{isShowSelect==1}}">
+                <view wx:for="{{cookList}}" 
+                      wx:key="{{item.id}}"
+                      data-id='{{item.id}}'
+                      data-type='1'
+                      bindtap='selectOption'
+                      class="{{cookSel==item.id?'fd-sel-list-item orange':'fd-sel-list-item'}}">{{item.name}}</view>
+            </block>
+            <block wx:elif="{{isShowSelect==2}}">
+                <view class="{{aiSel==item.value?'fd-sel-list-item orange':'fd-sel-list-item'}}"
+                      wx:for="{{aiList}}"
+                      wx:key="{{item.value}}"
+                      data-id='{{item.value}}'
+                      data-type='2'
+                      bindtap='selectOption'
+                      data-type='2'>{{item.label}}</view>
+            </block>
+        </scroll-view>
+    </view>
+
+    <!-- 数据列表 -->
+    <scroll-view class='fd-data-list' 
+                 style="height:{{winHeight}}px"
+                 scroll-y="true"
+                 bindscrolltolower="loadMore">
+        <listItem wx:for="{{foodsList}}"
+                  wx:key="{{item.idu}}"
+                  itemObj="{{item}}"></listItem>
+        <view wx:if="{{foodsList && foodsObjCount && foodsList.length==foodsObjCount}}" 
+              class="bottom-txt">没有更多了</view>
+    </scroll-view>
+</view>

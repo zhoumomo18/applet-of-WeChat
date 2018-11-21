@@ -1,0 +1,58 @@
+<!--酒店列表-->
+<view>
+    <view class='bl-top-box' style="{{showModal?'height:100%;':''}}">
+        <view  class='overbox'>
+            <view class='bl-top-content'>
+                <view class='bl-top-box-point line-two'>
+                    <text>凤凰古</text>
+                </view>
+                <view class='bl-top-box-time'>
+                    <view class='bl-top-box-timetxt'>住<text>10-28</text></view>
+                    <view class='bl-top-box-timetxt mtlitle'>离<text>10-28</text></view>
+                </view>
+                <view class='bl-top-box-search'>
+                    <view class='bl-top-box-search-icon'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
+                    <input placeholder='酒店/关键字' class='bl-top-box-search-ipt'></input>
+                </view>
+            </view>
+            <view class='bl-top-screen'>
+                <view class='bl-top-screen-item'>价格
+                    <image class='bl-top-screen-icon1' src="../../../assets/images/hotel/screen-icon-top.png"></image>
+                    <!-- <image class='bl-top-screen-icon1' src="../../../assets/images/hotel/screen-icon-btm.png"></image> -->
+                </view>
+                <view class='bl-top-screen-item'>等级
+                    <!-- <image class='bl-top-screen-icon2' src="../../../assets/images/foods/close-icon.png"></image> -->
+                    <image class='bl-top-screen-icon2' src="../../../assets/images/hotel/screen-icon-open.png"></image></view>
+            </view>
+        </view>
+        
+        <!-- 等级条件列表 -->
+        <!-- 底层遮罩 -->
+        <view wx:if="{{showModal}}" class='fd-bgbox' bindtap=''></view>
+        <block wx:if="{{showModal}}">
+            <view class='fd-sel-list' 
+                    scroll-y="true">
+                <view wx:for="{{levelList}}" 
+                    wx:key="{{item.value}}"
+                    data-id='{{item.value}}'
+                    class="fd-sel-list-item orange">{{item.label}}</view>
+            </view>
+        </block>
+        
+    </view>
+    <scroll-view class='bl-list'>
+        <view class='bl-list-item'>
+            <view class='bl-list-item-left'><image></image></view>
+            <view class='bl-list-item-right'>
+                <view class='bl-list-item-title'>四季</view>  
+                <view class='bl-list-item-type'>豪华型</view> 
+                <view class='bl-list-item-address'>地址地址</view>
+                <view class='bl-list-item-price'><text class="orange small bold">￥</text><text class='big orange bold'>350.00</text><text class='small'>起</text></view>
+            </view>
+        </view>
+        <view class='no-more'>没有更多了</view>
+    </scroll-view>
+    
+    
+
+</view>

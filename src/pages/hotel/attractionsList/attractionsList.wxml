@@ -1,0 +1,13 @@
+<!--景点列表-->
+<view>
+    <!-- 搜索框 -->
+    <view class='atn-search-box'>
+        <view class='atn-search-box-icon'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
+        <input class='atn-search-box-ipt' placeholder='景点名称'></input>
+    </view>
+    <scroll-view class='atn-search-list' style="height:{{winHeight}}px">
+        <view class='ht-atn-item border-btm'>asdasdasd</view>
+        <view class='ht-atn-item active'>asdasdasd</view>
+        <view class='no-more'>没有更多了</view>
+    </scroll-view>
+</view>

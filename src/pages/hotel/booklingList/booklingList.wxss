@@ -1,0 +1,214 @@
+/* src/pages/hotel/booklingList/booklingList.wxss */
+.bl-top-box{
+    position: fixed;
+    box-sizing: border-box;
+    top:0;
+    left: 0;
+    width:100%;
+}
+.bl-top-content{
+    width: 690rpx;
+    padding: 20rpx 0;
+    box-sizing: border-box;
+    height: 120rpx;
+    background: #F1F1F1;
+    border-radius: 8rpx;
+    margin:0 auto;
+    display:flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+}
+.bl-top-box-point{
+    width: 27.8%;
+    box-sizing: border-box;
+    padding: 0 10rpx;
+    border-right: 1rpx solid #AAAAAA;
+    font-size: 28rpx;
+    color: #333333;
+    text-align: center;
+    font-weight: bold;
+    line-height: 50rpx;
+    position: relative;
+}
+.bl-top-box-point text{
+    position: relative;
+    top:50%;
+    display: block;
+    transform: translateY(-60%);
+    -webkit-transform: translateY(-60%);
+}
+.bl-top-box-time{
+    line-height: 34rpx;
+    width: 26.4%;
+    border-right: 1rpx solid #AAAAAA;
+    font-size: 24rpx;
+    text-align: center;
+    color: #999999;
+}
+.bl-top-box-time text {
+    margin-left: 10rpx;
+    color: #FFA819;
+}
+.bl-top-box-search{
+    padding: 0 20rpx;
+    position: relative;
+}
+.bl-top-box-search-icon{
+    width: 30rpx;
+    height: 30rpx;
+    padding: 25rpx 10rpx 20rpx 30rpx;
+    display: inline-block;
+}
+.bl-top-box-search-icon image{
+    width: 30rpx;
+    height: 30rpx;
+}
+.bl-top-box-search-ipt{
+    display: inline-block;
+    position: relative;
+    top:-4rpx;
+    font-size: 28rpx;
+    width:200rpx;
+}
+.mtlitle{
+    padding-top:18rpx;
+}
+.line-one{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    display:-webkit-box;
+}
+.line-two{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    display:-webkit-box;
+}
+.bl-top-screen{
+    display:flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    margin-top: 30rpx;
+    padding-bottom: 20rpx;
+}
+.overbox {
+    position: relative;
+    padding-top: 10rpx;
+    z-index: 2;
+    background: #fff;
+}
+.bl-top-screen-item{
+    font-size: 24rpx;
+    line-height: 26rpx;
+    color: #666666;
+}
+.bl-top-screen-icon2 {
+    width: 16rpx;
+    height: 12rpx;
+}
+.bl-top-screen-icon1{
+    width: 12rpx;
+    height: 16rpx;
+}
+.fd-bgbox{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+.fd-data-list{
+    padding-top: 178rpx;
+    box-sizing: border-box;
+}
+.fd-sel-list{
+    border-top:1rpx solid #F1F1F1;
+    position: relative;
+    padding: 10rpx 30rpx;
+    z-index: 2;
+    background: #fff;
+}
+.fd-sel-list .orange{
+    color: #FFA819;
+}
+.fd-sel-list .fd-sel-list-item{
+    line-height: 73rpx;
+    font-size: 28rpx;
+    color: #666666;
+}
+.bl-list{
+    box-sizing: border-box;
+    padding-top:210rpx;
+}
+.bl-list-item{
+    padding: 30rpx;
+    border-top: 1rpx solid #F1F1F1;
+    display:flex;
+    display: -webkit-flex;
+}
+.bl-list-item-left{
+    width:200rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+    background: #ddd;
+    margin-right: 20rpx;
+}
+.bl-list-item-left image {
+    display: block;
+    width:200rpx;
+    height: 150rpx;
+}
+.bl-list-item-right{
+    width: 520rpx;
+    position: relative;
+}
+.bl-list-item-title{
+    font-size: 28rpx;
+    color: #333333;
+    line-height: 40rpx;
+    padding-bottom:10rpx; 
+    font-weight: bold;
+}
+.bl-list-item-type{
+    font-size: 24rpx;
+    color: #999999;
+    padding-bottom: 34rpx;
+}
+.bl-list-item-address{
+    font-size: 24rpx;
+    color: #666666;
+}
+.bl-list-item-price{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    right: 0rpx;
+}
+.bl-list-item-price{
+    color: #999999;
+}
+.bl-list-item-price .bold {
+    font-weight: bold;
+}
+.bl-list-item-price .small {
+    font-size: 24rpx;
+}
+.bl-list-item-price .big {
+    font-size: 34rpx;
+    margin-right: 10rpx;
+}
+.bl-list-item-price .orange{
+    color: #FFA819;
+}
+.no-more{
+    text-align: center;
+    padding: 30rpx 0;
+    font-size: 20rpx;
+    color: #AAAAAA;
+}

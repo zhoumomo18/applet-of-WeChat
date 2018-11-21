@@ -1,0 +1,198 @@
+/* src/pages/hotel/booking/booking.wxss */
+.pt30{
+    padding: 30rpx;
+}
+.bgfff{
+    background: #fff;
+}
+.ht-topbox{
+    line-height: 56rpx;
+}
+.ht-topbox-name{
+   font-size: 40rpx;
+   font-weight: bold;
+   color: #333333; 
+}
+.ht-topbox-icon{
+    width:24rpx;
+    height: 24rpx;
+    margin-left: 10rpx;
+}
+.ht-time{
+    background: #FFFFFF;
+    box-shadow: 0 0 20rpx 0 rgba(207,171,111,0.20);
+    border-radius: 8rpx;
+    display:flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    padding: 30rpx;
+    position: relative;
+    margin-top:20rpx;
+}
+.ht-time-content{
+   display:flex;
+   display: -webkit-flex; 
+}
+.ht-time .ht-time-icon{
+    position: absolute;
+    top:50%;
+    margin-top:-22rpx;
+    right: 20rpx;
+    width: 44rpx;
+    height: 44rpx;
+}
+.ht-time .ht-time-icon image{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.ht-time-content-box .ht-time-top-text{
+    font-size: 24rpx;
+    color: #999999;
+}
+.ht-time-content-box .ht-time-bt-text{
+    font-size: 48rpx;
+    color: #FFA819;
+    line-height: 67rpx;
+    font-weight: bold;
+}
+.ht-time-text {
+    margin: 0 30rpx;
+    position: relative;
+    top: 50%;
+}
+.ht-column-box{
+    display:flex;
+    display: -webkit-flex;
+    padding: 30rpx 0;
+    justify-content: space-between;
+}
+.ht-column-box-ipt{
+    font-size:28rpx; 
+    color: #333333;
+}
+.border-btm{
+    border-bottom: 1rpx solid #F1F1F1;
+}
+.left-block{
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: #AAAAAA;
+}
+.left-block-black {
+    color: #333333;
+}
+.left-block image{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 12rpx;
+}
+.left-block .left-block-bold{
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333333;
+}
+.right-block image{
+    width: 44rpx;
+    height: 44rpx;
+}
+.mt20{
+    margin-top:20rpx;
+}
+.line-one{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    display:-webkit-box;
+}
+.ht-book-btn{
+    margin-top: 70rpx;
+    background: #FFA819;
+    border-radius: 8rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+    color: #fff;
+    font-size: 34rpx;
+    text-align: center;
+}
+.disabled{
+    background: #AAAAAA;
+}
+.ht-modal{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.ht-modal-bg{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+.ht-modal-con{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+}
+.ht-modal-txt1{
+    font-size: 28rpx;
+    padding: 30rpx 30rpx 0;
+    line-height: 40rpx;
+    color: #999999; 
+}
+.ht-modal-slider{
+    position: relative;
+    padding: 0 30rpx;
+}
+.ht-modal-slider text{
+    font-size: 24rpx;
+    color: #999999;
+}
+.ht-modal-typelist{
+    padding: 15rpx 0;
+}
+.ht-modal-typelist .ht-modal-typelist-item{
+    display: inline-block;
+    background: #FFFFFF;
+    width: 170rpx;
+    height: 80rpx;
+    line-height: 28prx;
+    padding: 17rpx 0;
+    box-sizing: border-box;
+    text-align: center;
+    color: #333;
+    font-size: 28rpx;
+    border: 2rpx solid #ddd;
+    border-radius: 8rpx;
+    margin:17rpx 35rpx; 
+}
+.ht-modal-typelist .active {
+    border: 2rpx solid #FFA819;
+    color: #FFA819;
+}
+.ht-modal-btns{
+    border-top: 1rpx solid #979797;
+    clear: both;
+}
+.ht-modal-btn{
+    display: inline-block;
+    width: 50%;
+    font-size: 34rpx;
+    padding: 25rpx 0;
+    color: #333333;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0;
+    float: left;
+}
+.border-right{
+    border-right: 1rpx solid #979797;
+}
+

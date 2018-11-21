@@ -1,5 +1,5 @@
 {
-  "pages": [
+   "pages": [
     
     "pages/login/index",
     "pages/index/index",
@@ -16,7 +16,16 @@
 
     "pages/userCenter/index",
     "pages/userCenter/userInfo/userInfo",
-    "pages/userCenter/myFavorite/myFavorite"
+    "pages/userCenter/myFavorite/myFavorite",
+
+    "pages/foods/list/list",
+    "pages/foods/merchants/merchants",
+    "pages/foods/searchList/searchList",
+    
+    "pages/hotel/booking/booking",
+    "pages/hotel/attractionsList/attractionsList",
+    "pages/hotel/booklingList/booklingList",
+    "pages/hotel/hotelDetail/hotelDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,0 +1,53 @@
+/* src/pages/hotel/attractionsList/attractionsList.wxss */
+.atn-search-box{
+    width: 690rpx;
+    height: 60rpx;
+    background: #F1F1F1;
+    border-radius: 30rpx;
+    position: fixed;
+    top: 10rpx;
+    left: 50%;
+    box-sizing: border-box;
+    padding-left: 80rpx; 
+    margin-left: -345rpx;
+}
+.atn-search-box-icon{
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    padding: 10rpx 20rpx 20rpx 30rpx;
+    left: 0;
+    top:0;
+}
+.atn-search-box-ipt{
+    position: relative;
+    top:5rpx;
+    font-size: 28rpx;
+    vertical-align: middle;
+}
+.atn-search-box-icon image {
+    width: 30rpx;
+    height: 30rpx;
+}
+.atn-search-list{
+    box-sizing: border-box;
+    padding:100rpx 30rpx 50rpx;
+}
+.ht-atn-item{
+    padding: 20rpx 0 ;
+    font-size: 28rpx;
+    color: #666666;
+    line-height: 40rpx;
+}
+.active {
+    color: #FFA819;
+}
+.no-more{
+    text-align: center;
+    padding: 30rpx 0;
+    font-size: 20rpx;
+    color: #AAAAAA;
+}
+.border-btm{
+    border-bottom:1rpx solid #F1F1F1;
+}
