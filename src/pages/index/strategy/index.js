@@ -2,7 +2,7 @@ const app = getApp()
 let {ajax} = require('../../../utils/ajax.js')
 Page({
     data: {
-        baseUrl: app.globalData.imgUrlPath,
+        imagePrefix: app.globalData.imgUrlPath,
         columnList:[],
         activeIndex: 0,//当前选中索引值
         columnId: '',

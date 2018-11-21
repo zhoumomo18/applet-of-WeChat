@@ -11,33 +11,35 @@
       <import src="../../../components/list.wxml" />
       <view class="ui-content clear">
         <view class="list left-list">
-          <block wx:for="{{favorateList}}" wx:key="">
-            <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==0}}"></template>
+          <block wx:for="{{strategyList}}" wx:key="">
+            <template is="item" data="{{...item,imagePrefix}}" wx:if="{{index%2==0}}"></template>
           </block>
         </view>
         <view class="list right-list">
-          <block wx:for="{{favorateList}}" wx:key="">
-            <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==1}}"></template>
+          <block wx:for="{{strategyList}}" wx:key="">
+            <template is="item" data="{{...item,imagePrefix}}" wx:if="{{index%2==1}}"></template>
           </block>
         </view>
       </view>
     </view>
     <view  class="tab-cont-item" wx:if="{{curIndex == 1}}">
       <view class="p-list">
-        <navigator class="ui-item" url="" hover-class="none">
-          <view class="ui-image"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" /></view>
-          <view class="ui-box">
-            <view class="ui-box-l">
-              <view class="ui-title ellipsis">上海来来大酒店</view>
-              <view class="ui-label-txt">豪华型</view>
-              <view class="ui-num ellipsis">
-                <image class="location_icon" src="/assets/images/location2.png" />沱江镇凤凰县仙剑路1号</view>
+        <block wx:for="{{hotelList}}">
+          <navigator class="ui-item" url="" hover-class="none">
+            <view class="ui-image"><image src="{{imagePrefix}}{{}}" /></view>
+            <view class="ui-box">
+              <view class="ui-box-l">
+                <view class="ui-title ellipsis">上海来来大酒店</view>
+                <view class="ui-label-txt">豪华型</view>
+                <view class="ui-num ellipsis">
+                  <image class="location_icon" src="/assets/images/location2.png" />沱江镇凤凰县仙剑路1号</view>
+              </view>
+              <view class="ui-box-r">
+                <view class="ui-price"><text class="m-color">￥200</text>起</view>
+              </view>
             </view>
-            <view class="ui-box-r">
-              <view class="ui-price"><text class="m-color">￥200</text>起</view>
-            </view>
-          </view>
-        </navigator>
+          </navigator>
+        </block>
         <navigator class="ui-item" url="" hover-class="none">
           <view class="ui-image"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" /></view>
           <view class="ui-box">

@@ -18,7 +18,7 @@
     height: 72rpx;
     float: left;
     margin-right: 16rpx;
-    border: 1rpx solid #e5e5e5;
+    border: 1rpx solid #ccc;
     border-radius: 50%;
 }
 .ui-content .publisher-info .publisher-r{

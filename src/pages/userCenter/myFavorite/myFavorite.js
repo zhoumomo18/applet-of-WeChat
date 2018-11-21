@@ -2,7 +2,7 @@ const app = getApp()
 let {ajax} = require('../../../utils/ajax.js')
 Page({
     data: {
-        baseUrl: app.globalData.imgUrlPath,
+        imagePrefix: app.globalData.imgUrlPath,
         pageNo: 1,
         pageSize: 10,
         strategyList:[],
@@ -55,7 +55,37 @@ Page({
     },
     // 获取酒店收藏
     getHotelList(){
-
+        let that = this,
+            pageNo = that.data.pageNo,
+            requestConfig = {
+                method: 'GET',
+                url: '/hotelcollection/getallbyuser',
+                data:{
+                    pageNo: that.data.pageNo,
+                    pageSize: that.data.pageSize
+                },
+                successCallback: (res) => {
+                    if (res.code && res.code==200){
+                        if (pageNo < res.data.totalPage+1){
+                            that.setData({
+                                hotelList: that.data.hotelList.concat(res.data.rows),
+                                pageNo: pageNo+1
+                            })
+                            console.log(that.data.hotelList)
+                        }
+                    } else {
+                        wx.showLoading({
+                            title: '请求失败'
+                        })
+                    }
+                },
+                errorCallback:() => {
+                    wx.showLoading({
+                        title: '请求失败'
+                    })
+                }
+            }
+        ajax.request(requestConfig)
     },
     //切换对应的列表
     getProductDetail: function(e){

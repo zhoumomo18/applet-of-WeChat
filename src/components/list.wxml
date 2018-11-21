@@ -1,14 +1,15 @@
 <template name="item">
     <view class="item">
         <navigator url="/pages/index/strategy/detail?id={{id}}" hover-class="none">
-            <image class="item-img" src="{{baseUrl}}{{photo}}" mode="widthFix" />
+            <image class="item-img" src="{{imagePrefix}}{{photo}}" mode="widthFix" />
             <view class="item-title-box">
                 <text class="item-title clamp">{{title}}</text>
             </view>
         </navigator>
         <view class="name">
             <view class="avatar">
-                <image class="item-ava" src="{{headImage}}" wx:if="{{headImage}}" />    
+                <image class="item-ava" src="{{headImage}}" wx:if="{{headImage}}" /> 
+                <image class="item-ava" src="/assets/images/newDefaul.png" wx:else />    
                 <text class="name-title ellipsis" wx:if="{{publishuser}}">{{publishuser}}</text>
             </view>
             <view class="heart_">
