@@ -1,0 +1,29 @@
+<view class="container">
+    <scroll-view scroll-x="true" style="height:41px;" class="tab-container">
+        <view class="ui-navbar">
+          <view class="ui-navbar__item {{activeIndex == 0 ? 'ui-bar__item_on' : ''}}" 
+            bindtap="getStrategyById" id="0" data-id="">
+                <view class="ui-navbar__title">全部</view>
+            </view>
+            <block wx:for="{{columnList}}" wx:for-item="item" wx:key="{{index}}">
+                <view class="ui-navbar__item {{activeIndex == index+1 ? 'ui-bar__item_on' : ''}}" 
+                bindtap="getStrategyById" id="{{index+1}}" data-id="{{item.id}}">
+                    <view class="ui-navbar__title">{{item.name}}</view>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+
+    <view class="ui-content clear">
+      <view class="list left-list">
+        <block wx:for="{{strategyList}}" wx:key="item">
+          <listItem itemObj="{{item}}" wx:if="{{index%2==0}}"></listItem>
+        </block>
+      </view>
+      <view class="list right-list">
+        <block wx:for="{{strategyList}}" wx:key="item">
+          <listItem itemObj="{{item}}" wx:if="{{index%2==1}}"></listItem>
+        </block>
+      </view>
+    </view>
+</view>

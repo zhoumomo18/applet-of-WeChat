@@ -1,0 +1,60 @@
+<!--酒店预订-->
+<view class="pt30 bgfff">
+    <!-- 景点 -->
+    <view class='ht-topbox'>
+        <text class='ht-topbox-name' bindtap='gotoSelectPoint'>凤凰</text>
+        <image class='ht-topbox-icon' bindtap='gotoSelectPoint' src="../../../assets/images/hotel/arrow-black-icon.png"></image>
+    </view>
+    <!-- 日期 -->
+    <view class='ht-time'>
+        <view class='ht-time-content'>
+            <view class='ht-time-content-box'>
+                <view class='ht-time-top-text'>今天</view>
+                <view class='ht-time-bt-text'>10.1</view>
+            </view>
+            <view class='ht-time-text'>至</view>
+            <view class='ht-time-content-box'>
+                <view class='ht-time-top-text'>今天</view>
+                <view class='ht-time-bt-text'>10.1</view>
+            </view>
+        </view>
+        <view class='ht-time-icon'><image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
+    </view>
+    <!-- 酒店 -->
+    <view class='ht-column-box border-btm mt20'>
+        <input placeholder='请输入酒店名称' class='ht-column-box-ipt'></input>
+    </view>
+    <!-- 型号 -->
+    <view class='ht-column-box' bindtap="switchModal">
+        <view class='left-block left-block-black line-one'>
+            <text class=''>价格/等级</text>
+        </view>
+        <view class='right-block'><image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
+    </view>
+
+    <view class='ht-book-btn disabled'>开始搜索</view>
+
+    <!-- 价格等级弹框 -->
+    <view class='ht-modal' wx:if="{{showModal}}">
+        <view class='ht-modal-bg' bindtap="switchModal"></view>
+        <view class='ht-modal-con'>
+            <view class='ht-modal-txt1'>价格</view>
+            <view class='ht-modal-slider'>
+                <slider bindchange="" min="0" max="2000" activeColor="#FFA819" />
+                <text class='ht-modal-slider-txt1'>￥0</text>
+                <text class='ht-modal-slider-txt2'>￥500</text>
+            </view>
+            
+            <view class='ht-modal-typelist'>
+                <view class='ht-modal-typelist-item active'
+                        wx:for="{{levelList}}"
+                        wx:key="{{item.value}}">{{item.label}}</view>
+            </view>
+
+            <view class='ht-modal-btns'>
+                <view class='ht-modal-btn border-right' bindtap="switchModal">取消</view>
+                <view class='ht-modal-btn'>完成</view>
+            </view>
+        </view>
+    </view>
+</view>

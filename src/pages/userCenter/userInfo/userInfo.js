@@ -1,6 +1,6 @@
 const app = getApp()
-let {ajax} = require('../../../utils/ajax.js')
-let {commonMethod} = require('../../../utils/page.js')
+let {userMethod} = require('../../../service/userCenter/userService.js')
+
 Page({
     data: {
 
@@ -8,60 +8,6 @@ Page({
     onLoad(){
         this.initValidate()
         this.getUserInfo()
-    },
-    getUserInfo(){
-        let that = this,
-            requestConfig = {
-                callBack: (res) => {
-                    if (res.code && res.code == 200){
-                        that.setData({
-                            userInfo: res.data
-                        })
-                    } else {
-                        wx.showToast({
-                            title: '请求失败'
-                        })
-                    }
-                }
-            }
-        commonMethod.getUserInfo(requestConfig)
-    },
-    saveUserInfo(e){
-        let that = this,
-            params = e.detail.value
-        if (!that.WxValidate.checkForm(params)) {
-            const error = that.WxValidate.errorList[0]
-            wx.showToast({
-                title: error.msg,
-                icon: 'none'
-            })
-            return false
-        } else {
-            console.log('submit================')
-            let requestConfig = {
-                method: 'POST',
-                url: '/constumer/update',
-                data: {
-                    realName: params.realName,
-                    phone: params.phone,
-                    idCard: params.idCard
-                },
-                successCallback: (res) => {
-                    if (res.code && res.code==200){
-                        wx.showToast({
-                            title: '保存成功'
-                        })
-                    }
-                },
-                errorCallback: () => {
-                    wx.showToast({
-                        title: '请求失败',
-                        icon: 'loading'
-                    })
-                }
-            }
-            ajax.request(requestConfig)
-        }
     },
     initValidate(){
         // 验证字段的规则
@@ -88,5 +34,55 @@ Page({
         }
         // 创建实例对象
         this.WxValidate = app.WxValidate(rules,messages)
+    },
+
+    /***********************************调用接口************************************************************/
+    // 获取用户信息
+    getUserInfo(){
+        let that = this
+        userMethod.getUserInfo((res) => {
+            if (res && res.code == 200){
+                that.setData({
+                    userInfo: res.data
+                })
+            } else {
+                wx.showToast({
+                    title: '请求失败',
+                    icon: 'loading'
+                })
+            }
+        })
+    },
+    // 保存我的资料
+    saveUserInfo(e){
+        let that = this,
+            params = e.detail.value
+        if (!that.WxValidate.checkForm(params)) {
+            const error = that.WxValidate.errorList[0]
+            wx.showToast({
+                title: error.msg,
+                icon: 'none'
+            })
+            return false
+        } else {
+            let requestParams = {
+                realName: params.realName,
+                phone: params.phone,
+                idCard: params.idCard
+            }
+            userMethod.saveUserInfo(requestParams, (res) => {
+                if (res && res.code==200){
+                    wx.showToast({
+                        title: '保存成功'
+                    })
+                    wx.navigateBack() // 返回上一页
+                } else {
+                    wx.showToast({
+                        title: '请求失败',
+                        icon: 'loading'
+                    })
+                }
+            })
+        }
     }
 })

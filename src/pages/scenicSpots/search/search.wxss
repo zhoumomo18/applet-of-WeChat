@@ -1,0 +1,18 @@
+@import "../list/index.wxss";
+
+.search-list{
+    font-family: PingFangSC-Medium;
+    font-size: 28rpx;
+    color: #333333;
+    padding: 0 38rpx;
+}
+.search-item{
+    margin: 16rpx 0;
+}
+
+.text{
+    text-align: center;
+    font-family: PingFang-SC-Medium;
+    font-size: 24rpx;
+    color: #999999;
+}

@@ -1,0 +1,42 @@
+<view>
+    <view class="search-wrap">
+        <form bindsubmit="getSearchList">
+            <view class="search-bar-wrap">
+                <view class="search-bar">
+                    <input type="text" value="{{name}}" placeholder="景点/关键词" bindinput="searchName" focus />
+                </view>
+                <image class="icon_search" src="/assets/images/delete.png" bindtap="clearSearch" />
+            </view>
+        </form>
+    </view>
+
+    <view class="search-list" wx:if="{{!isShow}}">
+        <block wx:for="{{searchList}}" wx:key="item">
+            <view class="search-item" bindtap="chooseKeyName" data-name="{{item.name}}">
+                <text>{{item.name}}</text>
+            </view>
+        </block>
+    </view>
+
+    <view class="ui-list" wx:else>
+        <block wx:for="{{scenicSpotList}}" wx:key="item">
+            <navigator class="ui-item" url="../detail/detail?id={{item.id}}" hover-class="none">
+                <view class="ui-image"><image src="{{imagePrefix}}{{item.img}}" /></view>
+                <view class="ui-box">
+                    <view class="ui-box-l">
+                        <view class="ui-title ellipsis">{{item.name}}</view>
+                        <view class="ui-label m-color">推荐指数：{{item.ratings}}</view>
+                        <view class="ui-num">{{item.peoplenum}}人来过</view>
+                    </view>
+                    <view class="ui-box-r">
+                        <view class="ui-price"><text class="m-color">￥{{item.lowestTicketPrice}}</text>起</view>
+                    </view>
+                </view>
+            </navigator>
+        </block>
+        <view class="text" hidden>
+            <text>已无更多</text>
+        </view>
+    </view>
+
+</view>
