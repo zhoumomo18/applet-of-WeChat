@@ -44,49 +44,37 @@
   font-weight: bold;
 }
 .ui-hot-section .h-top-fisrt{
-  width: 100%;
-  height: 250rpx;
   margin-top: 18rpx;
   position: relative;
 }
 .ui-hot-section .h-top-fisrt .h-top-img{
+  width: 100%;
+  height: 250rpx;
   border-radius: 8rpx;
 }
-.ui-hot-section .h-top-fisrt .level-img{
-  width: 110rpx;
-  height: 46rpx;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.ui-hot-section .sm-title{
-  font-size: 28rpx;
-  color: #666666;
-  margin: 11rpx 0 21rpx;
-  font-weight: 500;
-}
-.ui-hot-section .ui-list .ui-item{
+.ui-hot-section .ui-item{
   float: left;
   position: relative;
   width: 330rpx;
 }
-.ui-hot-section .ui-list .ui-item:nth-child(2n-1){
+.ui-list .ui-item:nth-child(2n){
   margin-right: 30rpx;
 }
-.ui-hot-section .ui-list .ui-item image{
+.ui-hot-section .ui-item .h-top-img{
   width: 330rpx;
   height: 230rpx;
   display: block;
 }
-.ui-hot-section .ui-list .ui-item .level-img{
-  width: 110rpx;
-  height: 46rpx;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
 .ui-hot-section .h-name{
   font-size: 28rpx;
   color: #666666;
-  margin-top: 15rpx;
+  margin: 15rpx 0 21rpx;
+  font-weight: 500;
+}
+.ui-hot-section .level-img{
+  width: 110rpx;
+  height: 46rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
