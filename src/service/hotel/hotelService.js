@@ -13,6 +13,19 @@ var hotelMethods = {
         }
         ajax.request(requestConfig);
     },
+    getHotelList: function (params, callBack) { //酒店预订列表查询
+        var requestConfig = {
+            method: 'GET',
+            data: params,
+            url: '/hotel/getAll',
+            successCallback: action,
+            errorCallback: action
+        };
+        function action(response) {
+            callBack && callBack(response);
+        }
+        ajax.request(requestConfig);
+    },
 
 };
 export {

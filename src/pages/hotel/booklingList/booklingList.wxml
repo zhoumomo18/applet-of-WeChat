@@ -11,7 +11,7 @@
                     <view class='bl-top-box-timetxt mtlitle'>离<text>{{searchData.endDate || '00-00'}}</text></view>
                 </view>
                 <view class='bl-top-box-search'>
-                    <view class='bl-top-box-search-icon'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
+                    <view class='bl-top-box-search-icon' bindtap='searchIpt'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
                     <input placeholder='酒店/关键字' class='bl-top-box-search-ipt' bindinput='bindinput' value='{{searchData.hotelName}}'></input>
                 </view>
             </view>
@@ -35,19 +35,29 @@
                 <view wx:for="{{levelList}}" 
                     wx:key="{{item.value}}"
                     data-id='{{item.value}}'
-                    class="fd-sel-list-item orange">{{item.label}}</view>
+                    bindtap='selectGrade'
+                    class="fd-sel-list-item {{searchData.grade==item.value?'orange':''}}">{{item.label}}</view>
             </view>
         </block>
         
     </view>
-    <scroll-view class='bl-list'>
-        <view class='bl-list-item'>
+    <scroll-view class='bl-list'
+                style="height:{{winHeight}}px"
+                scroll-y="true"
+                bindscrolltolower="loadMore">
+        <view class='bl-list-item'
+              wx:if="{{hotelList && hotelList.length}}"
+              wx:for="{{hotelList}}"
+              wx:key="{{item.id}}"
+              data-id='{{item.id}}'
+              data-index='{{index}}'
+              bindtap='gotoHotelDetail'>
             <view class='bl-list-item-left'><image></image></view>
             <view class='bl-list-item-right'>
-                <view class='bl-list-item-title'>四季</view>  
-                <view class='bl-list-item-type'>豪华型</view> 
-                <view class='bl-list-item-address'>地址地址</view>
-                <view class='bl-list-item-price'><text class="orange small bold">￥</text><text class='big orange bold'>350.00</text><text class='small'>起</text></view>
+                <view class='bl-list-item-title'>{{item.name}}</view>  
+                <view class='bl-list-item-type'><block wx:if="{{item.grade==1}}">民宿/客栈</block><block wx:if="{{item.grade==2}}">经济型</block><block wx:if="{{item.grade==3}}">高档型</block><block wx:if="{{item.grade==4}}">豪华型</block></view> 
+                <view class='bl-list-item-address'>{{item.address}}</view>
+                <view class='bl-list-item-price'><text class="orange small bold">￥</text><text class='big orange bold'>{item.price}}</text><text class='small'>起</text></view>
             </view>
         </view>
         <view class='no-more'>没有更多了</view>
