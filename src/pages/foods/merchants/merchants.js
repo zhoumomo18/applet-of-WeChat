@@ -133,7 +133,6 @@ Page({
                 urls.push(that.data.imgUrlPath+fileList[0].src);
             }
         }
-        console.log(urls)
         wx.previewImage({
             urls: urls
         })
