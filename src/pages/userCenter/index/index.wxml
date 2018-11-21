@@ -1,0 +1,61 @@
+<view class="container">
+    <view class="head-img clear">
+        <view class="my-img">
+            <image src="{{userInfo.headUrl}}" />
+        </view>
+        <view class="my-person-info">
+            <input value="{{userInfo.nickName}}" type="text" 
+            class="{{canUseEdit ? 'disable':''}}"
+            placeholder="修改昵称" 
+            disabled="{{canUseEdit}}"
+            focus="{{!canUseEdit}}"
+            bindblur="saveNickname"
+            bindconfirm="saveNickname" />
+            <image src="/assets/images/edit_icon.png" bindtap="handleEditDisable" wx:if="{{showEditBtn}}" />
+        </view>
+    </view>
+    <view class="ui-cont">
+        <view class="ui-cont-top">
+            <navigator url="../userInfo/userInfo" hover-class="none" class="ui-cell_access">
+                <view class="ui-cell__bd">
+                    <image class="icon" src="/assets/images/u_info_icon.png" />
+                    <text>我的资料</text>
+                </view>
+                <image class="arrow_right" src="/assets/images/user_arrow.png" />
+            </navigator>
+            <view class="ui-cell_access">
+                <view class="ui-cell__bd">
+                    <image class="icon" src="/assets/images/u_order_icon.png" />
+                    <text>我的订单</text>
+                </view>
+                <image class="arrow_right" src="/assets/images/user_arrow.png" />
+            </view>
+            <navigator url="../myFavorite/myFavorite" hover-class="none" class="ui-cell_access">
+                <view class="ui-cell__bd">
+                    <image class="icon" src="/assets/images/u_fav_icon.png" />
+                    <text>我的收藏</text>
+                </view>
+                <image class="arrow_right" src="/assets/images/user_arrow.png" />
+            </navigator>
+        </view>
+        <view class="ui-cell_access ui-cell-bot" bindtap="showDialModal">
+            <view class="ui-cell__bd">
+                <image class="icon" src="/assets/images/u_kefu_icon.png" />
+                <text>客服</text>
+            </view>
+            <image class="arrow_right" src="/assets/images/user_arrow.png" />
+        </view>
+    </view>
+
+    <view class="ui-overlay" hidden="{{!showMadal}}">
+        <view class="ui-modal-main">
+            <view class="ui-modal-body">
+                拨打电话：<text>021-343345564</text>
+            </view>
+            <view class="ui-modal-button">
+                <text class="cancel-btn" bindtap="showDialModal">取消</text>
+                <text class="confirm-btn" bindtap="callPhone">拨打</text>
+            </view>
+        </view>
+    </view>
+</view>

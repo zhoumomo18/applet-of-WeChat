@@ -1,0 +1,81 @@
+<import src="/wxParse/wxParse.wxml"/> 
+<view class="container">
+    <view class="swiper-container">
+        <swiper autoplay="true">
+            <block wx:for="{{imgUrls}}" wx:key="img">
+                <swiper-item>
+                <image src="{{imagePrefix}}{{item.src}}" class="slide-image" width="100%" height="100%"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="dots">共{{imgUrls.length}}张</view>
+   </view>
+    <view class="tt-box">
+        <view class="tt-box-inner bg-white">
+            <view class="p-title">{{detailInfo.name}}</view>
+            <view class="section_box section_flex_sp" bindtap="openLocation">
+                <view class="p-addr">
+                    <image class="icon icon-local" src="/assets/images/location.png" />
+                    {{detailInfo.address}}
+                </view>
+                <image class="arrow_right" src="/assets/images/arrow_icon.png" />
+            </view>
+            <view  class="section_box">
+                <view class="p-time">
+                    <image class="icon icon-clock" src="/assets/images/clock.png" />
+                    <text class="">开放时间：</text>
+                    <view class="t-desc">{{detailInfo.opentime}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-content bg-white">
+        <view class="ui-tabs">
+            <view class="ui_tab_item {{curIndex == 0 ? 'ui-tab_active':''}}" 
+                bindtap="getProductDetail" data-index="0">购票</view>
+            <view class="ui_tab_item {{curIndex == 1 ? 'ui-tab_active':''}}" 
+                bindtap="getProductDetail" data-index="1">景点介绍</view>
+        </view>
+        <view class="tab-cont">
+            <view  class="tab-cont-item" wx:if="{{curIndex == 0}}">
+                <view class="ticket-info-box">
+                    <block wx:for="{{detailInfo.ticketList}}" wx:key="item">
+                        <view class="ticket-item pad">
+                            <view class="ticket-desc clear">
+                                <view class="box-left left">
+                                    <view class="t-name">{{item.name}}</view>
+                                    <text class="border-box">{{detailInfo.returnticketrule==0 ? '支持退票':'不支持退票'}}</text>
+                                </view>
+                                <view class="t-price right" wx:if="{{item.price==0}}">免费</view>
+                                <view class="t-price right" wx:else>￥{{item.price}}</view>
+                            </view>
+                            <view class="ticket-action">
+                                <navigator class="ticket-intro" url="../notice/ticketDescript?source=detail" hover-class="none">
+                                    票种说明 <image src="/assets/images/arrow_right.png" />
+                                </navigator>
+                                <navigator class="order-btn" url="../reserve/reserveOrder?id={{item.id}}" hover-class="none">
+                                    预定
+                                </navigator>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="scenic-spots-box">
+                    <navigator class="tt section_flex_sp" url="../notice/scenicSpotsNotice" hover-class="none">
+                        <view>景点须知</view>
+                        <image class="arrow_right" src="/assets/images/arrow_icon.png" />
+                    </navigator>
+                    <view class="text-box">
+                        <view class="text-title">景区取票</view>
+                        <view class="text-desp">{{detailInfo.notice}}</view>
+                    </view>
+                </view>
+            </view>
+            <view  class="tab-cont-item" wx:if="{{curIndex == 1}}">
+                <view class="scenic-spots-intro">
+                    <template is="wxParse" data="{{wxParseData:scenicSpotIntro.nodes}}"/> 
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

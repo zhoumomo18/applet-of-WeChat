@@ -1,60 +1,75 @@
 //index.js
 const app = getApp()
-let {ajax} = require('../../utils/ajax.js')
+let {indexMethod} = require('../../service/index/indexService.js')
 
 Page({
   data: {
     imagePrefix: app.globalData.imgUrlPath,
     imgUrls:'/assets/images/banner.png',
     moduleList: [],
-    adList: ''
+    adList: '',
+    hotsList:[]
   },
   onLoad(){
+    wx.showLoading()
+    this.getAdList()
+    this.getModuleList()
+    this.getHotScenicSpots()
+  },
+  onShow(){
     this.getAdList()
     this.getModuleList()
   },
+
+  /***********************************调用接口************************************************************/
   // 获取广告图
   getAdList(){
-    let that = this,
-      requestConfig = {
-        method: 'GET',
-        url: '/adviertisement/getall?type=1',
-        successCallback: (res) => {
-          if (res.code==200){
-            console.log(res.data)
-            that.setData({
-              adList: res.data
-            })
-          }
+    let that = this
+      indexMethod.getAdList((res) => {
+        if (res && res.code==200){
+          that.setData({
+            adList: res.data
+          })
+          wx.hideLoading()
+        } else {
+          wx.showToast({
+            title: '请求失败',
+            icon: 'loading'
+          })
         }
-      }
-    ajax.request(requestConfig)
+      })
   },
   // 获取模块列表
   getModuleList(){
-    let that = this,
-      requestConfig = {
-        method: 'GET',
-        url: '/module/getallroleauthority',
-        successCallback: (res) => {
-          if (res.code && res.code==200){
-            that.setData({
-              moduleList: res.data
-            })
-          } else {
-            wx.showToast({
-                title: '请求失败',
-                icon: 'loading'
-            })
-          }
-        },
-        errorCallback: () => {
-          wx.showLoading({
-            title: '请求失败'
-          })
-        }
+    let that = this
+    indexMethod.getModuleList((res) => {
+      if (res && res.code==200){
+        that.setData({
+          moduleList: res.data
+        })
+      } else {
+        wx.showToast({
+          title: '请求失败',
+          icon: 'loading'
+        })
       }
-    ajax.request(requestConfig)
-  }
+    })
+  },
+  // 获取热门景点
+  getHotScenicSpots(){
+    let that = this
+    indexMethod.getHotScenicSpot((res) => {
+      if (res && res.code==200){
+        that.setData({
+          hotsList: res.data
+        })
+      } else {
+        wx.showToast({
+            title: '请求失败',
+            icon: 'loading'
+        })
+      }
+    })
+  },
 
 })

@@ -3,18 +3,18 @@
     
     "pages/login/index",
     "pages/index/index",
-    "pages/index/strategy/index",
-    "pages/index/strategy/detail",
+    "pages/strategy/list/index",
+    "pages/strategy/detail/detail",
     
-    "pages/scenicSpotsInvoice/index",
-    "pages/scenicSpotsInvoice/search/search",
-    "pages/scenicSpotsInvoice/shoppingOrder/reserveOrder",
-    "pages/scenicSpotsInvoice/notice/ticketDescript",
-    "pages/scenicSpotsInvoice/notice/scenicSpotsNotice",
-    "pages/scenicSpotsInvoice/detail/detail",
-    "pages/scenicSpotsInvoice/datePicker/datePicker",
+    "pages/scenicSpots/list/index",
+    "pages/scenicSpots/search/search",
+    "pages/scenicSpots/reserve/reserveOrder",
+    "pages/scenicSpots/notice/ticketDescript",
+    "pages/scenicSpots/notice/scenicSpotsNotice",
+    "pages/scenicSpots/detail/detail",
+    "pages/scenicSpots/datePicker/datePicker",
 
-    "pages/userCenter/index",
+    "pages/userCenter/index/index",
     "pages/userCenter/userInfo/userInfo",
     "pages/userCenter/myFavorite/myFavorite",
 
@@ -43,12 +43,12 @@
       "iconPath": "./assets/images/index_icon.png",
       "selectedIconPath": "./assets/images/index_icon_active.png"
     }, {
-      "pagePath": "pages/scenicSpotsInvoice/index",
+      "pagePath": "pages/scenicSpots/list/index",
       "text": "景点门票",
       "iconPath": "./assets/images/invoice_icon.png",
       "selectedIconPath": "./assets/images/invoice_icon_active.png"
     }, {
-      "pagePath": "pages/userCenter/index",
+      "pagePath": "pages/userCenter/index/index",
       "text": "我的",
       "iconPath": "./assets/images/user_icon.png",
       "selectedIconPath": "./assets/images/user_icon_active.png"

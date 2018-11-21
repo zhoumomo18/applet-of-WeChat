@@ -1,0 +1,29 @@
+<import src="/wxParse/wxParse.wxml"/> 
+<view class="container">
+    <view class="banner">
+        <image mode="widthFix" src="{{imagePrefix}}{{detailInfo.photo}}" data-src="{{imagePrefix}}{{detailInfo.photo}}" bindtap="previewImage" />
+    </view>
+    <view class="ui-content">
+        <view class="publisher-info clear"> 
+            <image class="publisher-avator" src="{{detailInfo.headImage ? detailInfo.headImage:'/assets/images/avator.jpg'}}" />
+            <view class="publisher-r">
+                <view class="publisher-name" wx:if="{{detailInfo.createuser}}">{{detailInfo.createuser}}</view>
+                <view class="publisher-time" wx:if="{{detailInfo.updatedate}}">{{detailInfo.actualDate}}</view>
+            </view>
+        </view>
+        <view  class="desc-title">{{detailInfo.title}}</view>
+        <view class="desc-main">
+            <template is="wxParse" data="{{wxParseData:strategyDetail.nodes}}"/> 
+        </view>
+    </view>
+    <view class="ui-footer_fixed-bottom">
+        <view class="ui-footer__links {{detailInfo.isPraise==1 ? 'active_links':''}}" bindtap="handlePraise">
+            <image class="ui-footer__icon" src="/assets/images{{detailInfo.isPraise==1 ? '/dianzan_active.png':'/dianzan.png'}}" />
+            <text class="ui-footer__text">{{detailInfo.totalpraise}}</text>
+        </view>
+        <view class="ui-footer__links {{detailInfo.isCollection==1? 'active_links':''}}" bindtap="addToFavorite">
+            <image class="ui-footer__icon" src="/assets/images{{detailInfo.isCollection==1? '/fav_icon_active.png':'/fav_icon.png'}}" />
+            <text class="ui-footer__text">{{detailInfo.isCollection==1? '已收藏':'收藏'}}</text>
+        </view>
+    </view>
+</view>

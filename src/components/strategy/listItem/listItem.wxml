@@ -1,0 +1,18 @@
+<view class="item">
+    <navigator url="/pages/strategy/detail/detail?id={{itemObj.id}}" hover-class="none">
+        <image class="item-img" src="{{imgUrlPath}}{{itemObj.photo}}" mode="widthFix" />
+        <view class="item-title-box">
+            <text class="item-title clamp">{{itemObj.title}}</text>
+        </view>
+    </navigator>
+    <view class="name">
+        <view class="avatar">
+            <image class="item-ava" src="{{itemObj.headImage}}" wx:if="{{itemObj.headImage}}" />    
+            <text class="name-title ellipsis" wx:if="{{itemObj.publishuser}}">{{itemObj.publishuser}}</text>
+        </view>
+        <view class="heart_">
+            <image class="heart" src="/assets/images/dianzan2.png"></image>
+            <text class="heart-title">{{itemObj.totalpraise}}</text>
+        </view>
+    </view>
+</view>
