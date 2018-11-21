@@ -2,8 +2,9 @@
 <view class="pt30 bgfff">
     <!-- 景点 -->
     <view class='ht-topbox'>
-        <text class='ht-topbox-name' bindtap='gotoSelectPoint'>凤凰</text>
-        <image class='ht-topbox-icon' bindtap='gotoSelectPoint' src="../../../assets/images/hotel/arrow-black-icon.png"></image>
+        <text class='ht-topbox-name' bindtap='gotoSelectPoint' data-id='{{searchData.scenicSpot}}'>{{searchData.scenicSpotName}}</text>
+        <image class='ht-topbox-icon' bindtap='gotoSelectPoint'
+        data-id='{{searchData.scenicSpot}}'  src="../../../assets/images/hotel/arrow-black-icon.png"></image>
     </view>
     <!-- 日期 -->
     <view class='ht-time'>
@@ -22,17 +23,23 @@
     </view>
     <!-- 酒店 -->
     <view class='ht-column-box border-btm mt20'>
-        <input placeholder='请输入酒店名称' class='ht-column-box-ipt'></input>
+        <input placeholder='请输入酒店名称' class='ht-column-box-ipt' bindinput='bindinput' value='{{searchData.hotelName}}'></input>
     </view>
     <!-- 型号 -->
     <view class='ht-column-box' bindtap="switchModal">
-        <view class='left-block left-block-black line-one'>
+        <view wx:if="{{searchData.grade || searchData.price}}" class="left-block left-block-black line-one">
+            <text class=''>{{searchData.price}}元/<block wx:if="{{searchData.grade==0}}">不限</block><block wx:elif="{{searchData.grade==1}}">民宿/客栈</block><block wx:elif="{{searchData.grade==2}}">经济型</block><block wx:elif="{{searchData.grade==3}}">高档型</block><block wx:elif="{{searchData.grade==4}}">豪华型</block></text>
+        </view>
+        <view wx:else class="left-block line-one">
             <text class=''>价格/等级</text>
         </view>
         <view class='right-block'><image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
     </view>
+    
 
-    <view class='ht-book-btn disabled'>开始搜索</view>
+    <view wx:if="{{!searchData.scenicSpot || !searchData.startDate || !searchData.endDate || !searchData.hotelName || !searchData.grade || !searchData.price}}" class='ht-book-btn disabled'>开始搜索</view>
+    <view wx:else class='ht-book-btn' bindtap='searchHotel'>开始搜索</view>
+    <view class='ht-book-btn' bindtap='searchHotel'>开始搜索</view>
 
     <!-- 价格等级弹框 -->
     <view class='ht-modal' wx:if="{{showModal}}">
@@ -40,20 +47,21 @@
         <view class='ht-modal-con'>
             <view class='ht-modal-txt1'>价格</view>
             <view class='ht-modal-slider'>
-                <slider bindchange="" min="0" max="2000" activeColor="#FFA819" />
-                <text class='ht-modal-slider-txt1'>￥0</text>
-                <text class='ht-modal-slider-txt2'>￥500</text>
+                <slider bindchanging="changeSlider" bindchange='changeSlider' value='{{modalData.price}}' min="0.00" max="2000.00" activeColor="#FFA819" />
+                <text class='ht-modal-slider-txt2'>￥{{modalData.price}}</text>
             </view>
             
             <view class='ht-modal-typelist'>
-                <view class='ht-modal-typelist-item active'
+                <view class="ht-modal-typelist-item {{item.value==modalData.grade?'active':''}}"
                         wx:for="{{levelList}}"
-                        wx:key="{{item.value}}">{{item.label}}</view>
+                        wx:key="{{item.value}}"
+                        data-key="{{item.value}}"
+                        bindtap='selectGrade'>{{item.label}}</view>
             </view>
 
             <view class='ht-modal-btns'>
                 <view class='ht-modal-btn border-right' bindtap="switchModal">取消</view>
-                <view class='ht-modal-btn'>完成</view>
+                <view class='ht-modal-btn' bindtap='updataSearch'>完成</view>
             </view>
         </view>
     </view>

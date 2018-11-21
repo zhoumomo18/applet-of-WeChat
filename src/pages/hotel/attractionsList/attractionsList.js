@@ -1,7 +1,12 @@
-// src/pages/hotel/attractionsList/attractionsList.js
+var { hotelMethods } = require('../../../service/hotel/hotelService.js');
 Page({
+    pageNo: 1,
+    pageSize: 15,
     data: {
         winHeight: 0,
+        scenicList: [],
+        scenicCount: 0,
+        isActive: null
     },
 
     /**
@@ -9,49 +14,69 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
+        if(options && options.id){
+            that.isActive = options.id;
+        }
+        wx.showLoading();
         that.getHeight();
+        that.getScenicList();
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    getScenicList(){
+        var that = this;
+        var params= {
+            name: that.data.name,
+            pageNo: that.pageNo,
+            pageSize: that.pageSize
+        };
+        hotelMethods.getScenicList(params, function (res) {
+            if (res && res.code == 200 && res.data) {
+                var scenicList = that.data.scenicList;
+                var scenicCount = res.data.totalCount;
+                if (that.pageNo == 1) {
+                    scenicList = res.data.rows;
+                } else {
+                    scenicList = scenicList.concat(res.data.rows);
+                }
+                that.setData({ scenicList: scenicList, scenicCount: scenicCount });
+                wx.hideLoading();
+            } else if (res && res.msg) {
+                wx.hideLoading();
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+            } else {
+                wx.hideLoading();
+                wx.showToast({
+                    title: '服务异常',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    //上拉加载更多
+    loadMore: function () {
+        var that = this;
+        var pageNo = that.pageNo;
+        var pageSize = that.pageSize;
+        if ((pageNo * pageSize) < that.data.foodsObjCount) {
+            that.pageNo++;
+            that.getScenicList();
+        }
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
+    //点击选中
+    selectScenic(e) {
+        var that = this;
+        var id = e.currentTarget.dataset.id;
+        var index = e.currentTarget.dataset.index;
+        if(!id) return;
+        that.setData({ isActive: id});
+        var searchData = wx.getStorageSync('searchData');
+        searchData.scenicSpot = that.data.scenicList[index].id;
+        searchData.scenicSpotName = that.data.scenicList[index].name;
+        wx.setStorageSync('searchData', searchData)
     },
 
     /**

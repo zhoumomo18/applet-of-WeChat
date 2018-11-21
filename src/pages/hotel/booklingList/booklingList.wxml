@@ -4,25 +4,25 @@
         <view  class='overbox'>
             <view class='bl-top-content'>
                 <view class='bl-top-box-point line-two'>
-                    <text>凤凰古</text>
+                    <text>{{searchData.scenicSpotName}}</text>
                 </view>
                 <view class='bl-top-box-time'>
-                    <view class='bl-top-box-timetxt'>住<text>10-28</text></view>
-                    <view class='bl-top-box-timetxt mtlitle'>离<text>10-28</text></view>
+                    <view class='bl-top-box-timetxt'>住<text>{{searchData.startDate || '00-00'}}</text></view>
+                    <view class='bl-top-box-timetxt mtlitle'>离<text>{{searchData.endDate || '00-00'}}</text></view>
                 </view>
                 <view class='bl-top-box-search'>
                     <view class='bl-top-box-search-icon'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
-                    <input placeholder='酒店/关键字' class='bl-top-box-search-ipt'></input>
+                    <input placeholder='酒店/关键字' class='bl-top-box-search-ipt' bindinput='bindinput' value='{{searchData.hotelName}}'></input>
                 </view>
             </view>
             <view class='bl-top-screen'>
-                <view class='bl-top-screen-item'>价格
-                    <image class='bl-top-screen-icon1' src="../../../assets/images/hotel/screen-icon-top.png"></image>
-                    <!-- <image class='bl-top-screen-icon1' src="../../../assets/images/hotel/screen-icon-btm.png"></image> -->
+                <view class='bl-top-screen-item' bindtap='changeSort'>价格
+                    <image wx:if="{{priceSort}}" class='bl-top-screen-icon1' src="../../../assets/images/hotel/screen-icon-top.png"></image>
+                    <image wx:else class='bl-top-screen-icon1' src="../../../assets/images/hotel/screen-icon-btm.png"></image>
                 </view>
-                <view class='bl-top-screen-item'>等级
-                    <!-- <image class='bl-top-screen-icon2' src="../../../assets/images/foods/close-icon.png"></image> -->
-                    <image class='bl-top-screen-icon2' src="../../../assets/images/hotel/screen-icon-open.png"></image></view>
+                <view class='bl-top-screen-item' bindtap='switchModal'>等级
+                    <image wx:if="{{!showModal}}" class='bl-top-screen-icon2' src="../../../assets/images/foods/close-icon.png"></image>
+                    <image wx:else class='bl-top-screen-icon2' src="../../../assets/images/hotel/screen-icon-open.png"></image></view>
             </view>
         </view>
         

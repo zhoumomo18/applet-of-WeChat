@@ -5,9 +5,17 @@
         <view class='atn-search-box-icon'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
         <input class='atn-search-box-ipt' placeholder='景点名称'></input>
     </view>
-    <scroll-view class='atn-search-list' style="height:{{winHeight}}px">
-        <view class='ht-atn-item border-btm'>asdasdasd</view>
-        <view class='ht-atn-item active'>asdasdasd</view>
-        <view class='no-more'>没有更多了</view>
+    <scroll-view class='atn-search-list' 
+                style="height:{{winHeight}}px"
+                scroll-y="true"
+                bindscrolltolower="loadMore">
+        <view class="ht-atn-item {{index+1==scenicList.length?'':'border-btm'}} {{isActive==item.id?'active':''}}"
+              wx:if="{{scenicList && scenicList.length}}"
+              wx:for="{{scenicList}}"
+              wx:key="{{item.id}}"
+              data-id='{{item.id}}'
+              data-index='{{index}}'
+              bindtap='selectScenic'>{{item.name}}</view>
+        <view class='no-more' wx:if="{{scenicList && scenicCount!=0 && scenicList.length==scenicCount}}">没有更多了</view>
     </scroll-view>
 </view>
