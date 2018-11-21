@@ -1,6 +1,7 @@
-
+var App = getApp();
 Page({
     data: {
+        imgUrlPath: App.globalData.imgUrlPath,
         showModal: false,
         levelList: [
             { value: 0, label: '不限' },
