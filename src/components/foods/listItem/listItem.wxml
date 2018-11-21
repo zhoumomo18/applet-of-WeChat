@@ -11,7 +11,7 @@
             <view class='foods-item-pay'><text class='orange'>￥{{itemObj.averageConsume || '0.00'}}</text>/人</view>
             <view class='foods-item-tip'>
                 <view class='foods-item-star orange'>推荐指数：{{itemObj.ratings || '0'}}</view>
-                <view wx:if="{{itemObj.foodGroupList && itemObj.foodGroupList.length}}">
+                <view class='foods-item-tip-right' wx:if="{{itemObj.foodGroupList && itemObj.foodGroupList.length}}">
                     <text  
                         class='foods-item-tag md5'
                         wx:for="{{itemObj.foodGroupList}}" 

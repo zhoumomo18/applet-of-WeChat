@@ -2,8 +2,8 @@
 <view class='bgf3f3'>
     <!-- banner -->
     <view class='foods-banner' bindtap='previewImage'>
-        <image wx:if="{{infoObj.fileTitle && infoObj.fileTitle.src}}"
-               src='{{imgUrlPath}}{{infoObj.fileTitle.src}}'></image>
+        <image wx:if="{{infoObj.fileList && infoObj.fileList.length}}"
+               src='{{imgUrlPath}}{{infoObj.fileList[0].src}}'></image>
         <view class='foods-banner-tag'>共{{infoObj.fileList.length || 0}}张</view>
     </view>
     <view class='pad30 bgfff'>
@@ -47,7 +47,7 @@
                      wx:if="{{infoObj.specialDishesList && infoObj.specialDishesList.length}}">
             <view class='foods-slide-item'
                   wx:for="{{infoObj.specialDishesList}}"
-                  wx:key="*this"
+                  wx:key="{{item.id}}"
                   data-id='{{item.id}}'
                   data-index='{{index}}'
                   data-type="1"
@@ -60,7 +60,7 @@
         </scroll-view>
     </view>
     <!-- 商家菜单 -->
-    <view class='bgfff mt20'>
+    <view class="bgfff mt20" id='manuList' >
         <view class='pad30 bgfff'>
             <view class='foods-column-box border-btm'>
                 <view class='left-block line-one'>
@@ -69,12 +69,10 @@
             </view>
         </view>
         <scroll-view class='foods-scroll'
-                     wx:if="{{foodList && foodList.length>0}}"
-                     scroll-y="true"
-                     bindscrolltolower="loadMore">
+                     wx:if="{{foodList && foodList.length>0}}">
             <view class='foods-scroll-item'
                   wx:for="{{foodList}}"
-                  wx:key="*this"
+                  wx:key="{{item.id}}"
                   data-id='{{item.id}}'
                   data-index='{{index}}'
                   data-type="2"
@@ -92,14 +90,14 @@
         <view class='preview-modal-bg'></view>
         <view class='preview-modal-con'>
             <view class='preview-modal-swiper' bindtap='closeModal'>
-                <swiper current="{{currentSwiper}}">
+                <swiper current="{{currentSwiper}}" bindchange="changeCurrent">
                     <swiper-item wx:for="{{swiperData}}"
-                                 wx:key="*this"
+                                 wx:key="{{item.id}}"
                                  bindtap='closeModal'>
                         <view >
                             <view class='preview-modal-item'>
                                 <image src='{{imgUrlPath}}{{item.fileTitle.src}}'></image>
-                                <view class='preview-modal-tag'>3/6</view>
+                                <view class='preview-modal-tag'>{{currentSwiper+1}}/{{swiperData.length}}</view>
                             </view>
                             <view class='preview-modal-name'>{{item.name}}</view>
                             <view class='preview-modal-price'>￥{{item.price}}</view>

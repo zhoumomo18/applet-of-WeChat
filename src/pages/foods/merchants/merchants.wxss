@@ -155,7 +155,6 @@ view{
     padding: 10rpx 0;
     flex-flow:wrap;
     width: 700rpx;
-    max-height: 1900rpx;
     margin: 0 auto; 
 }
 .foods-scroll-item{
@@ -258,3 +257,15 @@ view{
 .md5{
     margin: 0 5rpx;
 }
+.fixdBox{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9
+}
+/* #manuList{
+    transition: all 0.5s ease-in-out;
+    -webkit-transition:  all 0.5s ease-in-out;
+} */

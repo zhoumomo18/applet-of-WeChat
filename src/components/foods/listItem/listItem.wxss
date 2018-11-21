@@ -10,6 +10,7 @@
     padding: 29rpx 26rpx 29rpx 0;
 }
 .foods-item-left{
+    overflow: hidden;
     width: 200rpx;
     height: 150rpx;
     margin-right: 28rpx;
@@ -47,11 +48,20 @@
     display: -webkit-flex;
     margin-top:14rpx;
     justify-content:space-between;
+    position: relative;
+}
+.foods-item-tip-right{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    right: 0;
 }
 .foods-item-star{
+    display: block;
     border: 1rpx solid #FFA819;
-    padding:0 4rpx;
-    line-height: 34rpx;
+    padding:4rpx;
+    line-height: 26rpx;
     font-size: 26rpx;
 }
 .foods-item-tag{

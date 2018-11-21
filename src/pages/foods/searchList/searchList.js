@@ -43,6 +43,7 @@ Page({
             name: that.data.name
         };
         foodsMethods.getFoodsList(params, function (res) {
+            wx.hideLoading();
             if (res && res.code == 200 && res.data) {
                 var foodsList = that.data.foodsList;
                 var foodsObjCount = res.data.totalCount;
@@ -52,13 +53,18 @@ Page({
                     foodsList = foodsList.concat(res.data.rows);
                 }
                 that.setData({ foodsList: foodsList, foodsObjCount: foodsObjCount });
-                wx.hideLoading();
             } else if (res && res.msg) {
-                wx.showToast({ title: res.msg }); 
-                wx.hideLoading();
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
             } else {
-                wx.hideLoading();
-                wx.showToast({ title: '服务异常' })
+                wx.showToast({
+                    title: '服务异常',
+                    icon: 'none',
+                    duration: 2000
+                })
             }
         })
     },
@@ -71,5 +77,9 @@ Page({
             that.pageNo++;
             that.getFoodsList();
         }
+    },
+    //用户点击右上角分享
+    onShareAppMessage: function () {
+
     },
 })

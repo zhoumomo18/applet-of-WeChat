@@ -3,11 +3,13 @@ var App = getApp();
 Page({
     ID: null,
     pageNo: 1,
-    pageSize: 6,
+    pageSize: 10,
     data: {
         imgUrlPath: App.globalData.imgUrlPath,
         winHeight: null,
         isShowModal: false,
+        isScoll: false,
+        scrollTop: 0,
         infoObj: {},
         listCount: null,
         foodList: [],
@@ -46,8 +48,6 @@ Page({
         var that = this
         wx.getSystemInfo({
             success: function (res) {
-                console.log('height=' + res.windowHeight);
-                console.log('width=' + res.windowWidth);
                 that.setData({ winHeight: res.windowHeight })
             }
         })
@@ -129,12 +129,12 @@ Page({
         var fileList = that.data.infoObj.fileList;
         var urls = [];
         for (var i = 0; i < fileList.length;i++) {
-            if (fileList.src){
-                urls.push(fileList.src);
+            if (fileList[0].src){
+                urls.push(that.data.imgUrlPath+fileList[0].src);
             }
         }
+        console.log(urls)
         wx.previewImage({
-            current: urls[0],
             urls: urls
         })
     },
@@ -161,5 +161,16 @@ Page({
 
             }
         })
-    }
+    },
+    onReachBottom() {
+        this.loadMore();
+    },
+    changeCurrent(e){
+        var that = this;
+        that.setData({ currentSwiper: e.detail.current})
+    },
+    //用户点击右上角分享
+    onShareAppMessage: function () {
+
+    },
 })
