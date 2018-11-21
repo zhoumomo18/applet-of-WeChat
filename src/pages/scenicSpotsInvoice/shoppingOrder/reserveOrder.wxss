@@ -26,6 +26,10 @@
 .section_sm{
     width: 120rpx;
 }
+.arrow_right{
+    width: 44rpx;
+    height: 44rpx;
+}
 .action-btns{
     width: 180rpx;
     height: 50rpx;

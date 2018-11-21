@@ -3,7 +3,7 @@ let {ajax} = require('../../../utils/ajax.js')
 let WxParse = require('../../../wxParse/wxParse.js');//在使用的View中引入WxParse模块
 Page({
     data: {
-        baseUrl: app.globalData.imgUrlPath,
+        imagePrefix: app.globalData.imgUrlPath,
         currentId: '',
         detailInfo: {},
         imgUrls: []
@@ -23,7 +23,7 @@ Page({
                 url: '/strategy/getbyid/'+that.data.currentId,
                 successCallback: (res) => {
                     if (res.code==200){
-                        imgUrls.push(that.data.baseUrl+res.data.photo)
+                        imgUrls.push(that.data.imagePrefix+res.data.photo)
                         console.log("需要预览的图片列表"+imgUrls);
                         that.setData({
                             detailInfo: res.data,

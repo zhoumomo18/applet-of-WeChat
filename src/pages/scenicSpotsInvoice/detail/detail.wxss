@@ -1,6 +1,10 @@
 .bg-white{
     background: #fff;
 }
+.arrow_right{
+    width: 16rpx;
+    height: 28rpx;
+}
 .swiper-container{
     position: relative;
 }
@@ -142,10 +146,6 @@
     font-size: 34rpx;
     font-weight: bold;
     border-bottom: 1rpx solid #ECECEC;
-}
-.scenic-spots-box .tt image{
-    width: 16rpx;
-    height: 28rpx;
 }
 .text-box{
     padding: 0 36rpx;

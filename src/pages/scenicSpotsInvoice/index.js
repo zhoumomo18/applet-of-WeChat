@@ -1,6 +1,9 @@
+const app = getApp()
 let {ajax} = require('../../utils/ajax.js')
+let {commonMethod} = require('../../utils/page.js')
 Page({
     data: {
+        imagePrefix: app.globalData.imgUrlPath,
         name: '',
         pageNo: 1,
         pageSize: 10,
@@ -13,30 +16,25 @@ Page({
     getScenicSpotList(){
         let that = this,
             pageNo = that.data.pageNo,
-            requestConfig = {
-                method: 'GET',
-                url: '/ScenicSpotController/getall',
-                data:{
-                    name: that.data.name,
-                    pageNo: that.data.pageNo,
-                    pageSize: that.data.pageSize
-                },
-                successCallback: (res) => {
+            params = {
+                name: that.data.name,
+                pageNo: that.data.pageNo,
+                pageSize: that.data.pageSize,
+                callBack: (res) => {
                     if (res.code==200){
                         that.setData({
                             scenicSpotList: that.data.scenicSpotList.concat(res.data.rows),
                             pageNo: pageNo+1
                         })
+                    } else {
+                        wx.showToast({
+                            title: '请求失败',
+                            icon: 'loading'
+                        })
                     }
-                },
-                errorCallBack: () => {
-                    wx.showToast({
-                        title: '请求失败',
-                        icon: 'loading'
-                    })
                 }
             }
-        ajax.request(requestConfig)
+            commonMethod.getScenicSpotList(params)
     },
     onReachBottom: function(){
         this.getScenicSpotList()

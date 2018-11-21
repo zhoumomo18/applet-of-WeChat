@@ -1,19 +1,21 @@
 <view class="container">
     <view class="text-box">
         <view class="text-title">预定时间</view>
-        <view class="text-desp">需提前1天预定</view>
+        <view class="text-desp">{{detailInfo.subscriberule == 0 ? '可预约当天门票':'需提前1天预约'}}</view>
     </view>
     <view class="text-box">
         <view class="text-title">退票规则</view>
-        <view class="text-desp">取票入园</view>
+        <view class="text-desp">{{detailInfo.returnticketrule == 0 ? '支持退票':'不支持退票'}}</view>
     </view>
     <view class="text-box">
         <view class="text-title">入园方式</view>
-        <view class="text-desp">本门票预定成功后，不支持退票</view>
+        <view class="text-desp">取票入园</view>
     </view>
     <view class="text-box">
         <view class="text-title">预定须知</view>
-        <view class="text-desp">撒点附近哈萨克邓浩树大根深贷记卡更好sad 科技馆哈撒代购哈看手机啊大噶看伤筋动骨哈收到啦噶划算多了快更好sad 离开过哈收到了开会噶收到了快给哈收到了口感还是打了个看哈市领导噶实力代购哈市领导开会贵卅领导开会贵卅的撒点附近哈萨克邓浩树大根深贷记卡更好sad 科技馆哈撒代购哈看手机啊大噶看伤筋动骨哈收到啦噶划算多了快更好sad 离开过哈收到了开会噶收到了快给哈收到了口感还是打了个看哈市领导噶实力代购哈市领导开会贵卅领导开会贵卅的</view>
+        <view class="text-desp">{{detailInfo.subscriberemark}}</view>
     </view>
-    <view class="bott-btn">立即预定</view>
+    <navigator class="bott-btn" hover-class="none"
+        url="../shoppingOrder/reserveOrder"
+        wx:if="{{isShow}}">立即预定</navigator>
 </view>

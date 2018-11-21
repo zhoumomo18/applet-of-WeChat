@@ -1,8 +1,10 @@
 //app.js
+import WxValidate from './utils/WxValidate'
 App({
+  WxValidate: (rules,messages) => new WxValidate(rules,messages),
   globalData: {
     urlPath: 'https://admintour.cworld-china.com/tourWeb/v1.0',
-    imgUrlPath: 'https://admintour.cworld-china.com/',
+    imgUrlPath: 'http://admintour.cworld-china.com:9999/image',
     userInfo: {}
   },
   onLaunch: function () {
