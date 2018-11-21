@@ -34,7 +34,7 @@
         </view>
     </view>
     <!-- 横划特色菜菜单 -->
-    <view class='mt20 over-hide'>
+    <view class='mt20 over-hide' wx:if="{{infoObj.specialDishesList && infoObj.specialDishesList.length}}">
         <view class='pad30 bgfff'>
             <view class='foods-column-box border-btm'>
                 <view class='left-block line-one'>
@@ -60,7 +60,7 @@
         </scroll-view>
     </view>
     <!-- 商家菜单 -->
-    <view class="bgfff mt20" id='manuList' >
+    <view class="bgfff mt20" id='manuList' wx:if="{{foodList && foodList.length>0}}">
         <view class='pad30 bgfff'>
             <view class='foods-column-box border-btm'>
                 <view class='left-block line-one'>
