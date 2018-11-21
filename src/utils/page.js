@@ -17,9 +17,25 @@ let commonMethod = {
         },
         requestConfig = {
             method: 'GET',
-            publicUrlType: 1,
             url: '/ScenicSpotController/getall',
             data: params,
+            successCallback: action,
+            errorCallback: action
+        }
+        function action(response) {
+            obj.callBack && obj.callBack(response)
+        }
+        ajax.request(requestConfig)
+    },
+    /*查询用户信息
+    * params obj object
+    *{
+    *}
+    * */
+    getUserInfo: (obj) => {
+        let requestConfig = {
+            method: 'GET',
+            url: '/constumer/getbyopenid',
             successCallback: action,
             errorCallback: action
         }

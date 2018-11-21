@@ -1,20 +1,22 @@
 <view class="container">
     <view class="ui-title">请完善您的个人信息</view>
-    <view class="u-info-list bg-white">
-        <view class="section_box section_access_after">
-            <view class="section_title">真实姓名</view>
-            <input name="receiver" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="20" />
+    <form bindsubmit="saveUserInfo">
+        <view class="u-info-list bg-white">
+            <view class="section_box section_access_after">
+                <view class="section_title">真实姓名</view>
+                <input name="realName" value="{{userInfo.realName}}" placeholder="请填写" placeholder-style="color:#AAA" maxlength="20" />
+            </view>
+            <view class="section_box section_access_after">
+                <view class="section_title">手机号码</view>
+                <input name="phone" value="{{userInfo.phone}}" placeholder="请填写" placeholder-style="color:#AAA" maxlength="11" />
+            </view>
+            <view class="section_box section_access_after">
+                <view class="section_title">身份证号</view>
+                <input name="idCard" value="{{userInfo.idCard}}" placeholder="请填写" placeholder-style="color:#AAA" maxlength="20" />
+            </view>
         </view>
-        <view class="section_box section_access_after">
-            <view class="section_title">手机号码</view>
-            <input name="tel" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="11" />
+        <view class="ui-bottom-fixed">
+            <button class="action-btn" form-type="submit" hover-class="none">保存资料</button>
         </view>
-        <view class="section_box section_access_after">
-            <view class="section_title">身份证号</view>
-            <input name="idcard" value="" placeholder="请填写" placeholder-style="color:#AAA" maxlength="20" />
-        </view>
-    </view>
-    <view class="ui-bottom-fixed">
-        <button class="action-btn" form-type="submit" hover-class="none">保存资料</button>
-    </view>   
+    </form>
 </view>

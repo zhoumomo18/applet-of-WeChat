@@ -1,5 +1,6 @@
 const app = getApp()
 let {ajax} = require('../../utils/ajax.js')
+let {commonMethod} = require('../../utils/page.js')
 Page({
     data: {
         canUseEdit: true,
@@ -13,29 +14,20 @@ Page({
     // 获取用户信息详情
     getUserInfo(){
         let that = this,
-            userInfo = that.data.userInfo,
             requestConfig = {
-                method: 'GET',
-                url: '/constumer/getbyopenid',
-                successCallback: (res) => {
-                    if (res.code == 200){
+                callBack: (res) => {
+                    if (res.code && res.code == 200){
                         that.setData({
                             userInfo: res.data
                         })
                     } else {
                         wx.showToast({
-                            title: '请求超时'
+                            title: '请求失败'
                         })
                     }
-                },
-                errorCallback: (err) => {
-                    wx.showToast({
-                        title: '请求失败',
-                        icon: 'loading'
-                    })
                 }
             }
-        ajax.request(requestConfig)
+        commonMethod.getUserInfo(requestConfig)
     },
     // 点击编辑图标
     handleEditDisable(){
