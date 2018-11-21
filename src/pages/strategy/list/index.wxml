@@ -14,16 +14,15 @@
         </view>
     </scroll-view>
 
-    <import src="../../../components/list.wxml" />
     <view class="ui-content clear">
       <view class="list left-list">
         <block wx:for="{{strategyList}}" wx:key="item">
-          <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==0}}"></template>
+          <listItem itemObj="{{item}}" wx:if="{{index%2==0}}"></listItem>
         </block>
       </view>
       <view class="list right-list">
         <block wx:for="{{strategyList}}" wx:key="item">
-          <template is="item" data="{{...item,baseUrl}}" wx:if="{{index%2==1}}"></template>
+          <listItem itemObj="{{item}}" wx:if="{{index%2==1}}"></listItem>
         </block>
       </view>
     </view>

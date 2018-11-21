@@ -9,14 +9,14 @@
             placeholder="修改昵称" 
             disabled="{{canUseEdit}}"
             focus="{{!canUseEdit}}"
-            bindblur="editNickname"
-            bindconfirm="editNickname" />
+            bindblur="saveNickname"
+            bindconfirm="saveNickname" />
             <image src="/assets/images/edit_icon.png" bindtap="handleEditDisable" wx:if="{{showEditBtn}}" />
         </view>
     </view>
     <view class="ui-cont">
         <view class="ui-cont-top">
-            <navigator url="./userInfo/userInfo" hover-class="none" class="ui-cell_access">
+            <navigator url="../userInfo/userInfo" hover-class="none" class="ui-cell_access">
                 <view class="ui-cell__bd">
                     <image class="icon" src="/assets/images/u_info_icon.png" />
                     <text>我的资料</text>
@@ -30,7 +30,7 @@
                 </view>
                 <image class="arrow_right" src="/assets/images/user_arrow.png" />
             </view>
-            <navigator url="./myFavorite/myFavorite" hover-class="none" class="ui-cell_access">
+            <navigator url="../myFavorite/myFavorite" hover-class="none" class="ui-cell_access">
                 <view class="ui-cell__bd">
                     <image class="icon" src="/assets/images/u_fav_icon.png" />
                     <text>我的收藏</text>

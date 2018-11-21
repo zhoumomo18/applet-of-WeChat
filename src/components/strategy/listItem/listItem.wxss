@@ -1,19 +1,3 @@
-.container{
-    background: #F0F4F7;
-    min-height: 100%;
-}
-.ui-content{
-    width: 100%;
-    padding: 0 30rpx 30rpx;
-    box-sizing: border-box;
-    display: flex;
-} 
-.list{
-    width: 334rpx; 
-} 
-.list:first-child{
-    margin-right: 22rpx;
-}
 .item{
     width: 100%;
     background-color: #fff;

@@ -1,5 +1,5 @@
 let app = getApp()
-let {ajax} = require('../../../utils/ajax.js')
+let {scenicMethod} = require('../../../service/scenicSpots/scenicService.js')
 
 Page({
     data: {
@@ -18,22 +18,6 @@ Page({
         })
         this.getTicketByid()
         this.initValidate()
-    },
-    // 获取当前票种详情
-    getTicketByid(){
-        let that = this,
-            requestConfig = {
-                method: 'GET',
-                url: '/ticket/getbyid/'+that.data.ticketId,
-                successCallback: (res) => {
-                    if (res.code &&　res.code==200){
-                        that.setData({
-                            curTickt: res.data
-                        })
-                    }
-                }
-            }
-        ajax.request(requestConfig)
     },
     // 数量减少
     handleMinus(){
@@ -87,5 +71,18 @@ Page({
         }
         // 创建实例对象
         this.WxValidate = app.WxValidate(rules,messages)
-    }
+    },
+
+    /***********************************调用接口************************************************************/
+    // 获取当前票种详情
+    getTicketByid(){
+        let that = this
+        scenicMethod.getTicketByid(that.data.ticketId, (res) => {
+            if (res &&　res.code==200){
+                that.setData({
+                    curTickt: res.data
+                })
+            }
+        })
+    },
 })

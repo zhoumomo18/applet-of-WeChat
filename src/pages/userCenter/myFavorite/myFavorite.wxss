@@ -1,5 +1,4 @@
-@import "../../../components/list.wxss";
-@import "../../scenicSpotsInvoice/index.wxss";
+@import "../../scenicSpots/list/index.wxss";
 
 .container .ui-tabs{
     display: flex;
@@ -27,6 +26,24 @@
     left: 50%;
     transform: translateX(-50%);
 }
+/* 攻略列表css */
+.container{
+    background: #F0F4F7;
+    min-height: 100%;
+}
+.ui-content{
+    width: 100%;
+    padding: 0 30rpx 30rpx;
+    box-sizing: border-box;
+    display: flex;
+} 
+.list{
+    width: 334rpx; 
+} 
+.list:first-child{
+    margin-right: 22rpx;
+}
+/* 酒店列表css */
 .p-list{
     background: #fff;
 }

@@ -1,4 +1,4 @@
-@import "../index.wxss";
+@import "../list/index.wxss";
 
 .search-list{
     font-family: PingFangSC-Medium;

@@ -1,6 +1,6 @@
 <view>
     <view class="search-wrap">
-        <form bindsubmit="searchList">
+        <form bindsubmit="getSearchList">
             <view class="search-bar-wrap">
                 <view class="search-bar">
                     <input type="text" value="{{name}}" placeholder="景点/关键词" bindinput="searchName" focus />

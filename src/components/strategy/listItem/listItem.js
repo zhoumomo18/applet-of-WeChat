@@ -1,4 +1,4 @@
-var App = getApp();
+const App = getApp();
 Component({
     properties: {
         itemObj: {

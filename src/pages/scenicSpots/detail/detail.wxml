@@ -53,7 +53,7 @@
                                 <navigator class="ticket-intro" url="../notice/ticketDescript?source=detail" hover-class="none">
                                     票种说明 <image src="/assets/images/arrow_right.png" />
                                 </navigator>
-                                <navigator class="order-btn" url="../shoppingOrder/reserveOrder?id={{item.id}}" hover-class="none">
+                                <navigator class="order-btn" url="../reserve/reserveOrder?id={{item.id}}" hover-class="none">
                                     预定
                                 </navigator>
                             </view>

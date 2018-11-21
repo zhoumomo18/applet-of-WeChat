@@ -11,7 +11,7 @@
     <!--景点搜索-->
     <view class="ui-list">
         <block wx:for="{{scenicSpotList}}" wx:key="item">
-            <navigator class="ui-item" url="./detail/detail?id={{item.id}}" hover-class="none">
+            <navigator class="ui-item" url="../detail/detail?id={{item.id}}" hover-class="none">
                 <view class="ui-image"><image src="{{imagePrefix}}{{item.img}}" /></view>
                 <view class="ui-box">
                     <view class="ui-box-l">
@@ -30,4 +30,3 @@
     </view>
 </view>
 
-<loading hidden="{{loading.loadingHidden}}">{{loading.content}}</loading>
