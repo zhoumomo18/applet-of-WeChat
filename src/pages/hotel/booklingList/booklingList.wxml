@@ -28,7 +28,7 @@
         
         <!-- 等级条件列表 -->
         <!-- 底层遮罩 -->
-        <view wx:if="{{showModal}}" class='fd-bgbox' bindtap=''></view>
+        <view wx:if="{{showModal}}" class='fd-bgbox' bindtap='switchModal'></view>
         <block wx:if="{{showModal}}">
             <view class='fd-sel-list' 
                     scroll-y="true">
