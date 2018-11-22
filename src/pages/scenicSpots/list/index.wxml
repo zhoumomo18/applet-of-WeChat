@@ -11,21 +11,7 @@
     <!--景点搜索-->
     <view class="ui-list">
         <block wx:for="{{scenicSpotList}}" wx:key="item">
-            <navigator class="ui-item" url="../detail/detail?id={{item.id}}" hover-class="none">
-                <view class="ui-image"><image src="{{imagePrefix}}{{item.img}}" /></view>
-                <view class="ui-box">
-                    <view class="ui-box-l">
-                        <view class="ui-title ellipsis">{{item.name}}</view>
-                        <view class="ui-label m-color">推荐指数：{{item.ratings}}</view>
-                        <view class="ui-num">{{item.peoplenum}}人来过</view>
-                    </view>
-                    <view class="ui-box-r">
-                        <view class="ui-price" wx:if="{{item.lowestTicketPrice==0}}"><text class="m-color">免费</text>起</view>
-                        <view class="ui-price" wx:elif="{{item.lowestTicketPrice>0}}"><text class="m-color">￥{{item.lowestTicketPrice}}</text>起</view>
-                        <view class="ui-price" wx:else><text class="m-text">尚未开售</text></view>
-                    </view>
-                </view>
-            </navigator>
+            <listItem itemObj="{{item}}"></listItem>
         </block>
     </view>
 </view>

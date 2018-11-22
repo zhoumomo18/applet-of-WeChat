@@ -22,9 +22,8 @@ Page({
     },
     // 预览图片
     previewImage: function (e) {
-        var current = e.target.dataset.src;  
+        var current = e.currentTarget.dataset.src;  
         var imgUrls = this.data.imgUrls;
-        //console.log(imgUrls)
         wx.previewImage({
             current: current, // 当前显示图片的http链接  
             urls: imgUrls, // 需要预览的图片http链接列表  
@@ -66,14 +65,23 @@ Page({
     /***********************************调用接口************************************************************/
     // 获取当前景点详情
     getDetailyById: function(){
-        let that = this
+        let that = this,
+            imgUrls = []
         scenicMethod.getDetailyById(that.data.currentId, (res) => {
             if (res && res.code==200){
+                // 将需要预览的图片存入一个数组
+                if (res.data.imgInfo){
+                    for (let item of res.data.imgInfo){
+                        imgUrls.push(that.data.imagePrefix+item.src)
+                    }
+                }
+                
                 that.setData({
                     detailInfo: res.data,
-                    imgUrls: res.data.imgInfo
+                    imgUrls: imgUrls
                 })
                 wx.hideLoading()
+                console.log(res.data)
 
                 // 解析文本
                 var scenicSpotIntro = res.data.remark;

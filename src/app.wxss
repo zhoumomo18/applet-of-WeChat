@@ -59,6 +59,13 @@ page{
   height: 0;
   color: transparent;
 }
+/* 去掉button默认样式 */
+button{
+  border-radius: 0;
+}
+button::after{
+  border:none;
+}
 
 
 .ui-cell__bd{

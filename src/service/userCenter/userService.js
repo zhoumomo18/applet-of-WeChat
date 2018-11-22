@@ -42,11 +42,11 @@ let userMethod = {
         }
         ajax.request(requestConfig)
     },
-    // 获取攻略收藏列表
-    getStrategyList: (params, callBack) => {
+    // 获取攻略/酒店收藏列表
+    getListData: (url, params, callBack) => {
         let requestConfig = {
             method: 'GET',
-            url: '/strategy/getallbyuser',
+            url: url,
             data:params,
             successCallback: action,
             errorCallback: action

@@ -1,4 +1,4 @@
-@import "../../scenicSpots/list/index.wxss";
+@import "/components/scenicSpots/listItem/listItem.wxss";
 
 .container .ui-tabs{
     display: flex;
