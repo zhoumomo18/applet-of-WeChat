@@ -55,5 +55,13 @@ Page({
         wx.redirectTo({
             url: '/pages/hotel/hotelDetail/hotelDetail?id=' + that.ID
         })
+    },
+    callPhone(){
+        var that = this;
+        var info = that.data.info;
+        if (!info.telephone) return;
+        wx.makePhoneCall({
+            phoneNumber: '',
+        })
     }
 })

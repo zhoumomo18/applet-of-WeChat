@@ -1,8 +1,9 @@
 <!--酒店详细信息-->
-<view class='pd98'>
+<view class='pd98' wx:if="{{info && info.id}}">
     <view class='pd30 bgfff'>
         <view class='border-top'>
-            <view class='box-title'>酒店介绍</view>
+            <view class='box-title'>酒店介绍
+            <image class='phone-icon' bindtap='callPhone' src="../../../assets/images/hotel/phone-icon.png" wx:if="{{info.telephone}}"></image></view>
             <view class="box-grey {{isSpread?'':'line-four'}} transition">{{info.remark}}</view>
             <view class='box-grey-btn' bindtap='switchSpread' wx:if="{{!isSpread && info.remark.length>144}}">展开全部
             <image src="../../../assets/images/hotel/btm-arrow.png"></image></view>
@@ -25,5 +26,4 @@
         <view class='pad30 box-black-item'>{{hotelInfo.notes}}</view>
     </view>
     <view class='orange-btn' bindtap='gotoDetail'>查看房型</view>
-
 </view>

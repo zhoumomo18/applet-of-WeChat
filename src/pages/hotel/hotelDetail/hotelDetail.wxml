@@ -13,8 +13,8 @@
             <text class='hl-dt-top-titletxt'>{{hotelInfo.name}}</text>
             <!-- 收藏按钮 -->
             <view class='hl-dt-top-collect' bindtap='switchCollect'>
-                <image wx:if="{{hotelInfo.collection}}" class='act'></image>
-                <image wx:else class='normal'></image>
+                <image wx:if="{{hotelInfo.collection}}" class='act' src="../../../assets/images/hotel/collect-org-icon.png"></image>
+                <image wx:else class='normal' src="../../../assets/images/hotel/collect-grey-icon.png"></image>
             </view>
         </view>
 
@@ -61,20 +61,20 @@
                 <view class='bl-list-item-left'><image src='{{imgUrlPath}}{{houseTypeImg}}'></image></view>
                 <view class='bl-list-item-right'>
                     <view class='bl-list-item-title'>{{item.name}}</view>  
-                    <view class='bl-list-item-type'>{{item.area}}m²</view> 
+                    <view class='bl-list-item-type'><text class='mr10'>{{item.area}}m²</text><text class='mr10'>{{item.bedType}}</text><text> {{item.bedWidth}}m</text></view> 
                     <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{item.price}}</text><text class='small'>起</text>
                         <image class='bl-list-item-icon open' 
                         wx:if="{{!item.isOpen}}"
                         data-idx='{{index}}' 
                         data-id='{{item.id}}' 
                         bindtap='openCollapse' 
-                        src=''></image>
+                        src='../../../assets/images/hotel/round-top-arrow.png'></image>
                         <image class='bl-list-item-icon close'
                         wx:else 
                         data-idx='{{index}}' 
                         data-id='{{item.id}}' 
                         bindtap='closeCollapse' 
-                        src=''></image></view>
+                        src='../../../assets/images/hotel/round-btm-arrow.png'></image></view>
                 </view>
             </view>
             <block wx:if="item.isOpen && item.bedTypeList && item.bedTypeList.length>0">
@@ -97,13 +97,13 @@
                           wx:if="{{item.isOpen==3 && item.bedTypeList && item.bedTypeList.length>3}}"
                           data-type="open"
                           data-idx="{{index}}"
-                          bindtap="switchMore">查看全部报价<image class='tag-btn-icon'></image></view>
+                          bindtap="switchMore">查看全部报价<image class='tag-btn-icon' src="../../../assets/images/hotel/btm-arrow.png"></image></view>
                     <!-- 收起列表 -->
                     <view class='tag-btn' 
                           wx:if="{{item.isOpen>3}}"
                           data-idx="{{index}}"
                           data-type="close"
-                          bindtap="switchMore">收起<image class='tag-btn-icon'></image></view>
+                          bindtap="switchMore">收起<image class='tag-btn-icon' src="../../../assets/images/hotel/top-arrow.png"></image></view>
                 </view>
             </block>
         </block>
@@ -112,13 +112,13 @@
               class='tag-btn' 
               style='background:#fff'
               data-type="open"
-              bindtap="switchHeight">查看全部房型<image class='tag-btn-icon'></image></view>
+              bindtap="switchHeight">查看全部房型<image class='tag-btn-icon' src="../../../assets/images/hotel/btm-arrow.png"></image></view>
         <!-- 外层收起列表 -->
         <view wx:if="{{isAllHouseType>3}}"
               class='tag-btn' 
               style='background:#fff'
               data-type="close"
-              bindtap="switchHeight">收起<image class='tag-btn-icon'></image></view>
+              bindtap="switchHeight">收起<image class='tag-btn-icon' src="../../../assets/images/hotel/top-arrow.png"></image></view>
     </view>
 
     <!-- 入住须知 -->

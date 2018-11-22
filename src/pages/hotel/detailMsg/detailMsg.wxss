@@ -21,6 +21,17 @@ page{
     position: relative;
     margin-top:40rpx;
 }
+.phone-icon{
+    position: absolute;
+    right:0;
+    top:50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    width: 30rpx;
+    padding: 30rpx;
+    height: 30rpx;
+    display: block;
+}
 .box-grey{
     font-size: 28rpx;
     color: #999999;
