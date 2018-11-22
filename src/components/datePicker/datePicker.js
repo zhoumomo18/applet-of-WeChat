@@ -3,7 +3,7 @@ Component({
         // 这里定义了innerText属性，属性值可以在组件使用时指定
         MonthNumber: {
             type: String,
-            value: 3,
+            value: 1,
         },
     },
     data: {
@@ -18,18 +18,7 @@ Component({
             '五',
             '六',
         ],
-        dateList: [
-            // {
-            //     Year: null, //年
-            //     Month: null, //月
-            //     days: [ // 日期列表
-            //         {
-            //             day: null, //日期
-            //             disabled: false //是否可用
-            //         }
-            //     ]
-            // }
-        ],
+        dateList: [],
         selectStart: '',
         selectEnd: '',
     },
@@ -39,7 +28,8 @@ Component({
         var startYear = nowDate.getFullYear();
         var startMonth = nowDate.getMonth() +1;
         var startDay = nowDate.getDate();
-        var timeArr = that.getNextMonth(startYear, startMonth, startDay, that.data.MonthNumber);
+        var MonthNumber = that.data.MonthNumber ? parseInt(that.data.MonthNumber) : 0;
+        var timeArr = that.getNextMonth(startYear, startMonth, startDay, MonthNumber);
         var endYear = timeArr[0];
         var endMonth = timeArr[1];
         var endDay = timeArr[2];
@@ -145,7 +135,7 @@ Component({
             var nowMonth = that.data.startMonth;
             var nowDay = that.data.startDay;
            
-            var MonthNumber = that.data.MonthNumber ? that.data.MonthNumber : 1;
+            var MonthNumber = that.data.MonthNumber ? parseInt(that.data.MonthNumber) : 0;
             var dateList = that.data.dateList;
             for (var i = 0; i < MonthNumber+1; i++) {
                 var nowDateObj = {
@@ -189,7 +179,10 @@ Component({
                 selectStart = currentTimeStr > selectStartStr ? selectStart : currentTime;
                 that.setData({ selectStart: selectStart, selectEnd: selectEnd });
                 that.setDaysIsSelect();
-                that.triggerEvent('datePicker')
+                var timeObj =[];
+                timeObj.push(selectStart);
+                timeObj.push(selectEnd);
+                that.triggerEvent('datePicker', timeObj)
             } else if (!selectStart && !selectEnd) {
                 selectStart = currentTime;
                 that.setData({ selectStart: selectStart })
