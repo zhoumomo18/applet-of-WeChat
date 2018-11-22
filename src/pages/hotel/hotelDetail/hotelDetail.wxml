@@ -66,6 +66,7 @@
           wx:if="{{houseTypeList && houseTypeList.length}}">
         <block wx:for="{{houseTypeList}}"
                wx:key="{{item.id}}"
+               wx:for-index="{{index}}"
                wx:if="{{index<isAllHouseType}}">
             <view class='bl-list-item bgfff'>
                 <view class='bl-list-item-left'><image src='{{imgUrlPath}}{{houseTypeImg}}'></image></view>
@@ -95,7 +96,9 @@
                       wx:key="{{bed.id}}">
                     <view class="bl-itemDetail-item border-bottom">
                         <view class="bl-itemDetail-title">{{bed.name}}</view>
-                        <view class="bl-itemDetail-type">{{bed.detailedConfiguration}}</view>
+                        <view class="bl-itemDetail-type" wx:if="{{bed.detailConfigList && bed.detailConfigList.length}}">
+                            <text wx:for="{{bed.detailConfigList}}}" wx:for-item="bedItem" wx:for-index="{{num}}" wx:key="{{bedItem}}">{{bedItem.name}} {{num+1<bed.detailConfigList.length?'|':''}}</text>
+                        </view>
                         <view class="bl-itemDetail-tag" wx:if="{{bed.isUnsubscribe}}">支持退订</view>
                         <view class="bl-itemDetail-tag" wx:else style='color:#666666;border-color:#666666'>不支持退订</view>
                         <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{bed.price}}</text><text class='small'>起</text>
