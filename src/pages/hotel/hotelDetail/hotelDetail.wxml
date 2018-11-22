@@ -1,4 +1,14 @@
 <!--酒店详情-->
+<wxs module="Func">
+    var time = function(currentTime){
+        if(!currentTime) return;
+        currentTime = currentTime.substring(5)
+        return currentTime
+    };
+    module.exports = {
+        time : time,
+    }
+</wxs>
 <view>
    <view class='hl-dt-banner'>
         <swiper current="{{currentSwiper}}" bindchange="changeCurrent">
@@ -44,10 +54,10 @@
             </view>
 
             <view class='hl-dt-datebox-msg hl-dt-flex'>
-                <view>{{searchData.startDate}}<text class='small'>今天</text></view>
-                <view>{{searchData.endDate}}<text class='small'>周四</text></view>
+                <view>{{Func.time(searchData.startDate)}}<text class='small'>{{searchData.startDateName}}</text></view>
+                <view>{{Func.time(searchData.endDate)}}<text class='small'>{{searchData.endDateName}}</text></view>
             </view>
-            <view class='hl-dt-datebox-tag'>共{{}}晚</view>
+            <view class='hl-dt-datebox-tag'>共{{dayNightNum}}晚</view>
         </view>
     </view>
 

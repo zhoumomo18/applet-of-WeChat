@@ -14,11 +14,17 @@
         <view class='border-top mt40'>
             <view class='box-title'>设备与服务</view>
             <view class='box-grey'>公共设备</view>
-            <view class='box-black-item'>list</view>
+            <block wx:for="{{info.publicEquipments}}" wx:key="{{item}}">
+                <view class='box-black-item'>{{item.name}}</view>
+            </block>
             <view class='box-grey border-top'>客房设备</view>
-            <view class='box-black-item'>list</view>
+            <block wx:for="{{info.roomEquipments}}" wx:key="{{item}}">
+                <view class='box-black-item'>{{item.name}}</view>
+            </block>
             <view class='box-grey border-top'>酒店服务</view>
-            <view class='box-black-item'>list</view>
+            <block wx:for="{{info.hotelServices}}" wx:key="{{item}}">
+                <view class='box-black-item'>{{item.name}}</view>
+            </block>
         </view>
     </view>
     <view class='pd30 bgfff mt20'>

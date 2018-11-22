@@ -10,6 +10,7 @@ Page({
         hotelInfo: {},
         houseTypeList:[],
         isAllHouseType: 3,
+        dayNightNum: 0
 
     },
 
@@ -18,17 +19,18 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
-        if (!options.id || options.id == 'null' || options.id == 'undefined') return;
+        // if (!options.id || options.id == 'null' || options.id == 'undefined') return;
         that.ID = options.id;
         that.getHotelDetail();
         var searchData = wx.getStorageSync('searchData');
         if (!searchData) {
             return;
         }
+        that.setData({ searchData: searchData });
+        that.countNight();
         that.getHeight();
         that.getHotelList();
         that.getHouseType();
-        that.setData({ searchData: searchData })
     },
 
     /**
@@ -44,33 +46,14 @@ Page({
     onShow: function () {
 
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
+    countNight(){
+        var that = this;
+        var searchData = that.data.searchData;
+        if (!searchData.startDate || !searchData.endDate) return;
+        var startDate = new Date(searchData.startDate);
+        var endDate = new Date(searchData.endDate);
+        var dayNightNum = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);/*不用考虑闰年否*/
+        that.setData({ dayNightNum: dayNightNum})
     },
     //用户点击右上角分享
     onShareAppMessage: function () {

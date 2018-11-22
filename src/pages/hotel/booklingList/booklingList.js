@@ -35,7 +35,6 @@ Page({
         var that = this;
         var searchData = wx.getStorageSync('searchData');
         that.setData({ searchData: searchData })
-        
         that.getHeight();
         that.getHotelList();
     },
@@ -43,7 +42,6 @@ Page({
 
     },
     getHotelList(){
-        debugger
         var that = this;
         var params = {
             pageNo: that.pageNo,
