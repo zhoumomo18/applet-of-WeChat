@@ -34,17 +34,16 @@ Page({
     onLoad: function (options) {
         var that = this;
         var searchData = wx.getStorageSync('searchData');
-        if (!searchData) {
-            return;
-        }
+        that.setData({ searchData: searchData })
+        
         that.getHeight();
         that.getHotelList();
-        that.setData({ searchData: searchData })
     },
     onShareAppMessage: function () {
 
     },
     getHotelList(){
+        debugger
         var that = this;
         var params = {
             pageNo: that.pageNo,

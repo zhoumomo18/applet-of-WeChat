@@ -1,0 +1,30 @@
+.sliderHCon {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.MoneyValue {
+  font-size: 30rpx;
+  text-align: center;
+  color: #999;
+  margin-top: 15rpx;
+}
+
+.showMoney text {
+  margin-right: 30rpx;
+}
+
+.twoSlider {
+  width: 95%;
+  position: relative;
+  height: 100rpx;
+}
+.slider{
+    width: 90%;
+    position: absolute;
+    left: 0;
+}

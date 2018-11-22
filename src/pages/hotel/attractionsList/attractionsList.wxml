@@ -2,8 +2,8 @@
 <view>
     <!-- 搜索框 -->
     <view class='atn-search-box'>
-        <view class='atn-search-box-icon'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
-        <input class='atn-search-box-ipt' placeholder='景点名称'></input>
+        <view class='atn-search-box-icon' bindtap='search'><image src="../../../assets/images/hotel/search-icon.png"></image></view>
+        <input class='atn-search-box-ipt' value='{{name}}' bindinput='bindinput' placeholder='景点名称'></input>
     </view>
     <scroll-view class='atn-search-list' 
                 style="height:{{winHeight}}px"
@@ -16,6 +16,6 @@
               data-id='{{item.id}}'
               data-index='{{index}}'
               bindtap='selectScenic'>{{item.name}}</view>
-        <view class='no-more' wx:if="{{scenicList && scenicCount!=0 && scenicList.length==scenicCount}}">没有更多了</view>
+        <view class='no-more' wx:if="{{scenicList && scenicCount==0 && scenicList.length==scenicCount}}">没有更多了</view>
     </scroll-view>
 </view>

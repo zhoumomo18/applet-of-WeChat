@@ -28,6 +28,10 @@
 .atn-search-box-icon image {
     width: 30rpx;
     height: 30rpx;
+    padding:30rpx;
+    position: relative;
+    left: -30rpx;
+    top:-30rpx;
 }
 .atn-search-list{
     box-sizing: border-box;

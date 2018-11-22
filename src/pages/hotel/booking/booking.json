@@ -2,5 +2,6 @@
     "navigationBarTitleText": "酒店预订",
     "navigationBarBackgroundColor": "#fff",
     "usingComponents": {
+        "twoSlider": "../../../components/twoSlider/twoSlider"
     }
 }

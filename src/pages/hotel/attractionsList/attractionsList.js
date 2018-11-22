@@ -5,13 +5,10 @@ Page({
     data: {
         winHeight: 0,
         scenicList: [],
-        scenicCount: 0,
-        isActive: null
+        scenicCount: null,
+        isActive: null,
+        name: null
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         var that = this;
         if(options && options.id){
@@ -21,13 +18,23 @@ Page({
         that.getHeight();
         that.getScenicList();
     },
+    bindinput(e) {
+        var that = this;
+        var name = e.detail.value;
+        that.setData({ name: name })
+    },
+    search(){
+        var that = this;
+        that.pageNo = 1;
+        that.getScenicList();
+    },
     getScenicList(){
         var that = this;
         var params= {
-            name: that.data.name,
             pageNo: that.pageNo,
             pageSize: that.pageSize
         };
+        if (that.data.name) params.name = that.data.name;
         hotelMethods.getScenicList(params, function (res) {
             if (res && res.code == 200 && res.data) {
                 var scenicList = that.data.scenicList;
@@ -78,10 +85,6 @@ Page({
         searchData.scenicSpotName = that.data.scenicList[index].name;
         wx.setStorageSync('searchData', searchData)
     },
-
-    /**
-     * 用户点击右上角分享
-     */
     onShareAppMessage: function () {
 
     },

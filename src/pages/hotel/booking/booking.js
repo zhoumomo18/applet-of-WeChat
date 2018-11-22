@@ -18,13 +18,21 @@ Page({
             endDate: null,
             endDateName: null,
             hotelName: null,
-            price: '', 
+            priceStrart : 0, 
+            priceEnd: 2000,
             grade: null,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
         },
         modalData: {
-            price: 0.00,
+            priceStrart: 0,
+            priceEnd: 2000,
             grade: 0,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
-        }
+        },
+        leftMin: 0,
+        leftMax: 6,
+        rightMin: 0,
+        rightMax: 6,
+        leftValue: 0,
+        rightValue: 6
     },
     /**
      * 生命周期函数--监听页面显示
@@ -43,7 +51,16 @@ Page({
         if (searchData.startDate) {
             searchData.endDateName = that.getDayName(searchData.endDate);
         }
-        that.setData({ searchData: searchData});
+        if (!searchData.priceStrart) {
+            searchData.priceStrart = 0;
+        }
+        if (!searchData.priceEnd) {
+            searchData.priceEnd = 2000;
+        }
+        var modalData = that.data.modalData;
+        modalData.price = searchData.price;
+        modalData.grade = searchData.grade;
+        that.setData({ searchData: searchData, modalData: modalData});
         wx.setStorageSync('searchData', searchData)
     }, 
     getDateStr(AddDayCount) {
@@ -84,9 +101,10 @@ Page({
     //去选景点
     gotoSelectPoint(e){
         var that = this;
-        var id = e.currentTaget.dataset.id;
-        if(!id) return;
-        wx.navigateTo({url: '/pages/hotel/attractionsList/attractionsList?id='+id,})
+        // var id = e.currentTaget.dataset.id;
+        // if(!id) return;
+        // wx.navigateTo({url: '/pages/hotel/attractionsList/attractionsList?id='+id,})
+        wx.navigateTo({url: '/pages/hotel/attractionsList/attractionsList',})
     },
     bindinput(e){
         var that = this;
@@ -102,11 +120,13 @@ Page({
         modalData.grade = grade
         that.setData({ modalData: modalData})
     },
-    changeSlider(e){
+    changeSlider(data){
         var that = this;
-        var price = e.detail.value;
         var modalData = that.data.modalData;
-        modalData.price = price
+        if (data && data.detail && data.detail.length){
+            modalData.priceStrart = data.detail[0];
+            modalData.priceEnd = data.detail[1];
+        }
         that.setData({ modalData: modalData })
     },
     updataSearch(){
@@ -114,8 +134,10 @@ Page({
         var searchData = that.data.searchData;
         var modalData = that.data.modalData;
         searchData.grade = modalData.grade;
-        searchData.price = modalData.price;
+        searchData.priceStrart = modalData.priceStrart;
+        searchData.priceEnd = modalData.priceEnd;
         that.setData({ searchData: searchData })
+        wx.setStorageSync('searchData', searchData)
         that.switchModal();
     },
     searchHotel(){
@@ -131,5 +153,10 @@ Page({
         wx.navigateTo({
             url: '/pages/hotel/bookDate/bookDate',
         })
-    }
+    },
+    onHide(){
+        var that = this;
+        var searchData = that.data.searchData;
+        wx.setStorageSync('searchData', searchData)
+    },
 })

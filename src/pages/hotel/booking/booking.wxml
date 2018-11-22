@@ -40,7 +40,7 @@
     <!-- 型号 -->
     <view class='ht-column-box' bindtap="switchModal">
         <view wx:if="{{searchData.grade || searchData.price}}" class="left-block left-block-black line-one">
-            <text class=''>{{searchData.price}}元/<block wx:if="{{searchData.grade==0}}">不限</block><block wx:elif="{{searchData.grade==1}}">民宿/客栈</block><block wx:elif="{{searchData.grade==2}}">经济型</block><block wx:elif="{{searchData.grade==3}}">高档型</block><block wx:elif="{{searchData.grade==4}}">豪华型</block></text>
+            <text class=''>{{searchData.priceStrart}}~{{searchData.priceEnd}}元/<block wx:if="{{searchData.grade==0}}">不限</block><block wx:elif="{{searchData.grade==1}}">民宿/客栈</block><block wx:elif="{{searchData.grade==2}}">经济型</block><block wx:elif="{{searchData.grade==3}}">高档型</block><block wx:elif="{{searchData.grade==4}}">豪华型</block></text>
         </view>
         <view wx:else class="left-block line-one">
             <text class=''>价格/等级</text>
@@ -51,16 +51,16 @@
 
     <view wx:if="{{!searchData.scenicSpot || !searchData.startDate || !searchData.endDate || !searchData.hotelName || !searchData.grade || !searchData.price}}" class='ht-book-btn disabled'>开始搜索</view>
     <view wx:else class='ht-book-btn' bindtap='searchHotel'>开始搜索</view>
-    <view class='ht-book-btn' bindtap='searchHotel'>开始搜索</view>
-
     <!-- 价格等级弹框 -->
     <view class='ht-modal' wx:if="{{showModal}}">
         <view class='ht-modal-bg' bindtap="switchModal"></view>
         <view class='ht-modal-con'>
             <view class='ht-modal-txt1'>价格</view>
             <view class='ht-modal-slider'>
-                <slider bindchanging="changeSlider" bindchange='changeSlider' value='{{modalData.price}}' min="0.00" max="2000.00" activeColor="#FFA819" />
-                <text class='ht-modal-slider-txt2'>￥{{modalData.price}}</text>
+                <twoSlider leftValue="{{modalData.priceStrart}}" rightValue="{{modalData.priceEnd}}" bind:changeSlider="changeSlider"></twoSlider>
+
+                <!-- <slider bindchanging="changeSlider" bindchange='changeSlider' value='{{modalData.price}}' min="0.00" max="2000.00" activeColor="#FFA819" /> -->
+                <!-- <text class='ht-modal-slider-txt2'>￥{{modalData.price}}</text> -->
             </view>
             
             <view class='ht-modal-typelist'>

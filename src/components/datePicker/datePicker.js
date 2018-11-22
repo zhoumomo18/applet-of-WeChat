@@ -203,7 +203,7 @@ Component({
                 var timeObj =[];
                 timeObj.push(selectStart);
                 timeObj.push(selectEnd);
-                that.triggerEvent('datePicker', timeObj)
+                that.triggerEvent('datePicker', timeObj);
             } else if (!selectStart && !selectEnd) {
                 selectStart = currentTime;
                 that.setData({ selectStart: selectStart })

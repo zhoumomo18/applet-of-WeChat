@@ -149,7 +149,6 @@
 }
 .ht-modal-slider{
     position: relative;
-    padding: 0 30rpx 30rpx;
 }
 .ht-modal-slider text{
     font-size: 24rpx;
@@ -201,4 +200,5 @@
     left: 0;
     bottom:0;
 }
+
 
