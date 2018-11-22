@@ -18,7 +18,7 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
-        if(!options.id) return;
+        if (!options.id || options.id == 'null' || options.id == 'undefined') return;
         that.ID = options.id;
         that.getHotelDetail();
         var searchData = wx.getStorageSync('searchData');
@@ -72,19 +72,19 @@ Page({
     onReachBottom: function () {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
+    //用户点击右上角分享
     onShareAppMessage: function () {
-
+        var that = this;
+        return {
+            path: '/pages/hotel/hotelDetail/hotelDetail?id=' + that.ID
+        }
     },
     getHotelDetail(){
         var that = this;
         var params ={
             id: that.ID
         };
-        if(!params.id) return;
+        if (!params.id) return;
         hotelMethods.getHotelDetail(params, function (res) {
             that.isClick = false;
             if (res && res.code == 200) {
@@ -233,6 +233,12 @@ Page({
                     duration: 2000
                 })
             }
+        })
+    },
+    gotoDetailMsg(){
+        var that = this;
+        wx.navigateTo({
+            url: '/pages/hotel/detailMsg/detailMsg?id='+that.ID,
         })
     }
 })

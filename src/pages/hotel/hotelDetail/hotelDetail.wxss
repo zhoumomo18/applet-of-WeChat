@@ -307,3 +307,6 @@ page {
 .pt20{
     padding-top: 20rpx;
 }
+.mr10{
+    margin-right: 10rpx;
+}

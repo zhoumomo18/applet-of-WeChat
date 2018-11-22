@@ -27,7 +27,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -68,7 +68,13 @@
 				{
 					"id": -1,
 					"name": "酒店详情",
-					"pathName": "pages/hotel/hotelDetail/hotelDetail"
+					"pathName": "pages/hotel/hotelDetail/hotelDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "酒店详细信息",
+					"pathName": "pages/hotel/detailMsg/detailMsg"
 				}
 			]
 		}

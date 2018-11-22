@@ -1,0 +1,85 @@
+page{
+    background: #f3f3f3;
+}
+.pd98{
+   padding-bottom:98rpx; 
+}
+.pd30{
+    padding: 0 30rpx;
+}
+.bgfff{
+    background:#fff;
+}
+.border-top{
+    border-top: 1rpx solid #E3E3E3;
+}
+.box-title{
+    font-size: 34rpx;
+    line-height: 48rpx;
+    color: #333333;
+    font-weight: bold;
+    position: relative;
+    margin-top:40rpx;
+}
+.box-grey{
+    font-size: 28rpx;
+    color: #999999;
+    line-height: 42rpx;
+    padding-top:30rpx;
+}
+.box-grey-btn{
+    font-size: 24rpx;
+    color: #999999;
+    width: 128rpx;
+    margin:20rpx auto 0;
+    position: relative;
+}
+.box-grey-btn image {
+    width: 17rpx;
+    height: 9rpx;
+    display: block;
+    position: absolute;
+    top:50%;
+    right:0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+.box-black-item{
+    padding:15rpx 0;
+    font-size: 28rpx;
+    color: #333333;
+    line-height: 40rpx;
+    margin-right:100rpx;
+}
+.mt40{
+    margin-top:40rpx;
+}
+.mt20{
+    margin-top:20rpx;
+}
+.pad30{
+    padding:30rpx 0;
+}
+.orange-btn{
+    position: fixed;
+    width: 100%;
+    height:98rpx;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    line-height: 98rpx;
+    background: #FFA819;
+    font-size: 34rpx;
+    color: #FFFFFF;
+}
+.line-four{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    display:-webkit-box;
+}
+.transition{
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+}

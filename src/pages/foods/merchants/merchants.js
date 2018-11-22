@@ -170,6 +170,9 @@ Page({
     },
     //用户点击右上角分享
     onShareAppMessage: function () {
-
+        var that = this;
+        return {
+            path: '/pages/foods/merchants/merchants?id=' + that.ID 
+        }
     },
 })
