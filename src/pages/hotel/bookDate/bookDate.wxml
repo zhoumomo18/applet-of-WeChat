@@ -1,0 +1,5 @@
+<!--src/pages/hotel/bookDate/bookDate.wxml-->
+<view>
+    <datePicker curYear="2018" curMonth="11" days="22"></datePicker>
+</view>
+

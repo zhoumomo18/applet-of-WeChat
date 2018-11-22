@@ -1,0 +1,36 @@
+
+<!-- 选时间段点段 -->
+<view class='datePickerbox'>
+    <view class="weeks-box">
+        <view class="grid" wx:for="{{weeksList}}" wx:key="{{day}}" id="{{index}}">
+            <view class="weeks {{index==0 || index==6?'color-orange':''}}">{{item}}</view>
+        </view>
+    </view>
+    <block wx:for="{{dateList}}" wx:key="{{item}}">
+        <view class="month-tt">{{item.Year}}年{{item.Month}}月</view>
+        <view class="days-box">
+            <view class="grid {{itemName.isSelect? 'bg-orange':''}}"
+                  wx:for="{{item.days}}" 
+                  wx:for-item="itemName" 
+                  wx:key="{{itemName}}"  
+                  id="{{index}}"
+                  data-time='{{itemName.time}}'
+                  data-disabled='{{itemName.disabled?1:0}}'
+                  data-day='{{itemName.day}}'
+                  bindtap="SelectPicker">
+                <view class="day {{!itemName.disabled?'black': ''}}">{{itemName.day}}</view>
+                <!-- 入住样式 -->
+                <view class='active-box boder-start' wx:if="{{selectStart == itemName.time}}">
+                    <view>{{itemName.day}}</view>
+                    入住
+                </view>
+                <!-- 离店样式 -->
+                <view class='active-box boder-end' wx:if="{{selectEnd == itemName.time}}">
+                    <view>{{itemName.day}}</view>
+                    离店
+                </view>
+            </view>
+        </view>
+    </block>
+    
+</view>

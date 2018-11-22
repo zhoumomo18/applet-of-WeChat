@@ -1,0 +1,99 @@
+.days-box{
+    display: flex;
+    flex-wrap: wrap;
+    background: #FFFCF7;
+}
+.month-tt{
+    font-size: 34rpx;
+    line-height: 48rpx;
+    padding: 14rpx;
+    color: #333333;
+    text-align: center;
+    font-weight: bold;
+}
+.grid {
+    width: 100rpx;
+    height: 100rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+.day{
+    color: #DDDDDD;
+    font-size: 24rpx;
+    font-weight: bold;
+}
+.active_grid .day{
+    color: #333333;
+} 
+.active_grid .price{
+    color: #FF5A2D;
+    font-size: 24rpx;
+    font-weight: 600;
+}
+.selected_grid{
+    background: #FFA819;
+    border-radius: 8rpx;
+}
+.selected_grid .day{
+    color: #fff;
+}
+
+.weeks-box{
+    display: flex;
+    flex-wrap: nowrap;
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top:0
+}
+.datePickerbox{
+    padding-top:100rpx;
+}
+.weeks{
+    font-size: 24rpx;
+    color: #333333;
+}
+.color-orange{
+    color: #FFA819
+}
+.black{
+    font-size: 24rpx;
+    color: #333333;
+}
+.active-box{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    color: #fff;
+    font-size: 24rpx;
+    font-weight: lighter;
+    background: #FFA819;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 18rpx 0;
+    line-height: 32rpx;
+}
+.bg-orange {
+    background: #FFA819;
+    color:#fff;
+}
+.bg-orange .day {
+    color:#fff;
+}
+.boder-start{
+    border-top-left-radius: 8rpx;
+    border-bottom-left-radius: 8rpx;
+}
+.boder-end{
+    border-top-right-radius: 8rpx;
+    border-bottom-right-radius: 8rpx;
+}

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "选择日期",
+    "navigationBarBackgroundColor": "#fff",
+    "usingComponents": {
+        "datePicker": "../../../components/datePicker/datePicker"
+    }
+}
