@@ -5,6 +5,14 @@ Component({
             type: String,
             value: 1,
         },
+        selectStart: {
+            type: String,
+            value: 1,
+        },
+        selectEnd: {
+            type: String,
+            value: 1,
+        },
     },
     data: {
         // 这里是一些组件内部数据
@@ -33,6 +41,8 @@ Component({
         var endYear = timeArr[0];
         var endMonth = timeArr[1];
         var endDay = timeArr[2];
+        var selectStart = that.data.selectStart ? that.data.selectStart : that.getDateStr(0);
+        var selectEnd = that.data.selectEnd ? that.data.selectEnd : that.getDateStr(1);
         that.setData({
             startYear: startYear,
             startMonth: startMonth,
@@ -40,10 +50,21 @@ Component({
             endYear: endYear,
             endMonth: endMonth,
             endDay: endDay,
+            selectStart: selectStart,
+            selectEnd: selectEnd,
         })
         that.computeDateList();
+        that.setDaysIsSelect();
     },
     methods: {
+        getDateStr(AddDayCount) {
+            var dd = new Date();
+            dd.setDate(dd.getDate() + AddDayCount);   //获取AddDayCount天后的日期
+            var year = dd.getFullYear();
+            var mon = dd.getMonth() + 1;                             //获取当前月份的日期
+            var day = dd.getDate();
+            return year + "-" + mon + "-" + day;
+        },
         getThisMonthDays(year, month) {
             return new Date(year, month, 0).getDate();
         },

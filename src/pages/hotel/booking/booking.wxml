@@ -1,4 +1,16 @@
 <!--酒店预订-->
+
+<wxs module="Func">
+    var time = function(currentTime){
+        if(!currentTime) return;
+        currentTime = currentTime.substring(5)
+        return currentTime
+    };
+    module.exports = {
+        time : time,
+    }
+</wxs>
+
 <view class="pt30 bgfff">
     <!-- 景点 -->
     <view class='ht-topbox'>
@@ -7,16 +19,16 @@
         data-id='{{searchData.scenicSpot}}'  src="../../../assets/images/hotel/arrow-black-icon.png"></image>
     </view>
     <!-- 日期 -->
-    <view class='ht-time'>
+    <view class='ht-time' bindtap='gotoSelectDate'>
         <view class='ht-time-content'>
             <view class='ht-time-content-box'>
-                <view class='ht-time-top-text'>今天</view>
-                <view class='ht-time-bt-text'>10.1</view>
+                <view class='ht-time-top-text'>{{searchData.startDateName}}</view>
+                <view class='ht-time-bt-text'>{{Func.time(searchData.startDate)}}</view>
             </view>
             <view class='ht-time-text'>至</view>
             <view class='ht-time-content-box'>
-                <view class='ht-time-top-text'>今天</view>
-                <view class='ht-time-bt-text'>10.1</view>
+                <view class='ht-time-top-text'>{{searchData.endDateName}}</view>
+                <view class='ht-time-bt-text'>{{Func.time(searchData.endDate)}}</view>
             </view>
         </view>
         <view class='ht-time-icon'><image src="../../../assets/images/hotel/arrow-icon.png"></image></view>

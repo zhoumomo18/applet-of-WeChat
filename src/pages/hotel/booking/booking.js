@@ -13,8 +13,10 @@ Page({
         searchData: {
             scenicSpot: null, //景点
             scenicSpotName: '凤凰', //景点名称
-            startDate: null,
+            startDate: null, 
+            startDateName: null,
             endDate: null,
+            endDateName: null,
             hotelName: null,
             price: '', 
             grade: null,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
@@ -29,44 +31,46 @@ Page({
      */
     onShow: function () {
         var that = this;
-        var searchData = wx.getStorageSync('searchData');
-        if (!searchData) {
-            return;
+        var searchData = that.data.searchData;
+        searchData = wx.getStorageSync('searchData') ? wx.getStorageSync('searchData') : searchData;
+        if (!searchData.startDate && !searchData.endDate)  {
+            searchData.startDate = that.getDateStr(0);
+            searchData.endDate = that.getDateStr(1);
         }
-        that.setData({ searchData: searchData})
+        if (searchData.startDate) {
+            searchData.startDateName = that.getDayName(searchData.startDate);
+        }
+        if (searchData.startDate) {
+            searchData.endDateName = that.getDayName(searchData.endDate);
+        }
+        that.setData({ searchData: searchData});
+        wx.setStorageSync('searchData', searchData)
     }, 
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
+    getDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate() + AddDayCount);   //获取AddDayCount天后的日期
+        var year = dd.getFullYear();
+        var mon = dd.getMonth() + 1; //获取当前月份的日期
+        var day = dd.getDate();
+        return year + "-" + mon + "-" + day;
     },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
+    getDayName(d) {
+        var td = new Date();
+        td = new Date(td.getFullYear(), td.getMonth(), td.getDate());
+        var od = new Date(d);
+        od = new Date(od.getFullYear(), od.getMonth(), od.getDate());
+        var xc = (od - td) / 1000 / 60 / 60 / 24;
+        if (xc == 0) {
+            return "今天";
+        } else if (xc < 2) {
+            return "明天";
+        } else if (xc < 3) {
+            return "后天";
+        } else {
+            var str = "周" + "日一二三四五六".charAt(new Date(d).getDay());
+            return str;
+        }
     },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
     onShareAppMessage: function () {
 
     },
@@ -120,6 +124,12 @@ Page({
         wx.setStorageSync('searchData', searchData)
         wx.navigateTo({
             url: '/pages/hotel/booklingList/booklingList',
+        })
+    },
+    gotoSelectDate(){
+        var that = this;
+        wx.navigateTo({
+            url: '/pages/hotel/bookDate/bookDate',
         })
     }
 })
