@@ -61,6 +61,12 @@ Page({
             }
         });
     },
+    // 点击预定，根据是否填写个人资料跳到下一个页面
+    toNextPage(e){
+        let that = this,
+            id = e.currentTarget.id
+        that.getisNullByUserId(id)
+    },
 
     /***********************************调用接口************************************************************/
     // 获取当前景点详情
@@ -81,7 +87,6 @@ Page({
                     imgUrls: imgUrls
                 })
                 wx.hideLoading()
-                console.log(res.data)
 
                 // 解析文本
                 var scenicSpotIntro = res.data.remark;
@@ -94,4 +99,21 @@ Page({
             }
         })
     },
+    // 获取用户是否填写个人资料信息。若填写直接跳至填写订单页面，若未填写跳至我的资料页面。
+    getisNullByUserId(id){
+        scenicMethod.getisNullByUserId((res) => {
+            if (res && res.code==200){
+                //  data为1：填写 0：未填写
+                if (res.data==1){
+                    wx.navigateTo({
+                        url: '../reserve/reserveOrder?id='+id
+                    })
+                } else if (res.data==0){
+                    wx.navigateTo({
+                        url: '/pages/userCenter/userInfo/userInfo'
+                    })
+                }
+            }
+        })
+    }
 })
