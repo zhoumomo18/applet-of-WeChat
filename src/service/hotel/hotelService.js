@@ -29,7 +29,6 @@ var hotelMethods = {
     getHotelDetail: function (params, callBack) { //酒店详情查询
         var requestConfig = {
             method: 'GET',
-            data: params,
             url: '/hotel/getbyid/' + params.id,
             successCallback: action,
             errorCallback: action
@@ -42,7 +41,10 @@ var hotelMethods = {
     changeHotelCollect: function (params, callBack) { //酒店收藏收藏／取消收藏
         var requestConfig = {
             method: 'POST',
-            data: params,
+            data: {
+                hotelId: params.hotelId
+            },
+            headerContentType:1,
             url: '/hotelcollection/saveconsumerHotelCollectioncollection',
             successCallback: action,
             errorCallback: action

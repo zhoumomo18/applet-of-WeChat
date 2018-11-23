@@ -214,3 +214,6 @@
     font-size: 20rpx;
     color: #AAAAAA;
 }
+.orange{
+    color: #FFA819!important;
+}

@@ -4,7 +4,7 @@
         <view class='border-top'>
             <view class='box-title'>酒店介绍
             <image class='phone-icon' bindtap='callPhone' src="../../../assets/images/hotel/phone-icon.png" wx:if="{{info.telephone}}"></image></view>
-            <view class="box-grey {{isSpread?'':'line-four'}} transition">{{info.remark}}</view>
+            <view class="box-grey {{isSpread?'':'line-four'}} transition">{{info.remark || ''}}</view>
             <view class='box-grey-btn' bindtap='switchSpread' wx:if="{{!isSpread && info.remark.length>144}}">展开全部
             <image src="../../../assets/images/hotel/btm-arrow.png"></image></view>
             <view class='box-grey-btn' bindtap='switchSpread' wx:if="{{isSpread && info.remark.length>144}}" style="width:80rpx">收起

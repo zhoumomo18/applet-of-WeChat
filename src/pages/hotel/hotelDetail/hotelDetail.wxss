@@ -43,9 +43,11 @@ page {
 .hl-dt-top-collect{
     position: absolute;
     width: 32rpx;
+    padding:10rpx;
     height: 26rpx;
-    top:36rpx;
+    top:10rpx;
     right: 0;
+    overflow: initial;
 }
 .hl-dt-top-collect image{
     width: 32rpx;
@@ -227,8 +229,9 @@ page {
 .bl-list-item-icon {
     width: 18rpx;
     height: 18rpx;
-    margin-left: 15rpx;
-    background: red;
+    padding: 30rpx;
+    position: relative;
+    top:30rpx;
 }
 .bl-itemDetail-item{
     position: relative;
@@ -253,7 +256,7 @@ page {
     color:#FFA819;
     font-size: 24rpx;
     display: inline-block;
-    padding: 0 0 3rpx;
+    padding: 0 10rpx 3rpx 10rpx;
     border: 1px solid #FFA819;
 }
 .bl-itemDetail-item .bl-list-item-price{

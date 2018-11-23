@@ -17,11 +17,11 @@ Page({
         },
         priceSort: false, //价格排序
         levelList: [
-            { value: 1, label: '不限' },
-            { value: 2, label: '民宿/客栈' },
-            { value: 3, label: '经济型' },
-            { value: 4, label: '高档型' },
-            { value: 5, label: '豪华型' },
+            { value: 0, label: '不限' },
+            { value: 1, label: '民宿/客栈' },
+            { value: 2, label: '经济型' },
+            { value: 3, label: '高档型' },
+            { value: 4, label: '豪华型' },
         ],
         hotelList: [],
         hotelCount: 0,
@@ -110,7 +110,9 @@ Page({
     changeSort(){
         var that = this;
         var priceSort = !that.data.priceSort;
-        that.setData({ priceSort: priceSort})
+        that.setData({ priceSort: priceSort});
+        that.pageNo = 1;
+        that.getHotelList();
     },
     switchModal(){
         var that = this;

@@ -27,7 +27,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -66,10 +66,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "酒店详情",
 					"pathName": "pages/hotel/hotelDetail/hotelDetail",
-					"query": ""
+					"query": "id=12"
 				},
 				{
 					"id": -1,
@@ -80,7 +80,8 @@
 				{
 					"id": -1,
 					"name": "酒店选择日期",
-					"pathName": "pages/hotel/bookDate/bookDate"
+					"pathName": "pages/hotel/bookDate/bookDate",
+					"query": ""
 				}
 			]
 		}

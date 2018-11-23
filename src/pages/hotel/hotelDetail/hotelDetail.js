@@ -24,8 +24,6 @@ Page({
         }
         that.setData({ searchData: searchData });
         that.countNight();
-        that.getHeight();
-        that.getHotelList();
         that.getHouseType();
     },
     onShow: function () {
@@ -91,6 +89,7 @@ Page({
         hotelMethods.changeHotelCollect(params, function (res) {
             if (res && res.code == 200) {
                 that.getHotelDetail();
+                that.getHouseType();
                 wx.hideLoading();
             } else if (res && res.msg) {
                 wx.hideLoading();
@@ -147,18 +146,27 @@ Page({
             that.setData({ isAllHouseType: 3 })
         }
     },
-    openCollapse(){
+    openCollapse(e){
         var that = this;
         var id = e.currentTarget.dataset.id;
-        var index = e.currentTarget.dataset.idx;
-        that.getHouseDetailList(id, index)
+        var idx = e.currentTarget.dataset.idx;
+        var isOpen;
+        var houseTypeList = that.data.houseTypeList;
+        if (!houseTypeList[idx].isOpen) {
+            isOpen = 3;
+        }
+        var printPrice = "houseTypeList[" + idx + "].isOpen";
+        that.setData({ printPrice: isOpen});
+        that.getHouseDetailList(id, idx)
     },
     closeCollapse(e){
         var that = this;
         var idx = e.currentTarget.dataset.idx;
-        var printPrice = "houseTypeList[" + idx + "].isOpen";
-        var isOpen = 0;
-        that.setData({ printPrice: isOpen });
+        var houseTypeList = that.data.houseTypeList;
+        if (houseTypeList[idx].isOpen) {
+            houseTypeList[idx].isOpen = 0;
+        }
+        that.setData({ houseTypeList: houseTypeList });
     },
     switchMore(e){
         var that = this;
