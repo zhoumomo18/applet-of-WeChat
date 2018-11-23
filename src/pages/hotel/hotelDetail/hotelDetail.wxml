@@ -98,7 +98,7 @@
                         </view>
                         <view class="bl-itemDetail-tag" wx:if="{{bed.isUnsubscribe}}">支持退订</view>
                         <view class="bl-itemDetail-tag" wx:else style='color:#666666;border-color:#666666'>不支持退订</view>
-                        <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{bed.price}}</text><text class='small'>起</text>
+                        <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{bed.price}}</text><text class='small'></text>
                             <view class='book-btn'>预定</view>
                         </view>
                     </view>
