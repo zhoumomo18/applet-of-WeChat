@@ -55,6 +55,18 @@ let scenicMethod = {
         }
         ajax.request(requestConfig)
     },
+    getisNullByUserId: (callBack) => {
+        let requestConfig = {
+            method: 'GET',
+            url: '/constumer/getisnullbyuserid',
+            successCallback: action,
+            errorCallback: action
+        }
+        function action(response) {
+            callBack && callBack(response)
+        }
+        ajax.request(requestConfig)
+    }
 }
 
 export {
