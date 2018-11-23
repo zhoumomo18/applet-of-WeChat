@@ -52,7 +52,7 @@ Page({
     },
     gotoDetail(){
         var that = this;
-        wx.redirectTo({
+        wx.navigateBack({
             url: '/pages/hotel/hotelDetail/hotelDetail?id=' + that.ID
         })
     },

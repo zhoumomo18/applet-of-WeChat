@@ -89,7 +89,6 @@ Page({
         hotelMethods.changeHotelCollect(params, function (res) {
             if (res && res.code == 200) {
                 that.getHotelDetail();
-                that.getHouseType();
                 wx.hideLoading();
             } else if (res && res.msg) {
                 wx.hideLoading();

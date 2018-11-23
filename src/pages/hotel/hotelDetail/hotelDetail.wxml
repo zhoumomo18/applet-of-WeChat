@@ -11,7 +11,7 @@
 </wxs>
 <view>
    <view class='hl-dt-banner'>
-        <swiper current="{{currentSwiper}}" bindchange="changeCurrent">
+        <swiper current="{{currentSwiper}}" bindchange="changeCurrent" autoplay="{{true}}" circular="{{true}}">
             <swiper-item wx:for="{{hotelInfo.hotelFileList}}" wx:key="{{item.id}}">
                 <image class='hl-dt-banner-item' src='{{imgUrlPath}}{{item.src}}'></image>
             </swiper-item>
@@ -29,7 +29,7 @@
         </view>
 
         <view class='hl-dt-top-type'>
-            <view class='hl-dt-top-type-left'><block wx:if="{{hotelInfo.grade==1}}">民宿/客栈</block><block wx:if="{{hotelInfo.grade==2}}">经济型</block><block wx:if="{{hotelInfo.grade==3}}">高档型</block><block wx:if="{{hotelInfo.grade==4}}">豪华型</block>|{{hotelInfo.openTime}}装修</view>
+            <view class='hl-dt-top-type-left'><block wx:if="{{hotelInfo.grade==1}}">民宿/客栈</block><block wx:if="{{hotelInfo.grade==2}}">经济型</block><block wx:if="{{hotelInfo.grade==3}}">高档型</block><block wx:if="{{hotelInfo.grade==4}}">豪华型</block><text class='mg10'>|</text>{{hotelInfo.openTime}}装修</view>
             <view class='hl-dt-top-type-right' bindtap='gotoDetailMsg'>
                 <text>设备与服务</text>
                 <image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
@@ -72,7 +72,7 @@
                 <view class='bl-list-item-right'>
                     <view class='bl-list-item-title'>{{item.name}}</view>  
                     <view class='bl-list-item-type'><text class='mr10'>{{item.area}}m²</text><text class='mr10'>{{item.bedType || ""}}</text><text> {{item.bedWidth}}m</text></view> 
-                    <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{item.price}}</text><text class='small'>起</text>
+                    <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{item.price || "0.00"}}</text><text class='small'>起</text>
                         <image class='bl-list-item-icon open' 
                         wx:if="{{!item.isOpen}}"
                         data-idx='{{index}}' 

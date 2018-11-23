@@ -1,4 +1,7 @@
 /* src/pages/hotel/hotelDetail/hotelDetail.wxss */
+view{
+    overflow: initial;
+}
 page {
     background: #f3f3f3;
 }
@@ -287,7 +290,6 @@ page {
 .tag-btn .tag-btn-icon{ 
     width: 16rpx;
     height: 9rpx;
-    background: red;
     margin-left: 15rpx;
 }
 .pd30{
@@ -312,4 +314,7 @@ page {
 }
 .mr10{
     margin-right: 10rpx;
+}
+.mg10{
+    margin: 0 10rpx;
 }
