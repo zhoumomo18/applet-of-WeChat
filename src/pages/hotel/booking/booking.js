@@ -11,8 +11,8 @@ Page({
             { value: 4, label: '豪华型'},
         ],
         searchData: {
-            scenicSpot: null, //景点
-            scenicSpotName: '凤凰', //景点名称
+            scenicSpot: 2338, //景点
+            scenicSpotName: '凤凰县', //景点名称
             startDate: null, 
             startDateName: null,
             endDate: null,
@@ -102,9 +102,6 @@ Page({
     //去选景点
     gotoSelectPoint(e){
         var that = this;
-        // var id = e.currentTaget.dataset.id;
-        // if(!id) return;
-        // wx.navigateTo({url: '/pages/hotel/attractionsList/attractionsList?id='+id,})
         wx.navigateTo({url: '/pages/hotel/attractionsList/attractionsList',})
     },
     bindinput(e){

@@ -274,7 +274,6 @@ page {
     border-radius: 6rpx;
     color: #FFf;
     position: relative;
-    top:10rpx;
     font-size:24rpx;
     text-align: center;
     line-height: 50rpx; 

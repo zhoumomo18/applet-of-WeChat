@@ -53,7 +53,7 @@
                 <view>离店</view>
             </view>
 
-            <view class='hl-dt-datebox-msg hl-dt-flex'>
+            <view class='hl-dt-datebox-msg hl-dt-flex' bindtap='gotoSelectDate'>
                 <view>{{Func.time(searchData.startDate)}}<text class='small'>{{searchData.startDateName}}</text></view>
                 <view>{{Func.time(searchData.endDate)}}<text class='small'>{{searchData.endDateName}}</text></view>
             </view>
@@ -138,13 +138,12 @@
         <view class='hl-dt-top-type border-bottom pd30 pt20'>
             <view class='hl-dt-top-type-left'
                 style='font-size:34rpx;color:#333;'>入住须知</view>
-            <view class='hl-dt-top-type-right'>
+            <view class='hl-dt-top-type-right' bindtap='gotoDetailMsg'>
                 <text>详情</text>
                 <image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
         </view>
         <view class='bgfff padding30'>
             <view class='hl-dt-tips'>{{hotelInfo.notes}}</view>
-            <!-- <view class='hl-dt-tips'>入住时间<text class='hl-dt-tipstxt'>14:00后入住 | 12:00前退房</text></view> -->
         </view>
         
     </view>

@@ -18,16 +18,16 @@ Page({
         if (!options.id || options.id == 'null' || options.id == 'undefined') return;
         that.ID = options.id;
         that.getHotelDetail();
+        that.getHouseType();
+    },
+    onShow: function () {
+        var that = this;
         var searchData = wx.getStorageSync('searchData');
         if (!searchData) {
             return;
         }
         that.setData({ searchData: searchData });
         that.countNight();
-        that.getHouseType();
-    },
-    onShow: function () {
-
     },
     countNight(){
         var that = this;
@@ -215,5 +215,11 @@ Page({
         wx.navigateTo({
             url: '/pages/hotel/detailMsg/detailMsg?id='+that.ID,
         })
-    }
+    },
+    gotoSelectDate() {
+        var that = this;
+        wx.navigateTo({
+            url: '/pages/hotel/bookDate/bookDate',
+        })
+    },
 })

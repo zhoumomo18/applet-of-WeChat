@@ -7,8 +7,8 @@ Page({
         imgUrlPath: App.globalData.imgUrlPath,
         showModal: false,
         searchData: {
-            scenicSpot: null, //景点
-            scenicSpotName: '凤凰', //景点名称
+            scenicSpot: 2338, //景点
+            scenicSpotName: '凤凰县', //景点名称
             startDate: null,
             endDate: null,
             hotelName: null,
@@ -27,11 +27,7 @@ Page({
         hotelCount: 0,
         winHeight: 0,
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
+    onShow(){
         var that = this;
         var searchData = wx.getStorageSync('searchData');
         that.setData({ searchData: searchData })
@@ -140,5 +136,21 @@ Page({
         wx.navigateTo({
             url: '/pages/hotel/hotelDetail/hotelDetail?id='+id,
         })
-    }
+    },
+    gotoSelectDate() {
+        var that = this;
+        wx.navigateTo({
+            url: '/pages/hotel/bookDate/bookDate',
+        })
+    },
+    //去选景点
+    gotoSelectPoint(e) {
+        var that = this;
+        wx.navigateTo({ url: '/pages/hotel/attractionsList/attractionsList', })
+    },
+    onHide() {
+        var that = this;
+        var searchData = that.data.searchData;
+        wx.setStorageSync('searchData', searchData)
+    },
 })

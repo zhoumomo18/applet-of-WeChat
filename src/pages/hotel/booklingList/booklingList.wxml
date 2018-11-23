@@ -3,10 +3,10 @@
     <view class='bl-top-box' style="{{showModal?'height:100%;':''}}">
         <view  class='overbox'>
             <view class='bl-top-content'>
-                <view class='bl-top-box-point line-two'>
+                <view class='bl-top-box-point line-two' bindtap='gotoSelectPoint' >
                     <text>{{searchData.scenicSpotName}}</text>
                 </view>
-                <view class='bl-top-box-time'>
+                <view class='bl-top-box-time' bindtap='gotoSelectDate'>
                     <view class='bl-top-box-timetxt'>住<text>{{searchData.startDate || '00-00'}}</text></view>
                     <view class='bl-top-box-timetxt mtlitle'>离<text>{{searchData.endDate || '00-00'}}</text></view>
                 </view>
