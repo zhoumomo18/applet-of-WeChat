@@ -58,7 +58,8 @@ Page({
             searchData.priceEnd = 2000;
         }
         var modalData = that.data.modalData;
-        modalData.price = searchData.price;
+        modalData.priceStrart = searchData.priceStrart || 0;
+        modalData.priceEnd = searchData.priceEnd || 2000;
         modalData.grade = searchData.grade;
         that.setData({ searchData: searchData, modalData: modalData});
         wx.setStorageSync('searchData', searchData)
@@ -136,7 +137,9 @@ Page({
         searchData.grade = modalData.grade;
         searchData.priceStrart = modalData.priceStrart;
         searchData.priceEnd = modalData.priceEnd;
+        console.log(modalData);
         that.setData({ searchData: searchData })
+        console.log(searchData);
         wx.setStorageSync('searchData', searchData)
         that.switchModal();
     },

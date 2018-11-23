@@ -10,54 +10,110 @@ Component({
         },
     },
     data: {
-        leftMin: 0, //左边滑块最小值
         leftMax: 2000, //左边滑块最大值
-        rightMin: 0, //右边滑块的最小值
-        rightMax: 2000, //右边滑块最大值
         leftValue: 0, //左边滑块默认值
         rightValue: 2000, //右边滑块默认值
-        leftWidth: '98', //左边滑块可滑动长度：百分比
-        rightWidth: '96', //右边滑块可滑动长度：百分比
+        windowWidth: null,
+    },
+    ready(){
+        var that = this;
+        that.getHeight();
     },
     methods: {
+        //获取页面宽度
+        getHeight: function () {
+            var that = this
+            wx.getSystemInfo({
+                success: function (res) {
+                    that.setData({ windowWidth: res.windowWidth })
+                }
+            })
+        },
         // 左边滑块滑动的值
-        leftChange: function (e) {
-            console.log('左边改变的值为：' + e.detail.value);
+        touchmoveLeft: function (e) {
             var that = this;
-            var leftValue = that.data.leftValue;
-            var rightValue = that.data.rightValue;
-            if (e.detail.value > rightValue) {
-                leftValue = rightValue;
-                rightValue = e.detail.value;
+            var leftValue = Number(that.data.leftValue);
+            var rightValue = Number(that.data.rightValue);
+            var windowWidth = that.data.windowWidth;
+            var marginLeft = windowWidth * 0.05;
+            var marginRight = windowWidth * 0.95;
+            var contentWidth = Number(marginRight) - Number(marginLeft);
+            var leftMax = that.data.leftMax;
+            var pageX_end = e.touches[0].clientX;
+            var x;
+            if (pageX_end < marginLeft){
+                pageX_end = 0;
+                x = 0
+            } else if (pageX_end > marginRight){
+                pageX_end = marginRight;
+                x = leftMax;
             } else {
-                leftValue = e.detail.value;
+                x = pageX_end / contentWidth;
+                x = x * leftMax;
+                if (x > leftMax){
+                    x = leftMax;
+                }
+            };
+            x = Number(x).toFixed(0);
+            x = Number(x);
+            if (x > rightValue) {
+                return;
+                // leftValue = rightValue;
+                // debugger
+                // rightValue = x;
+            } else {
+                leftValue = x;
             }
+            if (leftValue == rightValue) return;
             that.setData({
                 leftValue: leftValue,
                 rightValue: rightValue,
             });
-            let arr = [];
+            var arr = [];
             arr.push(leftValue);
             arr.push(rightValue);
             that.triggerEvent('changeSlider', arr);
         },
         // 右边滑块滑动的值
-        rightChange: function (e) {
-            console.log('右边改变的值为：' + e.detail.value);
+        touchmoveRight: function (e) {
             var that = this;
-            var leftValue = that.data.leftValue;
-            var rightValue = that.data.rightValue;
-            if (e.detail.value < leftValue) {
-                rightValue = leftValue;
-                leftValue = e.detail.value;
+            var leftValue = Number(that.data.leftValue);
+            var rightValue = Number(that.data.rightValue);
+            var windowWidth = that.data.windowWidth;
+            var marginLeft = windowWidth * 0.05;
+            var marginRight = windowWidth * 0.95;
+            var contentWidth = Number(marginRight) - Number(marginLeft);
+            var leftMax = that.data.leftMax;
+            var pageX_end = e.touches[0].clientX;
+            var x;
+            if (pageX_end < marginLeft) {
+                pageX_end = 0;
+                x = 0
+            } else if (pageX_end > marginRight) {
+                pageX_end = marginRight;
+                x = leftMax;
             } else {
-                rightValue = e.detail.value;
+                x = pageX_end / contentWidth;
+                x = x * leftMax;
+                if (x > leftMax) {
+                    x = leftMax;
+                }
+            };
+            x = Number(x).toFixed(0);
+            x = Number(x);
+            if (x < leftValue) {
+                return;
+                // rightValue = leftValue;
+                // leftValue = x;
+            } else {
+                rightValue = x;
             }
+            if (leftValue == rightValue) return;
             that.setData({
                 leftValue: leftValue,
                 rightValue: rightValue,
             });
-            let arr = [];
+            var arr =[];
             arr.push(leftValue);
             arr.push(rightValue);
             that.triggerEvent('changeSlider', arr);
