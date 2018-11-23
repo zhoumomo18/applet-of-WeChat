@@ -11,7 +11,7 @@
 </wxs>
 <view>
    <view class='hl-dt-banner'>
-        <swiper current="{{currentSwiper}}" bindchange="changeCurrent" autoplay="{{true}}" circular="{{true}}">
+        <swiper current="{{currentSwiper}}" bindchange="changeCurrent">
             <swiper-item wx:for="{{hotelInfo.hotelFileList}}" wx:key="{{item.id}}">
                 <image class='hl-dt-banner-item' src='{{imgUrlPath}}{{item.src}}'></image>
             </swiper-item>
