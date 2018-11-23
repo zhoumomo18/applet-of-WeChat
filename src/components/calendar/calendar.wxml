@@ -1,10 +1,12 @@
-<view class="wrap-box">
-    <view class="month-tt">{{curYear}}年{{curMonth}}月</view>
+<view class="wrap-box" wx:for="{{arrDate}}" wx:key="{{item}}" wx:for-index="index">
+    <view class="month-tt">{{item.curYear}}年{{item.curMonth}}月</view>
     <view class="days-box">
-        <view class="grid {{activeIndex!='' && activeIndex==index ? 'selected_grid':''}}" 
-        wx:for="{{days}}" wx:key="{{day}}" id="{{index}}"
+        <view class="grid {{item.isClicked ? 'selected_grid':''}} {{item.price ? 'active_grid':''}}" 
+        wx:for="{{item.curDays}}" wx:key="{{item}}"  wx:for-index="idx"
+        data-pindex="{{index}}" data-index="{{idx}}"
         bindtap="datePicker">
             <view class="day">{{item.day}}</view>
+            <view class="price" wx:if="{{item.price}}">￥{{item.price || ''}}</view>
         </view>
     </view>
 </view>
