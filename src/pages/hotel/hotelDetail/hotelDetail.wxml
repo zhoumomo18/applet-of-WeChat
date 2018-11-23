@@ -11,11 +11,7 @@
 </wxs>
 <view>
    <view class='hl-dt-banner'>
-        <swiper current="{{currentSwiper}}" bindchange="changeCurrent">
-            <swiper-item wx:for="{{hotelInfo.hotelFileList}}" wx:key="{{item.id}}">
-                <image class='hl-dt-banner-item' src='{{imgUrlPath}}{{item.src}}'></image>
-            </swiper-item>
-        </swiper>
+        <image class='hl-dt-banner-item' bindtap='previewImage' src='{{imgUrlPath}}{{hotelInfo.coverFile}}'></image>
         <view class='hl-dt-banner-tag'>共{{hotelInfo.hotelFileList.length}}张</view>
    </view> 
    <view class='hl-dt-top'>
@@ -68,7 +64,7 @@
                wx:key="{{item.id}}"
                wx:if="{{index<isAllHouseType}}">
             <view class='bl-list-item bgfff'>
-                <view class='bl-list-item-left'><image src='{{imgUrlPath}}{{houseTypeImg}}'></image></view>
+                <view class='bl-list-item-left'><image src='{{imgUrlPath}}{{item.houseTypeImg}}'></image></view>
                 <view class='bl-list-item-right'>
                     <view class='bl-list-item-title'>{{item.name}}</view>  
                     <view class='bl-list-item-type'><text class='mr10'>{{item.area}}m²</text><text class='mr10'>{{item.bedType || ""}}</text><text> {{item.bedWidth}}m</text></view> 
@@ -92,11 +88,13 @@
                 <view class="bl-list-itemDetail-list"
                       wx:for="{{item.bedTypeList}}"
                       wx:for-item="bed"
+                      wx:for-index="bedkey"
+                      wx:if="{{bedkey<item.isOpen}}"
                       wx:key="{{bed.id}}">
                     <view class="bl-itemDetail-item border-bottom">
                         <view class="bl-itemDetail-title">{{bed.name}}</view>
                         <view class="bl-itemDetail-type" wx:if="{{bed.detailConfigList && bed.detailConfigList.length}}">
-                            <text wx:for="{{bed.detailConfigList}}}" wx:for-item="bedItem" wx:for-index="{{num}}" wx:key="{{bedItem}}">{{bedItem.name}} {{num+1<bed.detailConfigList.length?'|':''}}</text>
+                            <text wx:for="{{bed.detailConfigList}}}" wx:for-item="bedItem" wx:for-index="num" wx:key="{{bedItem}}">{{bedItem.name}} {{num+1<bed.detailConfigList.length?'|':''}}</text>
                         </view>
                         <view class="bl-itemDetail-tag" wx:if="{{bed.isUnsubscribe}}">支持退订</view>
                         <view class="bl-itemDetail-tag" wx:else style='color:#666666;border-color:#666666'>不支持退订</view>
@@ -104,19 +102,19 @@
                             <view class='book-btn'>预定</view>
                         </view>
                     </view>
-                    <!-- 打开列表 -->
-                    <view class='tag-btn' 
-                          wx:if="{{item.isOpen==3 && item.bedTypeList && item.bedTypeList.length>3}}"
-                          data-type="open"
-                          data-idx="{{index}}"
-                          bindtap="switchMore">查看全部报价<image class='tag-btn-icon' src="../../../assets/images/hotel/btm-arrow.png"></image></view>
-                    <!-- 收起列表 -->
-                    <view class='tag-btn' 
-                          wx:if="{{item.isOpen>3}}"
-                          data-idx="{{index}}"
-                          data-type="close"
-                          bindtap="switchMore">收起<image class='tag-btn-icon' src="../../../assets/images/hotel/top-arrow.png"></image></view>
                 </view>
+                <!-- 打开列表 -->
+                <view class='tag-btn' 
+                        wx:if="{{item.isOpen==3 && item.bedTypeList && item.bedTypeList.length>3}}"
+                        data-type="open"
+                        data-idx="{{index}}"
+                        bindtap="switchMore">查看全部报价<image class='tag-btn-icon' src="../../../assets/images/hotel/btm-arrow.png"></image></view>
+                <!-- 收起列表 -->
+                <view class='tag-btn' 
+                        wx:if="{{item.isOpen>3}}"
+                        data-idx="{{index}}"
+                        data-type="close"
+                        bindtap="switchMore">收起<image class='tag-btn-icon' src="../../../assets/images/hotel/top-arrow.png"></image></view>
             </block>
         </block>
          <!-- 外层打开列表 -->

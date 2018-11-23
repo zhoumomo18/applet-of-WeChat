@@ -175,10 +175,11 @@ Page({
         var printPrice = "houseTypeList[" + idx + "].isOpen";
         if (ty == 'open'){
             var isOpen = houseTypeList[idx].bedTypeList.length;
-            that.setData({ printPrice: isOpen});
+            houseTypeList[idx].isOpen = isOpen
+            that.setData({ houseTypeList: houseTypeList});
         } else {
-            var isOpen = 0;
-            that.setData({ printPrice: isOpen });
+            houseTypeList[idx].isOpen = 3;
+            that.setData({ houseTypeList: houseTypeList });
         }
     },
     getHouseDetailList(id, index){
@@ -220,6 +221,21 @@ Page({
         var that = this;
         wx.navigateTo({
             url: '/pages/hotel/bookDate/bookDate',
+        })
+    },
+    //查看相册
+    previewImage: function () {
+        var that = this;
+        if (!that.data.hotelInfo || !that.data.hotelInfo.hotelFileList) return;
+        var hotelFileList = that.data.hotelInfo.hotelFileList;
+        var urls = [];
+        for (var i = 0; i < hotelFileList.length; i++) {
+            if (hotelFileList[0].src) {
+                urls.push(that.data.imgUrlPath + hotelFileList[0].src);
+            }
+        }
+        wx.previewImage({
+            urls: urls
         })
     },
 })
