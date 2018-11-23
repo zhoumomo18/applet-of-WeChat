@@ -67,7 +67,7 @@
                 <view class='bl-list-item-left'><image src='{{imgUrlPath}}{{item.houseTypeImg}}'></image></view>
                 <view class='bl-list-item-right'>
                     <view class='bl-list-item-title'>{{item.name}}</view>  
-                    <view class='bl-list-item-type'><text class='mr10'>{{item.area}}m²</text><text class='mr10'>{{item.bedType || ""}}</text><text> {{item.bedWidth}}m</text></view> 
+                    <view class='bl-list-item-type'><text class='mr10'>{{item.area || "0"}}m²</text><text class='mr10'>{{item.bedType || ""}}</text><text> {{item.bedWidth}}m</text></view> 
                     <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{item.price || "0.00"}}</text><text class='small'>起</text>
                         <image class='bl-list-item-icon open' 
                         wx:if="{{!item.isOpen}}"
