@@ -14,11 +14,15 @@ Page({
         detailInfo: ''
     },
     onLoad: function(options){
+        wx.removeStorageSync('selectedDate')
         this.setData({
             currentId: options.id
         })
         wx.showLoading()
         this.getDetailyById()
+    },
+    onShow(){
+        wx.removeStorageSync('selectedDate')
     },
     // 预览图片
     previewImage: function (e) {

@@ -50,7 +50,7 @@ Page({
                 }
             } else {
                 wx.showToast({
-                    title: '数据请求失败',
+                    title: '请求失败',
                     icon: 'loading'
                 })
             }

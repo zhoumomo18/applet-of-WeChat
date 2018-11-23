@@ -12,6 +12,12 @@ Page({
         })
     },
     datePicker(e) {
+        // 当前选中日期不为空时返回上一页
+        if (e && e.detail && e.detail!='') {
+            wx.setStorageSync('selectedDate', e.detail)
+            wx.navigateBack()
+        }
+        
         
     }
 })
