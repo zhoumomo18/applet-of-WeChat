@@ -16,7 +16,7 @@
                 <image class='hl-dt-banner-item' src='{{imgUrlPath}}{{item.src}}'></image>
             </swiper-item>
         </swiper>
-        <view wx:if="{{hotelInfo.hotelFileList && hotelInfo.hotelFileList.length}}" class='hl-dt-banner-tag'>{{currentSwiper+1}}/{{hotelInfo.hotelFileList.length}}</view>
+        <view class='hl-dt-banner-tag'>共{{hotelInfo.hotelFileList.length}}张</view>
    </view> 
    <view class='hl-dt-top'>
         <view class='hl-dt-top-title'>
