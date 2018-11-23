@@ -12,7 +12,8 @@ Page({
             startDate: null,
             endDate: null,
             hotelName: null,
-            price: '',
+            priceStrart: 0,
+            priceEnd: 2000,
             grade: null,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
         },
         priceSort: false, //价格排序
@@ -42,11 +43,13 @@ Page({
         var params = {
             pageNo: that.pageNo,
             pageSize: that.pageSize,
+            grade: that.data.searchData.grade,
             endDate: that.data.searchData.endDate,
             hotelName: that.data.searchData.hotelName,
-            price: that.data.searchData.price,
             scenicSpot: that.data.searchData.scenicSpot,
             startDate: that.data.searchData.startDate,
+            priceStrart: that.data.searchData.priceStrart,
+            priceEnd: that.data.searchData.priceEnd,
             priceSort: that.data.priceSort ? 1 : 2,//价格排序  1 低到高  2高到低
         };
         hotelMethods.getHotelList(params, function (res) {
