@@ -28,16 +28,39 @@ Page({
             return;
         }
         that.setData({ searchData: searchData });
-        that.countNight();
+        that.countNight(searchData);
     },
-    countNight(){
+    countNight(searchData){
         var that = this;
         var searchData = that.data.searchData;
         if (!searchData.startDate || !searchData.endDate) return;
         var startDate = new Date(searchData.startDate);
         var endDate = new Date(searchData.endDate);
         var dayNightNum = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);/*不用考虑闰年否*/
-        that.setData({ dayNightNum: dayNightNum})
+        if (searchData.startDate) {
+            searchData.startDateName = that.getDayName(searchData.startDate);
+        }
+        if (searchData.startDate) {
+            searchData.endDateName = that.getDayName(searchData.endDate);
+        }
+        that.setData({ dayNightNum: dayNightNum, searchData: searchData})
+    },
+    getDayName(d) {
+        var td = new Date();
+        td = new Date(td.getFullYear(), td.getMonth(), td.getDate());
+        var od = new Date(d);
+        od = new Date(od.getFullYear(), od.getMonth(), od.getDate());
+        var xc = (od - td) / 1000 / 60 / 60 / 24;
+        if (xc == 0) {
+            return "今天";
+        } else if (xc < 2) {
+            return "明天";
+        } else if (xc < 3) {
+            return "后天";
+        } else {
+            var str = "周" + "日一二三四五六".charAt(new Date(d).getDay());
+            return str;
+        }
     },
     //用户点击右上角分享
     onShareAppMessage: function () {

@@ -27,12 +27,6 @@ Page({
             priceEnd: 2000,
             grade: 0,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
         },
-        leftMin: 0,
-        leftMax: 6,
-        rightMin: 0,
-        rightMax: 6,
-        leftValue: 0,
-        rightValue: 6
     },
     /**
      * 生命周期函数--监听页面显示
