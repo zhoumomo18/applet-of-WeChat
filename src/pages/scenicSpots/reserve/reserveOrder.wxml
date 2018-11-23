@@ -9,25 +9,34 @@
             </navigator>
             <view class="section section_flex section_access_after">
                 <view class="section_title section_sm">入园日期</view>
-                <input name="date" value=""  hidden />
+                <input name="date" value="{{selectedDate}}"  hidden />
                 <view class="ui-date-box section_flex_sp">
-                    <view class="ui-border section_flex_fj">
-                        <view class="ui-label">今天</view>
-                        <view class="ui-price" wx:if="{{curTickt.price==0}}">免费</view>
-                        <view class="ui-price" wx:else>￥{{curTickt.price}}</view>
-                    </view>
+                    <block wx:for="{{dateList}}" wx:key="{{item}}">
+                        <view class="ui-border {{selectedIndex == index ? 'active-color':''}}" 
+                            bindtap="selectDate" data-index="{{index}}">
+                            <view class="ui-text section_flex_fj" wx:if="{{!item.hasDefaultDate}}">{{item.label}}</view>
+                            <view class="section_flex_fj" wx:else>
+                                <view class="ui-label">{{item.label}}</view>
+                                <view class="ui-price" wx:if="{{curTickt.price==0}}">免费</view>
+                                <view class="ui-price" wx:else>￥{{curTickt.price}}</view>
+                            </view>
+                        </view>
+                    </block>
+                    <!--
                     <view class="ui-border section_flex_fj">
                         <view class="ui-label">明天</view>
                         <view class="ui-price" wx:if="{{curTickt.price==0}}">免费</view>
                         <view class="ui-price" wx:else>￥{{curTickt.price}}</view>
                     </view>
-                    <navigator class="ui-more ui-border section_flex_fj active-color"
-                    url="../datePicker/datePicker?expirydate={{curTickt.expirydate}}" hover-class="none">
+                    <navigator class="ui-border section_flex_fj"
+                        url="../datePicker/datePicker?expirydate={{curTickt.expirydate}}" hover-class="none">
                         <view class="ui-text" hidden>更多日期</view>
-                        <view class="ui-label">2018-11-14</view>
+
+                        <view class="ui-label" wx:if>2018-11-14</view>
                         <view class="ui-price" wx:if="{{curTickt.price==0}}">免费</view>
                         <view class="ui-price" wx:else>￥{{curTickt.price}}</view>
-                    </navigator>
+                    </navigator>-->
+                    
                 </view>
             </view>
 

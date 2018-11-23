@@ -72,7 +72,7 @@ Component({
             return days
         },
         datePicker(e) {
-            let that = this,
+            let that = this,selectedDate,
                 arrDate = that.data.arrDate,
                 pindex = e.currentTarget.dataset.pindex,
                 idx = e.currentTarget.dataset.index
@@ -84,6 +84,7 @@ Component({
                     } else {
                         subitem.isClicked = false
                         arrDate[pindex].curDays[idx].isClicked = true
+                        selectedDate = arrDate[pindex].curYear+'/'+arrDate[pindex].curMonth+'/'+arrDate[pindex].curDays[idx].day
                     }
                 })
             })
@@ -91,7 +92,7 @@ Component({
             that.setData({
                 arrDate
             })
-            that.triggerEvent('datePicker')
+            that.triggerEvent('datePicker', selectedDate)
         }
     }
 })
