@@ -1,9 +1,11 @@
 .days-box{
     display: flex;
     flex-wrap: wrap;
-    background: #fff;
+    background: #FFFCF7;
 }
 .month-tt{
+    height: 78rpx;
+    line-height: 78rpx;
     font-size: 34rpx;
     text-align: center;
 }
@@ -19,20 +21,20 @@
 .day{
     color: #DDDDDD;
     font-size: 24rpx;
-    font-weight: bold;
+    font-weight: 600;
 }
 .active_grid .day{
     color: #333333;
 } 
 .active_grid .price{
-    color: #FF5A2D;
     font-size: 24rpx;
-    font-weight: 600;
+    color: #FF5A2D;
 }
 .selected_grid{
     background: #FFA819;
     border-radius: 8rpx;
 }
-.selected_grid .day{
+.selected_grid .day,
+.selected_grid .price{
     color: #fff;
 }

@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "景点门票"
+    "navigationBarTitleText": "景点门票",
+    "usingComponents": {
+        "listItem": "/components/scenicSpots/listItem/listItem"
+    }
 }

@@ -1,0 +1,24 @@
+<navigator class="ui-item" url="/pages/scenicSpots/detail/detail?id={{itemObj.id}}" hover-class="none">
+    <view class="ui-image">
+        <image wx:if="{{itemObj.title && itemObj.title.src}}" 
+            src="{{imagePrefix}}{{itemObj.title.src}}" />
+    </view>
+    <view class="ui-box">
+        <view class="ui-box-l">
+            <view class="ui-title ellipsis">{{itemObj.name || ''}}</view>
+            <view class="ui-label m-color">推荐指数：{{itemObj.ratings || '0'}}</view>
+            <view class="ui-num">{{itemObj.peoplenum || '0'}}人来过</view>
+        </view>
+        <view class="ui-box-r">
+            <view class="ui-price" wx:if="{{itemObj.lowestTicketPrice==0}}">
+                <text class="m-color">免费</text>
+            </view>
+            <view class="ui-price" wx:elif="{{itemObj.lowestTicketPrice>0}}">
+                <text class="m-color">￥{{itemObj.lowestTicketPrice}}</text>起
+            </view>
+            <view class="ui-price" wx:else>
+                <text class="m-text">尚未开售</text>
+            </view>
+        </view>
+    </view>
+</navigator>

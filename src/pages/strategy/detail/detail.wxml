@@ -5,7 +5,7 @@
     </view>
     <view class="ui-content">
         <view class="publisher-info clear"> 
-            <image class="publisher-avator" src="{{detailInfo.headImage ? detailInfo.headImage:'/assets/images/avator.jpg'}}" />
+            <image class="publisher-avator" src="{{detailInfo.headImage ? detailInfo.headImage:'/assets/images/newDefaul.png'}}" />
             <view class="publisher-r">
                 <view class="publisher-name" wx:if="{{detailInfo.createuser}}">{{detailInfo.createuser}}</view>
                 <view class="publisher-time" wx:if="{{detailInfo.updatedate}}">{{detailInfo.actualDate}}</view>

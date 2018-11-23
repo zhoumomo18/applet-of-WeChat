@@ -109,7 +109,6 @@
     background: #FFA819;
     color: #fff;
     font-size: 34rpx;
-    border-radius: 0;
 }
 .pay-total{
     flex: 1;

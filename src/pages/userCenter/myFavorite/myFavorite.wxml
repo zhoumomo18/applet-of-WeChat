@@ -23,34 +23,26 @@
     </view>
     <view  class="tab-cont-item" wx:if="{{curIndex == 1}}">
       <view class="p-list">
-        <navigator class="ui-item" url="" hover-class="none">
-          <view class="ui-image"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" /></view>
-          <view class="ui-box">
-            <view class="ui-box-l">
-              <view class="ui-title ellipsis">上海来来大酒店</view>
-              <view class="ui-label-txt">豪华型</view>
-              <view class="ui-num ellipsis">
-                <image class="location_icon" src="/assets/images/location2.png" />沱江镇凤凰县仙剑路1号</view>
+        <block wx:for="{{hotelList}}" wx:key="{{item}}">
+          <navigator class="ui-item" url="/pages/hotel/hotelDetail?id={{item.id}}" hover-class="none">
+            <view class="ui-image"><image src="{{imagePrefix}}{{item.hotelbase64Files.body}}" /></view>
+            <view class="ui-box">
+              <view class="ui-box-l">
+                <view class="ui-title ellipsis">{{item.name}}</view>
+                <view class="ui-label-txt" wx:if="{{item.grade==0}}">不限</view>
+                <view class="ui-label-txt" wx:elif="{{item.grade==1}}">民宿/客栈</view>
+                <view class="ui-label-txt" wx:elif="{{item.grade==2}}">经济型</view>
+                <view class="ui-label-txt" wx:elif="{{item.grade==3}}">高档型</view>
+                <view class="ui-label-txt" wx:else>豪华型</view>
+                <view class="ui-num ellipsis">
+                  <image class="location_icon" src="/assets/images/location2.png" />{{item.address}}</view>
+              </view>
+              <view class="ui-box-r">
+                <view class="ui-price"><text class="m-color">￥{{item.price || '0'}}</text>起</view>
+              </view>
             </view>
-            <view class="ui-box-r">
-              <view class="ui-price"><text class="m-color">￥200</text>起</view>
-            </view>
-          </view>
-        </navigator>
-        <navigator class="ui-item" url="" hover-class="none">
-          <view class="ui-image"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" /></view>
-          <view class="ui-box">
-            <view class="ui-box-l">
-              <view class="ui-title ellipsis">上海来来大酒店</view>
-              <view class="ui-label-txt">豪华型</view>
-              <view class="ui-num ellipsis">
-                <image class="location_icon" src="/assets/images/location2.png" />沱江镇凤凰县仙剑路1号</view>
-            </view>
-            <view class="ui-box-r">
-              <view class="ui-price"><text class="m-color">￥200</text>起</view>
-            </view>
-          </view>
-        </navigator>
+          </navigator>
+        </block>
       </view>
     </view>
   </view>

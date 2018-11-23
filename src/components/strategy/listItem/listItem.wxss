@@ -36,6 +36,7 @@
     width: 56rpx;
     height: 56rpx;
     border-radius: 50%;
+    border: 1rpx solid #ccc;
 }
 .item .name .name-title{
     flex: 1;

@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
+    <swiper indicator-dots="true" indicator-color="rgba(0,0,0,.2)" indicator-active-color="#FFA819"
         autoplay="autoplay">
         <block wx:for="{{adList}}" wx:key="img" wx:for-index="idx" wx:if="{{idx<1}}">
           <navigator hover-class="none" url="{{item.linkurl}}" >
@@ -26,21 +26,16 @@
     </view>
     <view class="ui-hot-section">
       <text class="h-title">热门景点</text>
-      <view class="h-top-fisrt">
-        <image class="h-top-img" src="{{imagePrefix}}{{hotsList[0].fileList[0].src}}" />
-        <image class="level-img" src="../../assets/images/top1.png" />
-      </view>
-      <view class="sm-title">{{hotsList[0].name}}"</view>
       <view class="ui-list">
-        <view class="ui-item" wx:for="{{hotsList}}" wx:for-index="idx" wx:key="item" wx:if="{{idx>1}}">
-          <navigator url="" hover-class="none">
-            <view>
-              <image class="h-top-img" src="{{item.fileList[0].src}}" />
-              <image class="level-img" src="../../assets/images/top{{idx}}.png" />
+        <block wx:for="{{hotsList}}" wx:key="item">
+          <view class="{{index>0 ? 'ui-item':'h-top-fisrt'}}">
+            <view class="img-box">
+              <image class="h-top-img" src="{{imagePrefix}}{{item.fileList[0].src}}" />
+              <image class="level-img" src="../../assets/images/top{{index+1}}.png" />
             </view>
             <view class="h-name ellipsis">{{item.name}}</view>
-          </navigator>
-        </view>
+          </view>
+        </block>
       </view>
     </view>
 </view>

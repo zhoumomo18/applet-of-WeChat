@@ -1,17 +1,13 @@
 Component({
     properties: {
       // 这里定义了innerText属性，属性值可以在组件使用时指定
-      curYear: {
-        type: String,
-        value: '',
+      expirydate: {
+          type: String,
+          value: ''
       },
-      curMonth: {
-        type: String,
-        value: '',
-      },
-      days: {
-        type: Array,
-        value: '',
+      price: {
+        type: Number,
+        value: 0
       }
     },
     data: {
@@ -19,7 +15,37 @@ Component({
       activeIndex: ''
     },
     ready() {
-        this.calculateDays(this.data.curYear,this.data.curMonth)
+        let that = this,
+            expirydate = that.data.expirydate || 2, // 价格有效期
+            arrDate = [],
+            cur_days,
+            date = new Date(),
+            cur_year = date.getFullYear(),
+            cur_month = date.getMonth()
+        
+        for (let i=0; i < expirydate; i++){
+            //全部时间的月份都是按0~11基准，显示月份才+1
+            cur_year = cur_month > 11 ? cur_year + 1 : cur_year;
+            cur_month = cur_month > 11 ?  1: cur_month + 1;
+            cur_days = that.calculateDays(cur_year,cur_month)
+            arrDate.push({'curYear':cur_year, 'curMonth':cur_month, 'curDays': cur_days})
+        }
+        for(let item of arrDate){
+            for (let subItem of item.curDays){
+                if (subItem.day!=''){
+                    let curTime = item.curYear+ '/' + item.curMonth + '/'+ subItem.day,
+                    differTime = new Date(curTime) - new Date()
+                    subItem.price = (differTime > 0) ? that.data.price:''
+                } else {
+                    subItem.price = ''
+                }
+            }
+            
+        }
+		this.setData({
+			arrDate
+        })
+        // console.log(this.data.arrDate)
     },
     methods: {
         getThisMonthDays(year, month) {
@@ -32,26 +58,40 @@ Component({
             let days = [];
             const thisMonthDays = this.getThisMonthDays(year, month);
             const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
-
+            
             if (firstDayOfWeek > 0){
                 for (let i = 0; i < firstDayOfWeek; i++) {
-                    days.push({day:''});
+                    days.push({day:'', isClicked: false});
                 }
             }
 
             for (let i = 1; i <= thisMonthDays; i++) {
-                days.push({day: i});
+                days.push({day: i, isClicked: false});
             }
-        
-            this.setData({
-                days
-            })
+            
+            return days
         },
         datePicker(e) {
-            this.setData({
-                activeIndex: e.currentTarget.id
+            let that = this,
+                arrDate = that.data.arrDate,
+                pindex = e.currentTarget.dataset.pindex,
+                idx = e.currentTarget.dataset.index
+
+            arrDate.map((item) => {
+                item.curDays.map((subitem) => {
+                    if (arrDate[pindex].curDays[idx].day=='' || arrDate[pindex].curDays[idx].price=='') {
+                        return false
+                    } else {
+                        subitem.isClicked = false
+                        arrDate[pindex].curDays[idx].isClicked = true
+                    }
+                })
             })
-            this.triggerEvent('datePicker')
+            
+            that.setData({
+                arrDate
+            })
+            that.triggerEvent('datePicker')
         }
     }
 })

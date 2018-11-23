@@ -11,14 +11,14 @@ Page({
         curIndex: 0
     },
     onLoad: function(){
-        // this.getStrategyList()
+        // this.getListData()
     },
     onShow: function(){
         this.setData({
             pageNo: 1,
             strategyList:[]
         })
-        this.getStrategyList()
+        this.getListData()
     },
     //切换对应的列表
     getProductDetail: function(e){
@@ -30,32 +30,36 @@ Page({
             strategyList:[],
             hotelList:[]
         })
-        if (curSelected==0){
-            this.getStrategyList()
-        } else if (curSelected==1){
-            this.getHotelList()
-        }
+        this.getListData()
     },
     onReachBottom: function(){
-        this.getStrategyList()
+        this.getListData()
     },
 
     /***********************************调用接口************************************************************/
-    // 获取初始攻略收藏列表
-    getStrategyList(){
+    // 获取攻略/酒店收藏列表
+    getListData(){
         let that = this,
-            pageNo = that.data.pageNo,
+            curIndex = that.data.curIndex,
+            url = (curIndex==0) ? '/strategy/getallbyuser':'/hotelcollection/getallbyuser',
             params = {
                 pageNo: that.data.pageNo,
                 pageSize: that.data.pageSize
             }
-        userMethod.getStrategyList(params, (res) => {
+        userMethod.getListData(url, params, (res) => {
             if (res && res.code==200){
-                if (pageNo < res.data.totalPage+1){
-                    that.setData({
-                        strategyList: that.data.strategyList.concat(res.data.rows),
-                        pageNo: pageNo+1
-                    })
+                if (that.data.pageNo < res.data.totalPage+1){
+                    if (curIndex==0){
+                        that.setData({
+                            strategyList: that.data.strategyList.concat(res.data.rows),
+                            pageNo: that.data.pageNo+1
+                        })
+                    } else if (curIndex==1){
+                        that.setData({
+                            hotelList: that.data.hotelList.concat(res.data.rows),
+                            pageNo: that.data.pageNo+1
+                        })
+                    }
                 }
             } else {
                 wx.showLoading({
@@ -63,9 +67,5 @@ Page({
                 })
             }
         })
-    },
-    // 获取酒店收藏
-    getHotelList(){
-
     },
 })

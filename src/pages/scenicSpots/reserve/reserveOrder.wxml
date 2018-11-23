@@ -22,7 +22,7 @@
                         <view class="ui-price" wx:else>￥{{curTickt.price}}</view>
                     </view>
                     <navigator class="ui-more ui-border section_flex_fj active-color"
-                    url="../datePicker/datePicker" hover-class="none">
+                    url="../datePicker/datePicker?expirydate={{curTickt.expirydate}}" hover-class="none">
                         <view class="ui-text" hidden>更多日期</view>
                         <view class="ui-label">2018-11-14</view>
                         <view class="ui-price" wx:if="{{curTickt.price==0}}">免费</view>
