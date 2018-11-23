@@ -6,6 +6,8 @@
 
         <calendar expirydate="{{expirydate}}"
             price="{{price}}"
+            subscribeRule="{{subscribeRule}}"
+            expiryEndDate="{{expiryEndDate}}"
             bind:datePicker="datePicker">
         </calendar>
 

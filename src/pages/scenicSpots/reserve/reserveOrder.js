@@ -9,9 +9,9 @@ Page({
         ticketInfo: '',
         selectedDate: '',
         dateList: [
-            {label: '今天', date: '', hasDefaultDate: true}, 
-            {label: '明天', date: '', hasDefaultDate: true}, 
-            {label: '更多日期', date: '', hasDefaultDate: false}
+            {label: '今天', date: '', hasDefaultDate: true, isDisabled: false}, 
+            {label: '明天', date: '', hasDefaultDate: true, isDisabled: false}, 
+            {label: '更多日期', date: '', hasDefaultDate: false, isDisabled: false}
         ],
         selectedIndex: 0,
         form: {
@@ -51,15 +51,18 @@ Page({
         let that = this,
             index = e.currentTarget.dataset.index,
             curDate = that.data.dateList[index].date,
-            expirydate = that.data.curTickt.expirydate
+            expirydate = that.data.curTickt.expirydate,
+            subscribeRule = that.data.subscribeRule
         if (index < 2){
-            that.setData({
-                selectedIndex: index,
-                selectedDate: curDate
-            })
+            if (subscribeRule==0){
+                that.setData({
+                    selectedIndex: index,
+                    selectedDate: curDate
+                })
+            }
         } else {
             wx.navigateTo({
-                url: '../datePicker/datePicker?expirydate='+expirydate
+                url: '../datePicker/datePicker?expirydate='+expirydate+'&subscribeRule='+subscribeRule
             })
         }
         
@@ -123,11 +126,26 @@ Page({
     /***********************************调用接口************************************************************/
     // 获取当前票种详情
     getTicketByid(){
-        let that = this
+        let that = this,
+            dateList =that.data.dateList,
+            selectedIndex = that.data.selectedIndex
         scenicMethod.getTicketByid(that.data.ticketId, (res) => {
             if (res &&　res.code==200){
+                /* 设置订票规则 0：可预订当天 1：需提前1天预订
+                * 值为0时，默认选中今天
+                * 值为1时，默认选中明天，并为今天添加不可选样式
+                */
+                if (res.data.subscribeRule==1) {
+                    selectedIndex = 1
+                    dateList[0].isDisabled=true
+                } else if(res.data.subscribeRule==0){
+                    selectedIndex = 0
+                }
+                
                 that.setData({
-                    curTickt: res.data
+                    curTickt: res.data,
+                    selectedIndex,
+                    dateList
                 })
             }
         })

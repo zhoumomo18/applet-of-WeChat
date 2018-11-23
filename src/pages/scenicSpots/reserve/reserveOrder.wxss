@@ -91,6 +91,15 @@
 .active-color .ui-price{
     color: #fff;
 }
+.disabled-color{
+    background: #F9F9F9;
+    border-radius: 8px;
+    border: none;
+}
+.disabled-color .ui-label,
+.disabled-color .ui-price{
+    color: #cccccc;
+}
 .receiver{
     font-size: 24rpx;
     color: #AAAAAA;

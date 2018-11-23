@@ -12,7 +12,7 @@
                 <input name="date" value="{{selectedDate}}"  hidden />
                 <view class="ui-date-box section_flex_sp">
                     <block wx:for="{{dateList}}" wx:key="{{item}}">
-                        <view class="ui-border {{selectedIndex == index ? 'active-color':''}}" 
+                        <view class="ui-border {{selectedIndex == index ? 'active-color':''}} {{item.isDisabled ? 'disabled-color':''}}" 
                             bindtap="selectDate" data-index="{{index}}">
                             <view class="ui-text section_flex_fj" wx:if="{{!item.hasDefaultDate}}">{{item.label}}</view>
                             <view class="section_flex_fj" wx:else>
