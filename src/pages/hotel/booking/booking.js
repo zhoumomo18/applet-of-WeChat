@@ -20,7 +20,7 @@ Page({
             hotelName: null,
             priceStrart : 0, 
             priceEnd: 2000,
-            grade: null,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
+            grade: 0,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
         },
         modalData: {
             priceStrart: 0,
@@ -33,9 +33,13 @@ Page({
      */
     onShow: function () {
         var that = this;
+        that.initSearchData();
+    }, 
+    initSearchData(){
+        var that = this;
         var searchData = that.data.searchData;
         searchData = wx.getStorageSync('searchData') ? wx.getStorageSync('searchData') : searchData;
-        if (!searchData.startDate || !searchData.endDate)  {
+        if (!searchData.startDate || !searchData.endDate) {
             searchData.startDate = that.getDateStr(0);
             searchData.endDate = that.getDateStr(1);
         }
@@ -43,7 +47,7 @@ Page({
         var nowTime = new Date();
         var nextTime = new Date(curDate.getTime() + 24 * 60 * 60 * 1000); //后一天
         if (searchData.startDate) {
-            var startTime = new Date(searchData.startDate); 
+            var startTime = new Date(searchData.startDate);
             searchData.startDate = startTime < nowTime ? that.getDateStr(0) : searchData.startDate;
             searchData.startDateName = that.getDayName(searchData.startDate);
         }
@@ -62,9 +66,9 @@ Page({
         modalData.priceStrart = searchData.priceStrart || 0;
         modalData.priceEnd = searchData.priceEnd || 2000;
         modalData.grade = searchData.grade;
-        that.setData({ searchData: searchData, modalData: modalData});
+        that.setData({ searchData: searchData, modalData: modalData });
         wx.setStorageSync('searchData', searchData)
-    }, 
+    },
     getDateStr(AddDayCount) {
         var dd = new Date();
         dd.setDate(dd.getDate() + AddDayCount);   //获取AddDayCount天后的日期

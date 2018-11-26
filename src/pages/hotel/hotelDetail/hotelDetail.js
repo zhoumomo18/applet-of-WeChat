@@ -7,7 +7,18 @@ Page({
     data: {
         imgUrlPath: App.globalData.imgUrlPath,
         currentSwiper: 0,
-        searchData:{},
+        searchData: {
+            scenicSpot: 0, //景点
+            scenicSpotName: '凤凰', //景点名称
+            startDate: null,
+            startDateName: null,
+            endDate: null,
+            endDateName: null,
+            hotelName: null,
+            priceStrart: 0,
+            priceEnd: 2000,
+            grade: 0,  //0:不限 1:民宿/客栈，2：经济型，3：高档型，4：豪华型
+        },
         hotelInfo: {},
         houseTypeList:[],
         isAllHouseType: 3,
@@ -23,26 +34,53 @@ Page({
     },
     onShow: function () {
         var that = this;
-        var searchData = wx.getStorageSync('searchData');
-        if (!searchData) {
-            return;
+        that.initSearchData();
+    },
+    initSearchData() {
+        var that = this;
+        var searchData = that.data.searchData;
+        searchData = wx.getStorageSync('searchData') ? wx.getStorageSync('searchData') : searchData;
+        if (!searchData.startDate || !searchData.endDate) {
+            searchData.startDate = that.getDateStr(0);
+            searchData.endDate = that.getDateStr(1);
+        }
+        var curDate = new Date();
+        var nowTime = new Date();
+        var nextTime = new Date(curDate.getTime() + 24 * 60 * 60 * 1000); //后一天
+        if (searchData.startDate) {
+            var startTime = new Date(searchData.startDate);
+            searchData.startDate = startTime < nowTime ? that.getDateStr(0) : searchData.startDate;
+            searchData.startDateName = that.getDayName(searchData.startDate);
+        }
+        if (searchData.endDate) {
+            var endTime = new Date(searchData.endDate);
+            searchData.endDate = endTime < nextTime ? that.getDateStr(1) : searchData.endDate;
+            searchData.endDateName = that.getDayName(searchData.endDate);
+        }
+        if (!searchData.priceStrart) {
+            searchData.priceStrart = 0;
+        }
+        if (!searchData.priceEnd) {
+            searchData.priceEnd = 2000;
         }
         that.setData({ searchData: searchData });
+        wx.setStorageSync('searchData', searchData);
         that.initTime(searchData);
+    },
+    getDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate() + AddDayCount);   //获取AddDayCount天后的日期
+        var year = dd.getFullYear();
+        var mon = dd.getMonth() + 1; //获取当前月份的日期
+        var day = dd.getDate();
+        return year + "-" + mon + "-" + day;
     },
     initTime(searchData){
         var that = this;
         var searchData = that.data.searchData;
         if (!searchData.startDate || !searchData.endDate) return;
         var dayNightNum = that.getNights(searchData.endDate, searchData.startDate); 
-        
-        if (searchData.startDate) {
-            searchData.startDateName = that.getDayName(searchData.startDate);
-        }
-        if (searchData.startDate) {
-            searchData.endDateName = that.getDayName(searchData.endDate);
-        }
-        that.setData({ dayNightNum: dayNightNum, searchData: searchData})
+        that.setData({ dayNightNum: dayNightNum})
     },
     getDayName(d) {
         var td = new Date();
@@ -94,16 +132,13 @@ Page({
             if (res && res.code == 200) {
                 var hotelInfo = res.data;
                 that.setData({ hotelInfo: hotelInfo});
-                wx.hideLoading();
             } else if (res && res.msg) {
-                wx.hideLoading();
                 wx.showToast({
                     title: res.msg,
                     icon: 'none',
                     duration: 2000
                 })
             } else {
-                wx.hideLoading();
                 wx.showToast({
                     title: '服务异常',
                     icon: 'none',
@@ -119,17 +154,21 @@ Page({
     switchCollect(){
         var that = this;
         if (that.isClick) return;
-        that.isClick = true;
+        var hotelInfo = that.data.hotelInfo;
         var params = {
             hotelId: that.ID
         };
         if (!params.hotelId) return;
+        that.isClick = true;
         hotelMethods.changeHotelCollect(params, function (res) {
             if (res && res.code == 200) {
                 that.getHotelDetail();
-                wx.hideLoading();
+                wx.showToast({
+                    title: hotelInfo.collection ? '取消收藏成功' : '收藏成功',
+                    icon: 'none',
+                    duration: 2000
+                });
             } else if (res && res.msg) {
-                wx.hideLoading();
                 wx.showToast({
                     title: res.msg,
                     icon: 'none',
@@ -137,7 +176,6 @@ Page({
                 });
                 that.isClick = false;
             } else {
-                wx.hideLoading();
                 wx.showToast({
                     title: '服务异常',
                     icon: 'none',
@@ -283,7 +321,7 @@ Page({
         var that = this;
         var searchData = that.data.searchData;
         var detailId = e.currentTarget.dataset.id;
-        var houseTypeId = e.currentTarget.dataset.houseTypeId;
+        var houseTypeId = e.currentTarget.dataset.house;
         var hotelId = that.ID;
         var startDate = searchData.startDate;
         var endDate = searchData.endDate;

@@ -51,25 +51,32 @@
     color: #FFA819;
 }
 .bl-top-box-search{
-    padding: 0 20rpx;
     position: relative;
+    padding-left: 70rpx;
 }
 .bl-top-box-search-icon{
+    position: absolute;
+    top:50%;
+    left: 0rpx;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
     width: 30rpx;
     height: 30rpx;
-    padding: 25rpx 10rpx 20rpx 30rpx;
-    display: inline-block;
+    padding: 20rpx 10rpx 20rpx 30rpx;
+    display: block;
+    overflow: hidden;
 }
 .bl-top-box-search-icon image{
-    width: 30rpx;
-    height: 30rpx;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 .bl-top-box-search-ipt{
-    display: inline-block;
-    position: relative;
-    top:-4rpx;
+    display: block;
     font-size: 28rpx;
     width:200rpx;
+    z-index: 2;
+    min-height: 80rpx;
 }
 .mtlitle{
     padding-top:18rpx;
