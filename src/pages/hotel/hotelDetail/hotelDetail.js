@@ -320,18 +320,23 @@ Page({
     getisNullByUserId(e){
         var that = this;
         var searchData = that.data.searchData;
+        var hotelInfo = that.data.hotelInfo;
         var detailId = e.currentTarget.dataset.id;
         var houseTypeId = e.currentTarget.dataset.house;
+        var houseTypeName = e.currentTarget.dataset.housename;
         var hotelId = that.ID;
         var startDate = searchData.startDate;
         var endDate = searchData.endDate;
         if (!detailId || !houseTypeId || !hotelId) return;
         var bookingHotelObj = {
-            hotelId: hotelId,         //酒店id
-            houseTypeId: houseTypeId, //床型id
-            detailId: detailId,       //具体选中的房间id
-            startDate: startDate,     //入住时间
-            endDate: endDate,         //离店时间
+            hotelId: hotelId,                  //酒店id
+            hotelName: hotelInfo.name || '',   //酒店名称
+            houseTypeId: houseTypeId,          //床型id
+            houseTypeName: houseTypeName,      //床型名称
+            detailId: detailId,                //具体选中的房间id
+            startDate: startDate,              //入住时间
+            endDate: endDate,                  //离店时间
+            dayNightNum: that.data.dayNightNum //共几晚
         };
         scenicMethod.getisNullByUserId(function (res) {
             if (res && res.code == 200) { //返回1-已填，0-未填写

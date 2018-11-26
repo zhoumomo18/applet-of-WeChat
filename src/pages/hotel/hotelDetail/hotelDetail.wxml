@@ -105,7 +105,8 @@
                             <view class='book-btn' 
                                     bindtap='getisNullByUserId'
                                     data-id='{{bed.id}}'
-                                    data-house='{{item.id}}'>预定</view>
+                                    data-house='{{item.id}}'
+                                    data-housename='{{item.name}}'>预定</view>
                         </view>
                     </view>
                 </view>
