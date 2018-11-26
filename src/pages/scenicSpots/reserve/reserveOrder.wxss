@@ -57,13 +57,16 @@
     text-align: center;
 }
 .ui-border{
-    height: 100%;
     border: 1rpx solid #AAAAAA;
     border-radius: 8rpx;
     padding: 0 20rpx;
     margin-left: 20rpx;
     height:90rpx;
     box-sizing:border-box;
+    flex-direction: column;
+}
+.ui-border .section_flex_fj{
+    height: 100%;
     flex-direction: column;
 }
 .ui-border .ui-label{
@@ -75,7 +78,7 @@
     color: #FF5A2D;
     font-weight: 600;
 }
-.ui-more .ui-text{
+.ui-border .ui-text{
     font-size: 20rpx;
     color: #666666;
 }
@@ -87,6 +90,15 @@
 .active-color .ui-label,
 .active-color .ui-price{
     color: #fff;
+}
+.disabled-color{
+    background: #F9F9F9;
+    border-radius: 8px;
+    border: none;
+}
+.disabled-color .ui-label,
+.disabled-color .ui-price{
+    color: #cccccc;
 }
 .receiver{
     font-size: 24rpx;

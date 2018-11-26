@@ -8,10 +8,8 @@ function timeago(dateTimeStamp){
         day= hour/24
     if (hour>0 && hour<24){
         result  = parseInt(hour) + "小时前"
-        console.log(result)
     } else if (hour < 72) {
         result  = parseInt(day) + "天前"
-        console.log(result)
     } else {
         let curYear = dateTime.getFullYear(),
             curMonth = dateTime.getMonth() + 1 < 10 ? "0" + (dateTime.getMonth() + 1) : dateTime.getMonth() + 1,
@@ -22,6 +20,28 @@ function timeago(dateTimeStamp){
     return result
 }
 
+// 获取当前年月日
+function getFormatDate(dateTimeStamp){
+    let result,dateTime = new Date(dateTimeStamp), // 当前日期的时间戳
+        curYear = dateTime.getFullYear(),
+        curMonth = dateTime.getMonth() + 1 < 10 ? "0" + (dateTime.getMonth() + 1) : dateTime.getMonth() + 1,
+        curDate = dateTime.getDate() < 10 ? "0" + dateTime.getDate() : dateTime.getDate()
+        result = curYear + "-" + curMonth + "-" + curDate
+
+    return result
+}
+
+function getNextDate(AddDayCount) {
+    var dd = new Date();
+    dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
+    var y = dd.getFullYear();
+    var m = dd.getMonth()+1;//获取当前月份的日期
+    var d = dd.getDate();
+    return y+"/"+m+"/"+d;
+}
+
 module.exports = {
-    timeago
+    timeago,
+    getFormatDate,
+    getNextDate
 }

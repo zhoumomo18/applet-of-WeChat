@@ -11,7 +11,7 @@
                 <view class="publisher-time" wx:if="{{detailInfo.updatedate}}">{{detailInfo.actualDate}}</view>
             </view>
         </view>
-        <view  class="desc-title">{{detailInfo.title}}</view>
+        <view  class="desc-title clamp">{{detailInfo.title}}</view>
         <view class="desc-main">
             <template is="wxParse" data="{{wxParseData:strategyDetail.nodes}}"/> 
         </view>

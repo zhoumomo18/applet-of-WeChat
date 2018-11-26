@@ -1,14 +1,23 @@
 Component({
     properties: {
-      // 这里定义了innerText属性，属性值可以在组件使用时指定
-      expirydate: {
-          type: String,
-          value: ''
-      },
-      price: {
-        type: Number,
-        value: 0
-      }
+        // 这里定义了innerText属性，属性值可以在组件使用时指定
+        expirydate: {
+            type: String,
+            value: ''
+        },
+        // 有效期结束时间
+        expiryEndDate: {
+            type: String,
+            value: ''
+        },
+        subscribeRule: {
+            type: Number,
+            value: 0
+        },
+        price: {
+            type: Number,
+            value: 0
+        }
     },
     data: {
       // 这里是一些组件内部数据
@@ -16,13 +25,22 @@ Component({
     },
     ready() {
         let that = this,
-            expirydate = that.data.expirydate || 2, // 价格有效期
             arrDate = [],
             cur_days,
             date = new Date(),
+            curDate = date.getDate(),
+            curMonth = date.getMonth()+1,
+            expirydate = parseInt(that.data.expirydate), // 价格有效期
             cur_year = date.getFullYear(),
             cur_month = date.getMonth()
         
+            this.setData({
+                curDate,
+                curMonth
+            })
+
+            expirydate = (curDate>1) ? expirydate+1 : expirydate
+        console.log(expirydate)
         for (let i=0; i < expirydate; i++){
             //全部时间的月份都是按0~11基准，显示月份才+1
             cur_year = cur_month > 11 ? cur_year + 1 : cur_year;
@@ -42,8 +60,9 @@ Component({
             }
             
         }
+       
 		this.setData({
-			arrDate
+            arrDate
         })
         // console.log(this.data.arrDate)
     },
@@ -55,7 +74,8 @@ Component({
             return new Date(Date.UTC(year, month - 1, 1)).getDay();
         },
         calculateDays(year, month) {
-            let days = [];
+            let days = [],
+                that = this
             const thisMonthDays = this.getThisMonthDays(year, month);
             const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
             
@@ -64,7 +84,8 @@ Component({
                     days.push({day:'', isClicked: false});
                 }
             }
-
+            // console.log(that.data.curMonth)
+            // console.log(that.data.curDay)
             for (let i = 1; i <= thisMonthDays; i++) {
                 days.push({day: i, isClicked: false});
             }
@@ -72,7 +93,7 @@ Component({
             return days
         },
         datePicker(e) {
-            let that = this,
+            let that = this,selectedDate,
                 arrDate = that.data.arrDate,
                 pindex = e.currentTarget.dataset.pindex,
                 idx = e.currentTarget.dataset.index
@@ -84,6 +105,7 @@ Component({
                     } else {
                         subitem.isClicked = false
                         arrDate[pindex].curDays[idx].isClicked = true
+                        selectedDate = arrDate[pindex].curYear+'/'+arrDate[pindex].curMonth+'/'+arrDate[pindex].curDays[idx].day
                     }
                 })
             })
@@ -91,7 +113,7 @@ Component({
             that.setData({
                 arrDate
             })
-            that.triggerEvent('datePicker')
+            that.triggerEvent('datePicker', selectedDate)
         }
     }
 })

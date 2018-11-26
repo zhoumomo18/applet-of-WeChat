@@ -57,3 +57,13 @@
     font-size: 24rpx;
     color: #888888;
 }
+.clamp{
+    display: flex;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+  
+  }
