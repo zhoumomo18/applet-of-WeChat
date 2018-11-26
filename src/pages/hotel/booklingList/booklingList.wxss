@@ -5,6 +5,7 @@
     top:0;
     left: 0;
     width:100%;
+    z-index: 1;
 }
 .bl-top-content{
     width: 690rpx;
@@ -145,7 +146,7 @@
     box-sizing: border-box;
     padding-top:210rpx;
     position: relative;
-    z-index: -1;
+    z-index: 0;
 }
 .bl-list-item{
     padding: 30rpx;
@@ -157,7 +158,6 @@
     width:200rpx;
     height: 150rpx;
     border-radius: 10rpx;
-    background: #ddd;
     margin-right: 20rpx;
 }
 .bl-list-item-left image {
@@ -184,6 +184,11 @@
 .bl-list-item-address{
     font-size: 24rpx;
     color: #666666;
+}
+.bl-list-item-address image {
+    width: 16rpx;
+    height: 22rpx;
+    margin-right: 10rpx;
 }
 .bl-list-item-price{
     position: absolute;

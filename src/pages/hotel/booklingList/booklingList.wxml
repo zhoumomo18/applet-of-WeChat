@@ -52,12 +52,12 @@
               data-id='{{item.id}}'
               data-index='{{index}}'
               bindtap='gotoHotelDetail'>
-            <view class='bl-list-item-left'><image></image></view>
+            <view class='bl-list-item-left' style="{{item.coverFile && item.coverFile.src?'':'background: #ddd;'}}"><image wx:if="{{item.coverFile && item.coverFile.src}}" src="{{imgUrlPath}}{{item.coverFile.src}}"></image></view>
             <view class='bl-list-item-right'>
                 <view class='bl-list-item-title'>{{item.name}}</view>  
                 <view class='bl-list-item-type'><block wx:if="{{item.grade==1}}">民宿/客栈</block><block wx:if="{{item.grade==2}}">经济型</block><block wx:if="{{item.grade==3}}">高档型</block><block wx:if="{{item.grade==4}}">豪华型</block></view> 
-                <view class='bl-list-item-address'>{{item.address}}</view>
-                <view class='bl-list-item-price'><text class="orange small bold">￥</text><text class='big orange bold'>{item.price}}</text><text class='small'>起</text></view>
+                <view class='bl-list-item-address line-one'><image src='../../../assets/images/location2.png'></image>{{item.address}}</view>
+                <view class='bl-list-item-price'><text class="orange small bold">￥</text><text class='big orange bold'>{{item.price || '0.00'}}</text><text class='small'>起</text></view>
             </view>
         </view>
         <view class='no-more'>没有更多了</view>

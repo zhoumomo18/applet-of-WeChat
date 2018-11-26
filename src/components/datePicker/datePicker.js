@@ -200,6 +200,7 @@ Component({
                 selectStart = currentTimeStr > selectStartStr ? selectStart : currentTime;
                 that.setData({ selectStart: selectStart, selectEnd: selectEnd });
                 that.setDaysIsSelect();
+                if (!selectStart || !selectEnd) return;
                 var timeObj =[];
                 timeObj.push(selectStart);
                 timeObj.push(selectEnd);

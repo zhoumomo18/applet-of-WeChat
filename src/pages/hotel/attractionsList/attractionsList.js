@@ -11,8 +11,9 @@ Page({
     },
     onLoad: function (options) {
         var that = this;
-        if(options && options.id){
-            that.isActive = options.id;
+        if (wx.getStorageSync('searchData') && wx.getStorageSync('searchData').scenicSpot){
+            var isActive = wx.getStorageSync('searchData').scenicSpot;
+            that.setData({ isActive: isActive})
         }
         wx.showLoading();
         that.getHeight();

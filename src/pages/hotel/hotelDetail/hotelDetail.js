@@ -28,15 +28,14 @@ Page({
             return;
         }
         that.setData({ searchData: searchData });
-        that.countNight(searchData);
+        that.initTime(searchData);
     },
-    countNight(searchData){
+    initTime(searchData){
         var that = this;
         var searchData = that.data.searchData;
         if (!searchData.startDate || !searchData.endDate) return;
-        var startDate = new Date(searchData.startDate);
-        var endDate = new Date(searchData.endDate);
-        var dayNightNum = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);/*不用考虑闰年否*/
+        var dayNightNum = that.getNights(searchData.endDate, searchData.startDate); 
+        
         if (searchData.startDate) {
             searchData.startDateName = that.getDayName(searchData.startDate);
         }
@@ -62,6 +61,21 @@ Page({
             return str;
         }
     },
+    //获得两个日期之间相差的晚数
+    getNights(date1, date2){
+        var date1Str = date1.split("-");//将日期字符串分隔为数组,数组元素分别为年.月.日
+        //根据年 . 月 . 日的值创建Date对象
+        var date1Obj = new Date(date1Str[0], (date1Str[1] - 1), date1Str[2]);
+        var date2Str = date2.split("-");
+        var date2Obj = new Date(date2Str[0], (date2Str[1] - 1), date2Str[2]);
+        var t1 = date1Obj.getTime();
+        var t2 = date2Obj.getTime();
+        var dateTime = 1000 * 60 * 60 * 24; //每一天的毫秒数
+        var minusDays = Math.floor(((t2 - t1) / dateTime));//计算出两个日期的天数差
+        var Night = Math.abs(minusDays);//取绝对值
+        return Night;
+    },
+
     //用户点击右上角分享
     onShareAppMessage: function () {
         var that = this;
@@ -176,10 +190,10 @@ Page({
         var isOpen;
         var houseTypeList = that.data.houseTypeList;
         if (!houseTypeList[idx].isOpen) {
-            isOpen = 3;
+            houseTypeList[idx].isOpen = 3;
         }
-        var printPrice = "houseTypeList[" + idx + "].isOpen";
-        that.setData({ printPrice: isOpen});
+        that.setData({ houseTypeList: houseTypeList}); 
+        if (houseTypeList[idx].bedTypeList && houseTypeList[idx].bedTypeList.length) return;
         that.getHouseDetailList(id, idx)
     },
     closeCollapse(e){
@@ -243,8 +257,10 @@ Page({
     },
     gotoSelectDate() {
         var that = this;
+        var hotelInfo = that.data.hotelInfo;
+        var effectiveTimeLimit = hotelInfo.effectiveTimeLimit;
         wx.navigateTo({
-            url: '/pages/hotel/bookDate/bookDate',
+            url: '/pages/hotel/bookDate/bookDate?timeLimit=' + effectiveTimeLimit,
         })
     },
     //查看相册

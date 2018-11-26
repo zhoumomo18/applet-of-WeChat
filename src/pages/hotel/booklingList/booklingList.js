@@ -45,14 +45,19 @@ Page({
             pageSize: that.pageSize,
             grade: that.data.searchData.grade,
             endDate: that.data.searchData.endDate,
-            hotelName: that.data.searchData.hotelName,
-            scenicSpot: that.data.searchData.scenicSpot,
+            scenicSpotId: that.data.searchData.scenicSpot,
             startDate: that.data.searchData.startDate,
             priceStrart: that.data.searchData.priceStrart,
             priceEnd: that.data.searchData.priceEnd,
             priceSort: that.data.priceSort ? 1 : 2,//价格排序  1 低到高  2高到低
         };
+        if (that.data.searchData.hotelName) {
+            params.hotelName = that.data.searchData.hotelName;
+        }
+        console.log('params=>');
+        console.log(params)
         hotelMethods.getHotelList(params, function (res) {
+            console.log(res)
             if (res && res.code == 200 && res.data) {
                 var hotelList = that.data.hotelList;
                 var hotelCount = res.data.totalCount;
@@ -143,7 +148,7 @@ Page({
     gotoSelectDate() {
         var that = this;
         wx.navigateTo({
-            url: '/pages/hotel/bookDate/bookDate',
+            url: '/pages/hotel/bookDate/bookDate?timeLimit=3',
         })
     },
     //去选景点

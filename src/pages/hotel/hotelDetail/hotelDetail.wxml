@@ -15,7 +15,7 @@
         <view class='hl-dt-banner-tag'>共{{hotelInfo.hotelFileList.length}}张</view>
    </view> 
    <view class='hl-dt-top'>
-        <view class='hl-dt-top-title'>
+        <view class='hl-dt-top-title' wx:if="{{hotelInfo.name}}">
             <text class='hl-dt-top-titletxt'>{{hotelInfo.name}}</text>
             <!-- 收藏按钮 -->
             <view class='hl-dt-top-collect' bindtap='switchCollect'>
@@ -24,14 +24,14 @@
             </view>
         </view>
 
-        <view class='hl-dt-top-type'>
+        <view class='hl-dt-top-type' wx:if="{{hotelInfo.grade!=null}}">
             <view class='hl-dt-top-type-left'><block wx:if="{{hotelInfo.grade==1}}">民宿/客栈</block><block wx:if="{{hotelInfo.grade==2}}">经济型</block><block wx:if="{{hotelInfo.grade==3}}">高档型</block><block wx:if="{{hotelInfo.grade==4}}">豪华型</block><text class='mg10'>|</text>{{hotelInfo.openTime}}装修</view>
             <view class='hl-dt-top-type-right' bindtap='gotoDetailMsg'>
                 <text>设备与服务</text>
                 <image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
         </view>
 
-        <view class='foods-column-box'>
+        <view class='foods-column-box' wx:if="{{hotelInfo.address!=null}}">
             <view class='left-block line-one'>
                 <image src="../../../assets/images/foods/address-icon.png"></image>
                 <text class=''>{{hotelInfo.address}}</text>
@@ -64,23 +64,26 @@
                wx:key="{{item.id}}"
                wx:if="{{index<isAllHouseType}}">
             <view class='bl-list-item bgfff'>
-                <view class='bl-list-item-left'><image src='{{imgUrlPath}}{{item.houseTypeImg}}'></image></view>
+                <view class='bl-list-item-left' style="{{item.houseTypeImg?'':'background: #ddd;'}}"><image wx:if="{{item.houseTypeImg}}" src='{{imgUrlPath}}{{item.houseTypeImg}}'></image></view>
                 <view class='bl-list-item-right'>
                     <view class='bl-list-item-title'>{{item.name}}</view>  
-                    <view class='bl-list-item-type'><text class='mr10'>{{item.area || "0"}}m²</text><text class='mr10'>{{item.bedType || ""}}</text><text> {{item.bedWidth}}m</text></view> 
+                    <view class='bl-list-item-type'><text class='mr10'>{{item.area || "0"}}m²</text><text class='mr10'>{{item.bedType || ""}}</text><text> {{item.bedWidth|| "0"}}m</text></view> 
                     <view class='bl-list-item-price'><text class="orange big bold">￥</text><text class='big orange bold'>{{item.price || "0.00"}}</text><text class='small'>起</text>
-                        <image class='bl-list-item-icon open' 
-                        wx:if="{{!item.isOpen}}"
-                        data-idx='{{index}}' 
-                        data-id='{{item.id}}' 
-                        bindtap='openCollapse' 
-                        src='../../../assets/images/hotel/round-top-arrow.png'></image>
-                        <image class='bl-list-item-icon close'
-                        wx:else 
-                        data-idx='{{index}}' 
-                        data-id='{{item.id}}' 
-                        bindtap='closeCollapse' 
-                        src='../../../assets/images/hotel/round-btm-arrow.png'></image></view>
+                        <block wx:if="{{item.isFlag}}">
+                            <image class='bl-list-item-icon open' 
+                                wx:if="{{!item.isOpen}}"
+                                data-idx='{{index}}' 
+                                data-id='{{item.id}}' 
+                                bindtap='openCollapse' 
+                                src='../../../assets/images/hotel/round-top-arrow.png'></image>
+                            <image class='bl-list-item-icon close'
+                                wx:else 
+                                data-idx='{{index}}' 
+                                data-id='{{item.id}}' 
+                                bindtap='closeCollapse' 
+                                src='../../../assets/images/hotel/round-btm-arrow.png'></image>
+                        </block>
+                    </view>
                 </view>
             </view>
             <block wx:if="{{item.isOpen && item.bedTypeList && item.bedTypeList.length>0}}">

@@ -49,7 +49,7 @@
     </view>
     
 
-    <view wx:if="{{!searchData.scenicSpot || !searchData.startDate || !searchData.endDate}}" class='ht-book-btn disabled'>开始搜索</view>
+    <view wx:if="{{searchData.scenicSpot==null || !searchData.startDate || !searchData.endDate}}" class='ht-book-btn disabled'>开始搜索</view>
     <view wx:else class='ht-book-btn' bindtap='searchHotel'>开始搜索</view>
     <!-- 价格等级弹框 -->
     <view class='ht-modal' wx:if="{{showModal}}">

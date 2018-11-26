@@ -17,7 +17,7 @@ var hotelMethods = {
         var requestConfig = {
             method: 'GET',
             data: params,
-            url: '/hotel/getAll',
+            url: '/hotel/getall',
             successCallback: action,
             errorCallback: action
         };

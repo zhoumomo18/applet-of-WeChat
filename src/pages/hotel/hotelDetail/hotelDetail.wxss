@@ -179,7 +179,6 @@ page {
 .bl-list-item-left{
     width:200rpx;
     height: 150rpx;
-    background: #ddd;
     margin-right: 20rpx;
 }
 .bl-list-item-left image {
@@ -232,7 +231,7 @@ page {
 .bl-list-item-icon {
     width: 18rpx;
     height: 18rpx;
-    padding: 30rpx;
+    padding: 30rpx 10rpx 30rpx 10rpx;
     position: relative;
     top:30rpx;
 }

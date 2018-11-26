@@ -11,8 +11,8 @@ Page({
             { value: 4, label: '豪华型'},
         ],
         searchData: {
-            scenicSpot: 2338, //景点
-            scenicSpotName: '凤凰县', //景点名称
+            scenicSpot: 0, //景点
+            scenicSpotName: '凤凰', //景点名称
             startDate: null, 
             startDateName: null,
             endDate: null,
@@ -35,14 +35,21 @@ Page({
         var that = this;
         var searchData = that.data.searchData;
         searchData = wx.getStorageSync('searchData') ? wx.getStorageSync('searchData') : searchData;
-        if (!searchData.startDate && !searchData.endDate)  {
+        if (!searchData.startDate || !searchData.endDate)  {
             searchData.startDate = that.getDateStr(0);
             searchData.endDate = that.getDateStr(1);
         }
+        var curDate = new Date();
+        var nowTime = new Date();
+        var nextTime = new Date(curDate.getTime() + 24 * 60 * 60 * 1000); //后一天
         if (searchData.startDate) {
+            var startTime = new Date(searchData.startDate); 
+            searchData.startDate = startTime < nowTime ? that.getDateStr(0) : searchData.startDate;
             searchData.startDateName = that.getDayName(searchData.startDate);
         }
-        if (searchData.startDate) {
+        if (searchData.endDate) {
+            var endTime = new Date(searchData.endDate);
+            searchData.endDate = endTime < nextTime ? that.getDateStr(1) : searchData.endDate;
             searchData.endDateName = that.getDayName(searchData.endDate);
         }
         if (!searchData.priceStrart) {
@@ -96,7 +103,7 @@ Page({
     //去选景点
     gotoSelectPoint(e){
         var that = this;
-        wx.navigateTo({url: '/pages/hotel/attractionsList/attractionsList',})
+        wx.navigateTo({ url: '/pages/hotel/attractionsList/attractionsList',})
     },
     bindinput(e){
         var that = this;
@@ -145,7 +152,7 @@ Page({
     gotoSelectDate(){
         var that = this;
         wx.navigateTo({
-            url: '/pages/hotel/bookDate/bookDate',
+            url: '/pages/hotel/bookDate/bookDate?timeLimit=3',
         })
     },
     onHide(){
