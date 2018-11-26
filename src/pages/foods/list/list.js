@@ -2,7 +2,7 @@ var { foodsMethods} = require('../../../service/foods/foodsService.js');
 var App = getApp();
 Page({
     pageNo: 1,
-    pageSize: 6,
+    pageSize: 8,
     data: {
         imgUrlPath: App.globalData.imgUrlPath,
         winHeight: null,

@@ -1,7 +1,7 @@
 var { hotelMethods } = require('../../../service/hotel/hotelService.js');
 Page({
     pageNo: 1,
-    pageSize: 15,
+    pageSize: 20,
     data: {
         winHeight: 0,
         scenicList: [],
