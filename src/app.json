@@ -22,7 +22,9 @@
         "pages/hotel/booklingList/booklingList",
         "pages/hotel/hotelDetail/hotelDetail",
         "pages/hotel/detailMsg/detailMsg",
-        "pages/hotel/bookDate/bookDate"
+        "pages/hotel/bookDate/bookDate",
+        "pages/hotel/orderContent/order"
+        
     ],
     "window": {
         "backgroundColor": "#F6F6F6",

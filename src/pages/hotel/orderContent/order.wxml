@@ -1,0 +1,58 @@
+<!--填写订单-->
+<view>
+    <!-- 酒店名 -->
+    <view class="order-title padding">
+        <text>{{data.hotelInfo.name ||'酒店名称'}}</text>
+    </view>
+     <!-- 房间信息 -->
+    <view class="order-home padding font24">
+            <view class="order-home-type">{{data.houseTypeName || '豪华套房'}}</view> 
+            <view class="order-home-assort">{{data.houseInfo.detailConfigList ||'早餐 | 有窗 | 无阳台'}}</view>
+            <view class="order-home-timer">
+                <text>入住：{{data.startDate}}</text>
+                <text>离店：{{data.endDate}}</text>
+                <text>共{{data.that.data.dayNightNum||8}}晚</text>              
+            </view>
+            <view class="order-home-refund">
+               <text>·  {{data.houseInfo.isUnsubscribe||'支持退订'}}</text>
+               <navigator class="navPag" url="/">
+                   退订规则 》
+               </navigator>
+            </view>
+    </view>
+    <!-- 入住用户信息 -->
+    <view class="order-content padding">
+        <view class="order-content-title border1" >
+            <text class="title-one">入住信息</text>
+            <text class='font24'>（若信息有误，请手动修改）</text>
+        </view>
+        <view class="order-content-type border1" >
+            <text class="title" >房间类型</text>
+            <input  class="content"   placeholder-class="colorBlack" type="text" placeholder="不需要的内容" auto-focus/>
+        </view>
+        <view class="order-content-per border1" >
+            <text class="title">入住人</text>
+            <input  class="content"   placeholder-class="colorBlack" type="text" placeholder="{{userinfos.nickName}}"      auto-focus/>
+        </view>
+        <view class="order-content-tel border1" >
+            <text class="title">手机号</text>
+             <input  class="content"   placeholder-class="colorBlack" type="text" placeholder="{{userinfos.phone?   userinfos.phone:''}}" auto-focus/>
+        </view> 
+        <view class="order-content-timer" >
+            <text class="title">到店时间</text>
+           <input  class="content"   placeholder-class="colorBlack" type="text" placeholder="不需要的内容" auto-focus/>
+        </view>
+    </view>
+    <!-- 支付金额 -->
+    <view class="order-pay">
+        <view class="order-pay-money padding">
+            <text>应付金额</text>
+            <text>￥</text>
+            <text>180</text>
+        </view>
+        
+        <view class="order-pay-default">
+            <text>立即支付</text>
+        </view>
+    </view>
+</view>

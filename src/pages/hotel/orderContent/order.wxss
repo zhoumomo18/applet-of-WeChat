@@ -1,0 +1,147 @@
+page {
+    background: #f3f3f3;
+}
+
+.order-title{
+    background-color: #FFA819;
+    height: 89rpx;
+}
+.order-title > text{
+    line-height: 89rpx;
+    color: #ffffff;
+    font-size: 35rpx;
+}
+.order-home{
+    box-sizing: border-box;
+    height: 282rpx;
+    font-size: 24rpx;
+    background-color: #ffffff;
+    border-bottom: 20rpx solid #f3f3f3;
+    color: #666666;
+}
+.order-home-type{
+    padding: 20rpx 0 20rpx 0;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333333;
+}
+.order-home-assort{
+    padding-bottom:15rpx;
+}
+.order-home-timer{
+    padding: 15rpx 0 15rpx 0;
+    border-top: 1px dotted #BBBBBB;
+}
+.order-home-timer>text{
+    padding-right: 30rpx;
+}
+
+.order-home-refund>text{
+    line-height: 73rpx;
+}
+/* 信息 */
+.order-content{
+    box-sizing: border-box;
+    width: 100%;
+    height: 516rpx;
+    background-color: #ffffff;
+}
+.order-content>view{
+    height: 102rpx;
+    
+    line-height: 102rpx;
+}
+.order-content .title{
+    color: #666666;
+    font-size: 28rpx;
+    width: 40%;
+    display: inline-block;
+    width: 180rpx;
+}
+.order-content .content{
+    font-size: 28rpx;
+    width: 60%;
+    display: inline-block;
+    position: relative;
+    bottom: -15rpx;
+}
+.order-content-title .title-one{
+    font-family: PingFangSC-Medium;
+    font-size: 34rpx;
+    color: #333333;
+    font-weight: bold;
+    padding-right: 20rpx;
+}
+
+.order-home-refund{
+    height: 73rpx;
+    width: 100%;
+}
+.order-home-refund .navPag{
+    color: #FFA819;   
+    float: right;
+    line-height: 73rpx;
+}
+    
+/* 支付 */
+.order-pay{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 98rpx;
+}
+.order-pay-money{
+    width: 450rpx;
+    background: #ffffff;
+    font-size: 28rpx;
+    line-height: 98rpx;
+}
+.order-pay-money:first-child{
+    font-weight: bold;  
+    font-size: 28rpx;  
+}
+.order-pay-money>text:nth-child(2){ 
+    font-size: 25rpx; 
+    padding: 0 5rpx 0 20rpx;
+    color: #FF5A2D; 
+}
+.order-pay-money>text:nth-child(3){
+    font-weight: bolder;
+    color: #FF5A2D;
+    font-size: 34rpx;
+}
+.order-pay-default{
+    flex: 1;
+    font-family: PingFangSC-Medium;
+    font-size: 34rpx;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #FFA819;
+    line-height: 89rpx;
+}
+.order-pay-default>text{
+    color: #ffffff;
+    font-weight: bold;
+}
+
+
+/* 公共部分 */
+.padding{
+    padding: 0 30rpx;
+}
+.colorBlack{
+    color: #333333;
+    height: 2rpx;
+}
+.border1{
+    border-bottom: 1px solid #E3E3E3;
+}
+.font24{
+    font-size: 24rpx;
+}
+
+
+
+
+
